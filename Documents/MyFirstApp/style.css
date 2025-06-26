@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background-color: #0B4422;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+}
