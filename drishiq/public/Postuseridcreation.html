@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drishiq – Email Sent</title>
+<!-- Supabase -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = "https://jfguztmagsdsunhychkl.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZ3V6dG1hZ3Nkc3VuaHljaGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3MDc4NDMsImV4cCI6MjA2NjI4Mzg0M30.fzSIpRP4MXzRvUdxxLTcH6sWJ3-R996xxoatB_PmFMg";
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);  
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      background-color: #f5faf6;
+      color: #0B4422;
+      padding: 2rem;
+    }
+
+    .message-box {
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .loader {
+      border: 6px solid #e0e0e0;
+      border-top: 6px solid #0B4422;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1.2s linear infinite;
+      margin: 2rem auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .sub-text {
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      color: #444;
+    }
+
+    .resend-link {
+      color: #0B4422;
+      text-decoration: underline;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .resend-link:hover {
+      color: #08391c;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-box">
+    <h2>Almost there...</h2>
+    <p>We’ve sent a secure link to your email. Click it to set up your account.</p>
+    <div class="loader"></div>
+    <p class="sub-text">
+      Didn’t get it? 
+      <a class="resend-link" href="signup.html">Request again</a>
+    </p>
+  </div>
+</body>
+</html>

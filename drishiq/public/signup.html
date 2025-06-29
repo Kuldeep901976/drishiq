@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drishiq Chat</title>
+<!-- 1. Load the Supabase JS SDK -->
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+
+<!-- 2. Initialize Supabase -->
+<script>
+  const supabaseUrl = "https://jfguztmagsdsunhychkl.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZ3V6dG1hZ3Nkc3VuaHljaGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3MDc4NDMsImV4cCI6MjA2NjI4Mzg0M30.fzSIpRP4MXzRvUdxxLTcH6sWJ3-R996xxoatB_PmFMg";
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+</script>
+
+<!-- 3. Then you can safely use it -->
+<script>
+  async function checkUserIDUnique() {
+    const userID = document.getElementById('userID').value.trim();
+    const { data } = await supabase
+      .from('User')
+      .select('user_id')
+      .eq('user_id', userID)
+      .single();
+
+    if (data) {
+      alert('User ID exists');
+    } else {
+      alert('Available');
+    }
+  }
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+	:root {
+	      --font-color: #0B4422;
+	      --pressed-color: #000080;
+	      --disabled-opacity: 0.5;
+	      --light-grey: #e0e0e0;
+		}
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  color: #000;
+  overflow-y: auto;
+}
+.header, .footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+		 }
+    .header {
+	top: 0;      
+	display: flex;
+      	justify-content: space-between;
+	align-items: flex-start;
+      	background-color: #F5FAF6;
+       	padding: 10px 20px 0;
+      	border-bottom: 1px solid #0B4422;
+      	color: #0B4422;
+             }
+    .footer {
+      bottom: 0;
+      text-align: center;
+      background-color: #F2F2F2;      
+      padding: 0.1rem 2rem 0.3rem;
+      font-size: 0.85rem;
+      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
+      border-top: 1px solid #0B4422;
+      color:solid #0B4422;
+    }
+
+.footer-links {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.footer a {
+  color: #0000FF; /* URL blue */
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+} /* <-- This was missing! */
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #0044cc;
+}
+
+.footer a:visited {
+  color: #6A1B9A;
+  text-decoration: underline;
+}
+
+.terms-link:visited,
+.privacy-link:visited {
+  color: #6A1B9A;
+  text-decoration: underline;
+}
+    
+.logo-container {
+  display: flex;
+  flex-direction: column;  /* Stack items vertically */
+  align-items: left;     /* Center everything horizontally */
+  gap: 1px; /* spacing between image and text */
+  text-align: left;
+  color: #0B4422;
+		    }
+
+
+.logo-image 	{
+  height: 40px; /* adjust size */
+  width: auto;
+		}
+
+.logo-container span 	{
+  font-size: 16px;
+  color: #0B4422;
+margin-top: -10px;
+margin-left: 10px;
+			}
+
+.logo-container span1 	{
+  font-size: 44px;
+  color: #0B4422;
+
+			}
+
+    .header-center em 	{
+      font-style: italic;
+      font-size: 24px;
+      color: ##0B4422;
+    			}
+
+    .main {
+      flex: 1;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-y: auto;
+    }
+
+    .signup-box {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .signup-box h2 {
+	font-size: 2rem;
+      margin-bottom: 0.5rem;    }
+    .signup-box p {
+      margin-bottom: 1.2rem;
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      padding: 0 24px;
+    }
+
+    .social-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--light-grey);
+      background-color: white;
+      opacity: var(--disabled-opacity);
+      cursor: not-allowed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icon.enabled {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .checkbox-container {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .checkbox-container label {
+      display: flex;
+      align-items: center;
+    }
+
+.notice-box {
+  margin-top: 8px;
+  padding: 10px 14px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  color: #0B4422;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes pulseBorder {
+  0% {
+    box-shadow: 0 0 0 0 rgba(11, 68, 34, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(11, 68, 34, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(11, 68, 34, 0);
+  }
+}
+
+.pulse {
+  animation: pulseBorder 1.2s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+    .input-field, .input-password{ 
+      width: 100%;
+      height: 48px;
+padding: 0.75rem;
+      box-sizing: border-box;
+      margin-bottom: 0.3rem;
+      border: 1px solid var(--light-grey);
+      border-radius: 0.5rem;
+    }
+
+    .input-password {
+      	display: flex;
+	font-size: 0.9rem;
+      	align-items: center;
+      	margin-bottom: 1.5rem;
+    }
+
+    .input-password input {
+      	flex: 1;
+	font-size: 0.9rem;
+      	border: none;
+      	border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    .input-password button {
+      background: transparent;
+      border: none;
+      padding: 0.75rem;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+	width: 100%;
+      height: 48px;
+      background-color: #0B4422;
+      color: white;
+      padding: 0.75rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.05s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0B4422;
+    }
+
+    .btn-primary:active {
+      background-color: #000080;
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+   <div class="header">
+    <div class="logo-container">
+	    	<img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/LogoPicture1.png?		token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL0xvZ29QaWN0dXJlMS5wbmciLCJpYXQiOjE3NTA5MzkxODcsImV4cCI6MTgzNzMzOTE4N30.ggY7o4BY0As9PcjqGfHiANoW8w9ZfvH5d79HlGHcL84" alt="Drishiq Logo" class="logo-image" />
+      <span>Redefines Clarity</span>
+    </div>
+    <div class="header-center">
+      <em>“See Through the Challenge.”</em>
+    </div>
+    </div>
+</div>
+
+  <div class="main">
+    <div class="signup-box">
+      <h2>Sign up</h2>
+      <p>Let’s solve challenges to make this life more meaningful for you and the one you care about</p>
+
+
+	<div class="social-row">
+        <div class="social-icon" id="facebook" onclick="handleSocial('facebook')" title="Make sure the email above matches your social login email."><img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/SocialIcons/facebook_round_icon.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1NvY2lhbEljb25zL2ZhY2Vib29rX3JvdW5kX2ljb24ucG5nIiwiaWF0IjoxNzUxMDExMDk2LCJleHAiOjE4Mzc0MTEwOTZ9.cMs5jioL1k6yA1ZgXI4Fr8nRmLx0YJBZhGS5m7xli2M
+" width="54" height="54" /></div>
+        <div class="social-icon" id="google" onclick="handleSocial('google')" title="Make sure the email above matches your social login email."><img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/SocialIcons/google-logo-icon-PNG-Transparent-Background.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1NvY2lhbEljb25zL2dvb2dsZS1sb2dvLWljb24tUE5HLVRyYW5zcGFyZW50LUJhY2tncm91bmQucG5nIiwiaWF0IjoxNzUxMDExMDc5LCJleHAiOjE4Mzc0MTEwNzl9.AUH-EBToctLZktW2X32YuUzZMwDqUo6CZ4rVrWn_zi8
+" width="54" height="54" /></div>
+        <div class="social-icon" id="linkedin" onclick="handleSocial('linkedin')" title="Make sure the email above matches your social login email."><img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/SocialIcons/linkedin_circle.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1NvY2lhbEljb25zL2xpbmtlZGluX2NpcmNsZS5wbmciLCJpYXQiOjE3NTEwMTEwNDgsImV4cCI6MTgzNzQxMTA0OH0.SJqcPDo3GEaf8OcGeOpg4bLTHMOj_diPJgEtoYkTajc
+" width="54" height="54" /></div>
+      	</div>
+
+      <div class="checkbox-container">
+        <label>
+          <input type="checkbox" id="agreeCheckbox" onclick="toggleAccess()" style="margin-right: 8px;"/> I agree to 
+          <a href="#">Terms & Conditions</a> / <a href="#">Privacy Policy</a>
+        </label>
+      </div>
+<div id="checkboxMessage" class="notice-box hidden">
+  Please read and check the box to continue.
+</div>
+<input type="text" id="userID" class="input-field" placeholder="Choose a unique User ID" oninput="checkUserIDUnique()" />
+<div id="userIdMessage" style="color: red; font-size: 0.9rem;"></div>
+
+<input type="email" id="emailField" class="input-field" placeholder="Email" />
+<input type="password" id="passwordField" class="input-field" placeholder="Password" />
+
+<button class="btn-primary" onclick="handleSignup()">Sign Up</button>
+
+    </div>
+  </div>
+<input type="hidden" id="preferredLanguage" name="preferredLanguage" />
+  <div class="footer">
+    <div>Powered by YOU</div>
+    <div>&copy; 2025 Drishiq, All rights reserved</div>
+
+<div class="footer-links">
+  <a href="https://jfguztmagsdsunhychkl.supaba.co/storage/v1/object/sign/projectimages/T&X_PPFinal.html?token=..." 
+     class="terms-link" 
+     title="Read our Terms & Privacy Policy" 
+     target="_blank">
+     Terms & Conditions / Privacy Policy
+  </a>
+</div>
+
+<script>
+
+  function toggleAccess() {
+  const agreed = document.getElementById('agreeCheckbox').checked;
+  const messageBox = document.getElementById('checkboxMessage');
+  const labelArea = document.querySelector('.checkbox-container');
+
+  if (agreed) {
+    messageBox.classList.add('hidden');
+    labelArea.classList.remove('pulse');
+  } else {
+    messageBox.classList.remove('hidden');
+    labelArea.classList.add('pulse');
+  }
+
+  validateForm();
+}
+
+  function isUserIDValid(userID) {
+    // Allow only letters, numbers, underscore, hyphen
+    return /^[a-zA-Z0-9_-]+$/.test(userID);
+  }
+
+  function isEmailValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateForm() {
+    const agreed = document.getElementById('agreeCheckbox').checked;
+    const email = document.getElementById('emailField').value.trim();
+    const userID = document.getElementById('userID').value.trim();
+    const button = document.getElementById('magicLinkBtn');
+
+    if (agreed && isEmailValid(email) && isUserIDValid(userID)) {
+      button.classList.add('enabled');
+      button.removeAttribute('disabled');
+    } else {
+      button.classList.remove('enabled');
+      button.setAttribute('disabled', true);
+    }
+  }
+
+  async function checkUserIDUnique() {
+    const userID = document.getElementById('userID').value.trim();
+    const messageEl = document.getElementById('userIdMessage');
+
+    if (!userID) {
+      messageEl.textContent = '';
+      return;
+    }
+
+    if (!isUserIDValid(userID)) {
+      messageEl.textContent = '❌ Only letters, numbers, _ and - are allowed.';
+      messageEl.style.color = 'red';
+      return;
+    }
+
+    const { data } = await supabase
+      .from('User')
+      .select('user_id')
+      .eq('user_id', userID)
+      .single();
+
+    if (data) {
+      messageEl.textContent = '❌ User ID already taken.';
+      messageEl.style.color = 'red';
+    } else {
+      messageEl.textContent = '✅ User ID is available.';
+      messageEl.style.color = 'green';
+    }
+  }
+
+  async function handleSignup() {
+    const userID = document.getElementById('userID').value.trim().toLowerCase();
+    const email = document.getElementById('emailField').value.trim();
+
+    if (!isEmailValid(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (!isUserIDValid(userID)) {
+      alert('User ID must contain only letters, numbers, underscore or hyphen.');
+      return;
+    }
+
+    // Check if user ID already exists
+    const { data: existing } = await supabase
+      .from('User')
+      .select('user_id')
+      .eq('user_id', userID)
+      .single();
+
+    if (existing) {
+      alert('User ID already exists. Please try another.');
+      return;
+    }
+
+    // Send Magic Link
+    const { error } = await supabase.auth.signInWithOtp({ email });
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    // Save user ID + email to DB
+    await supabase.from('User').insert([{ user_id: userID, email }]);
+
+    alert('Check your email for the login link.');
+    window.location.href = 'signin.html';
+  }
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const storedLang = localStorage.getItem('preferredLanguage');
+    if (storedLang) {
+      document.getElementById('preferredLanguage').value = storedLang;
+    }
+  });
+</script>
+
+
+</body>
+</html>

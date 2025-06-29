@@ -1,0 +1,206 @@
+/* =======================
+   Drishiq Style: Elevated
+   File: style-drishelevated.css
+   ======================= */
+
+:root {
+  --font-color: #0B4422;
+  --pressed-color: #062D12;
+  --disabled-opacity: 0.5;
+  --light-grey: #e6e6e6;
+  --background-color: #F9FCFA;
+  --header-bg: #E6F3EC;
+  --footer-bg: #E6F0E9;
+  --highlight: #0044cc;
+  --visited: #6A1B9A;
+  --input-height: 50px;
+  --input-radius: 0.75rem;
+  --font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header, .footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header {
+  top: 0;
+  background-color: var(--header-bg);
+  padding: 12px 24px 4px;
+  border-bottom: 2px solid var(--font-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer {
+  bottom: 0;
+  background-color: var(--footer-bg);
+  text-align: center;
+  padding: 0.4rem 2rem;
+  font-size: 0.9rem;
+  border-top: 2px solid var(--font-color);
+  color: var(--font-color);
+}
+
+.footer a {
+  color: var(--highlight);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: var(--pressed-color);
+}
+
+.footer a:visited {
+  color: var(--visited);
+  text-decoration: underline;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+  color: var(--font-color);
+}
+
+.logo-image {
+  height: 44px;
+  width: auto;
+}
+
+.logo-container span {
+  font-size: 18px;
+  margin-left: 12px;
+  font-weight: 500;
+}
+
+.logo-container span1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.header-center em {
+  font-style: italic;
+  font-size: 26px;
+  color: var(--font-color);
+  font-weight: 500;
+}
+
+.main {
+  flex: 1;
+  margin-top: 72px;
+  margin-bottom: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem;
+}
+
+.input-field, .input-password {
+  width: 100%;
+  height: var(--input-height);
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--light-grey);
+  border-radius: var(--input-radius);
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: #fff;
+  color: var(--font-color);
+}
+
+.input-password {
+  display: flex;
+  align-items: center;
+}
+
+.input-password input {
+  border: none;
+  flex: 1;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+}
+
+.input-password button {
+  background: transparent;
+  border: none;
+  padding: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 100%;
+  height: var(--input-height);
+  background-color: var(--font-color);
+  color: #ffffff;
+  font-size: 1.05rem;
+  padding: 0.9rem;
+  border: none;
+  border-radius: var(--input-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: #086633;
+}
+
+.btn-primary:active {
+  background-color: var(--pressed-color);
+  transform: scale(0.98);
+}
+
+.checkbox-container label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.notice-box {
+  padding: 12px 16px;
+  background-color: #fff;
+  border: 1px solid var(--light-grey);
+  color: var(--font-color);
+  border-radius: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pulse {
+  animation: pulseBorder 1.3s ease-in-out infinite;
+  border-radius: 10px;
+}
+
+@keyframes pulseBorder {
+  0%   { box-shadow: 0 0 0 0 rgba(11, 68, 34, 0.4); }
+  70%  { box-shadow: 0 0 0 8px rgba(11, 68, 34, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(11, 68, 34, 0); }
+}
+
+.hidden {
+  display: none;
+}

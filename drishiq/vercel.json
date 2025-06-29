@@ -1,0 +1,32 @@
+{
+  "functions": {
+    "app/api/upload-image/route.js": {
+      "maxDuration": 30
+    }
+  },
+  "images": {
+    "sizes": [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    "formats": ["image/webp", "image/avif"],
+    "minimumCacheTTL": 60,
+    "domains": ["jfguztmagsdsunhychkl.supabase.co"]
+  },
+  "headers": [
+    {
+      "source": "/api/upload-image",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+} 
