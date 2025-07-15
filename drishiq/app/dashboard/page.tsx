@@ -43,7 +43,7 @@ interface UserProfile {
 
 export default function Dashboard() {
   const router = useRouter();
-  const t = (key) => key;
+  const t = (key: string) => key;
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
