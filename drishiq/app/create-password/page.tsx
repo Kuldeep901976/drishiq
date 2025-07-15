@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 export default function CreatePasswordPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const t = (key) => key;
+  const t = (key: string) => key;
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
