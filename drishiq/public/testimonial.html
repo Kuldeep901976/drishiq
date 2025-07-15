@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share Your Testimonial | Drishiq</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 650px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #0B4422;
+    }
+    p.description {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    form label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+    form button {
+      background-color: #0B4422;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    .note {
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌟 Share Your Drishiq Experience</h1>
+    <p class="description">
+      Help others discover the clarity you found. Share your honest feedback about your session with Drishiq.
+    </p>
+    <form>
+      <label for="name">Full Name (or Initials)</label>
+      <input type="text" id="name" name="name" placeholder="e.g. R. Mehta or Anonymous" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="We'll contact only if needed" required />
+
+      <label for="sessionImpact">How did your session help you?</label>
+      <textarea id="sessionImpact" name="sessionImpact" rows="4" required></textarea>
+
+      <label for="permission">Can we display your testimonial on our site?</label>
+      <select id="permission" name="permission" required>
+        <option value="yes">Yes, with my name</option>
+        <option value="anon">Yes, but anonymously</option>
+        <option value="no">No, for internal feedback only</option>
+      </select>
+
+      <button type="submit">Submit Testimonial</button>
+    </form>
+    <p class="note">We appreciate your voice — your words may inspire someone else's clarity journey.</p>
+  </div>
+</body>
+</html>

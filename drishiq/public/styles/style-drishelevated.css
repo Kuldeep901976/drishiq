@@ -5,14 +5,18 @@
 
 :root {
   --font-color: #0B4422;
-  --pressed-color: #062D12;
+  --button-bg: #0B4422;
+  --button-text: #FFFFFF;
+  --button-border: #0B4422;
+  --pressed-color: #000080;
   --disabled-opacity: 0.5;
+  --active-opacity: 1.0;
   --light-grey: #e6e6e6;
   --background-color: #F9FCFA;
   --header-bg: #E6F3EC;
   --footer-bg: #E6F0E9;
-  --highlight: #0044cc;
-  --visited: #6A1B9A;
+  --link-unvisited: #0000FF;
+  --link-visited: #6A1B9A;
   --input-height: 50px;
   --input-radius: 0.75rem;
   --font-family: 'Segoe UI', sans-serif;
@@ -56,8 +60,29 @@ body {
   color: var(--font-color);
 }
 
+/* General link styles */
+a {
+  color: var(--link-unvisited);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover {
+  text-decoration: underline;
+  transform: translateY(-1px);
+}
+
+a:active {
+  transform: scale(0.98);
+}
+
+/* Footer specific links */
 .footer a {
-  color: var(--highlight);
+  color: var(--link-unvisited);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -65,12 +90,11 @@ body {
 
 .footer a:hover {
   text-decoration: underline;
-  color: var(--pressed-color);
+  color: var(--link-unvisited);
 }
 
 .footer a:visited {
-  color: var(--visited);
-  text-decoration: underline;
+  color: var(--link-visited);
 }
 
 .logo-container {
@@ -93,7 +117,7 @@ body {
 }
 
 .logo-container span1 {
-  font-size: 48px;
+  font-size: 8px;
   font-weight: bold;
 }
 
@@ -149,23 +173,37 @@ body {
 .btn-primary {
   width: 100%;
   height: var(--input-height);
-  background-color: var(--font-color);
-  color: #ffffff;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid var(--button-border);
   font-size: 1.05rem;
   padding: 0.9rem;
-  border: none;
   border-radius: var(--input-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  opacity: var(--disabled-opacity);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn-primary:hover {
-  background-color: #086633;
+  opacity: var(--active-opacity);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(11, 68, 34, 0.3);
 }
 
 .btn-primary:active {
   background-color: var(--pressed-color);
+  border-color: var(--pressed-color);
   transform: scale(0.98);
+  opacity: var(--active-opacity);
+}
+
+.btn-primary:focus {
+  opacity: var(--active-opacity);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(11, 68, 34, 0.3);
 }
 
 .checkbox-container label {
@@ -203,4 +241,64 @@ body {
 
 .hidden {
   display: none;
+}
+
+.subtext {
+  font-size: 0.9rem;
+  color: #0B4422;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+.logo-subtext {
+  font-size: 8px;
+  color: #0B4422;
+  margin-left: 0;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.drishiq-welcome-block {
+  color: #0B4422;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.drishiq-welcome-block h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+.drishiq-welcome-block .subtitle {
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+}
+.drishiq-welcome-block .instruction {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.drishiq-large-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0B4422;
+}
+
+.drishiq-medium-text {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #0B4422;
+}
+
+.drishiq-small-text {
+  font-size: 16px;
+  color: #0B4422;
+}
+
+select.input-field {
+  font-size: calc(0.75rem + 2px);
+}
+
+.footer > div {
+  font-size: 10px;
 }

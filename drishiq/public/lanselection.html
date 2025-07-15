@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select Language</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    select, label {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .checkbox-container input {
+      margin-right: 0.5rem;
+    }
+
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .lang-button {
+      background: #e6f2ec;
+      border: 2px solid #0b4422;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      cursor: not-allowed;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .lang-button.enabled {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    .lang-button:hover.enabled {
+      background: #d2e8dc;
+    }
+
+    .lang-name {
+      font-weight: bold;
+    }
+
+    .shake {
+      animation: shake 0.3s;
+      border: 2px solid red;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Choose Your Preferred Language</h2>
+
+    <!-- Dropdown fallback -->
+    <select required id="preferredLanguage" onchange="enableLangGrid()">
+      <option value="">Preferred Language*</option>
+      <option value="Arabic">Arabic</option>
+      <option value="Bengali">Bengali</option>
+      <option value="Chinese (Simplified)">Chinese (Simplified)</option>
+      <option value="Dutch">Dutch</option>
+      <option value="English">English</option>
+      <option value="French">French</option>
+      <option value="German">German</option>
+      <option value="Hindi">Hindi</option>
+      <option value="Italian">Italian</option>
+      <option value="Japanese">Japanese</option>
+      <option value="Korean">Korean</option>
+      <option value="Marathi">Marathi</option>
+      <option value="Portuguese">Portuguese</option>
+      <option value="Russian">Russian</option>
+      <option value="Spanish">Spanish</option>
+      <option value="Tamil">Tamil</option>
+      <option value="Telugu">Telugu</option>
+      <option value="Turkish">Turkish</option>
+      <option value="Urdu">Urdu</option>
+    </select>
+
+    <!-- Terms -->
+    <div class="checkbox-container">
+      <input type="checkbox" id="termsCheckbox" onchange="enableLangGrid()" />
+      <label for="termsCheckbox">I accept the <a href="#" target="_blank">Terms and Conditions</a></label>
+    </div>
+
+    <!-- Language Buttons -->
+    <div class="languages-grid" id="languagesGrid"></div>
+  </div>
+
+  <script>
+    const languages = [
+      { name: "Arabic", native: "العربية", abbr: "Ar" },
+      { name: "Bengali", native: "বাংলা", abbr: "Bn" },
+      { name: "Chinese (Simplified)", native: "简体中文", abbr: "Zh" },
+      { name: "Dutch", native: "Nederlands", abbr: "Nl" },
+      { name: "English", native: "English", abbr: "En" },
+      { name: "French", native: "Français", abbr: "Fr" },
+      { name: "German", native: "Deutsch", abbr: "De" },
+      { name: "Hindi", native: "हिन्दी", abbr: "Hi" },
+      { name: "Italian", native: "Italiano", abbr: "It" },
+      { name: "Japanese", native: "日本語", abbr: "Ja" },
+      { name: "Korean", native: "한국어", abbr: "Ko" },
+      { name: "Marathi", native: "मराठी", abbr: "Mr" },
+      { name: "Portuguese", native: "Português", abbr: "Pt" },
+      { name: "Russian", native: "Русский", abbr: "Ru" },
+      { name: "Spanish", native: "Español", abbr: "Es" },
+      { name: "Tamil", native: "தமிழ்", abbr: "Ta" },
+      { name: "Telugu", native: "తెలుగు", abbr: "Te" },
+      { name: "Turkish", native: "Türkçe", abbr: "Tr" },
+      { name: "Urdu", native: "اردو", abbr: "Ur" }
+    ];
+
+    const grid = document.getElementById("languagesGrid");
+
+    languages.forEach(lang => {
+      const btn = document.createElement("div");
+      btn.className = "lang-button";
+      btn.innerHTML = `<div class="lang-name">${lang.name} (${lang.abbr})</div><div>${lang.native}</div>`;
+      btn.onclick = () => handleLangClick(lang.name);
+      grid.appendChild(btn);
+    });
+
+    function enableLangGrid() {
+      const terms = document.getElementById("termsCheckbox").checked;
+      const langButtons = document.querySelectorAll(".lang-button");
+
+      langButtons.forEach(btn => {
+        if (terms) {
+          btn.classList.add("enabled");
+        } else {
+          btn.classList.remove("enabled");
+        }
+      });
+    }
+
+    function handleLangClick(lang) {
+      const terms = document.getElementById("termsCheckbox").checked;
+      if (!terms) {
+        document.getElementById("termsCheckbox").parentElement.classList.add("shake");
+        setTimeout(() => {
+          document.getElementById("termsCheckbox").parentElement.classList.remove("shake");
+        }, 500);
+        return;
+      }
+
+      alert(`Starting introduction video in ${lang}...`);
+      // Simulate playing video in selected language
+      // e.g., load YouTube video with subtitles/lang mapping
+    }
+  </script>
+</body>
+</html>

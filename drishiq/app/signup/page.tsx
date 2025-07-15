@@ -1,140 +1,107 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { flowController } from '@/lib/flow-controller';
 import { supabase } from '@/lib/supabase';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 export default function SignupPage() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
-  const [userId, setUserId] = useState('');
-  const [agreed, setAgreed] = useState(false);
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [userIdAvailable, setUserIdAvailable] = useState<boolean | null>(null);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const checkUserId = async () => {
-      if (!userId.trim()) {
-        setUserIdAvailable(null);
-        return;
-      }
+  const handleEmailSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
 
-      const { data } = await supabase
-        .from('User')
-        .select('user_id')
-        .eq('user_id', userId.trim())
-        .single();
+    try {
+      const { data, error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/create-password`,
+        },
+      });
 
-      setUserIdAvailable(!data); // true if available
-    };
+      if (error) throw error;
 
-    checkUserId();
-  }, [userId]);
-
-  const isValidEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  const handleSubmit = async () => {
-    if (!isValidEmail(email) || !userIdAvailable || !agreed) return;
-
-    setLoading(true);
-    setMessage('');
-
-    // Insert user into User table
-    const { data: existingUser } = await supabase
-      .from('User')
-      .select('*')
-      .eq('user_id', userId.trim())
-      .maybeSingle();
-
-    if (existingUser) {
-      setMessage('❌ User ID already exists.');
-      setLoading(false);
-      return;
+      await flowController.startEmailSignup(email);
+      router.push('/create-password');
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
-
-    // Send magic link
-    const { error } = await supabase.auth.signInWithOtp({
-      email: email.trim(),
-      options: {
-        emailRedirectTo: `${window.location.origin}/create-password`, // You can adjust this route
-      },
-    });
-
-    if (error) {
-      setMessage(`❌ ${error.message}`);
-      setLoading(false);
-      return;
-    }
-
-    // Add user_id to User table
-    await supabase.from('User').insert([
-      {
-        user_id: userId.trim(),
-        email: email.trim(),
-      },
-    ]);
-
-    setMessage('✅ Magic link sent. Please check your email.');
-    setLoading(false);
   };
 
-  const isFormValid = isValidEmail(email) && agreed && userIdAvailable;
-
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
-
-      <input
-        type="text"
-        placeholder="Choose a unique User ID"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-      />
-      {userId && (
-        <div style={{ fontSize: '0.9rem', color: userIdAvailable ? 'green' : 'red' }}>
-          {userIdAvailable === null
-            ? ''
-            : userIdAvailable
-            ? '✅ User ID is available.'
-            : '❌ User ID already taken.'}
+    <div className="min-h-screen bg-white">
+      <div className="max-w-md mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <Link href="/" className="flex flex-col items-center mb-2">
+            <Image
+              src="/assets/logo/Logo.png"
+              alt="DrishiQ Logo"
+              width={180}
+              height={80}
+              className="h-12 w-auto mb-1"
+              priority
+            />
+            <span className="text-sm text-[#0B4422]/70 -mt-2">Intelligence of Perception</span>
+          </Link>
+          <h1 className="text-3xl font-bold text-[#0B4422] mb-4 mt-6">
+            Create your account
+          </h1>
+          <p className="text-gray-600">
+            Join DrishiQ and start your journey of self-discovery and growth
+          </p>
         </div>
-      )}
 
-      <input
-        type="email"
-        placeholder="Email address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        {error && (
+          <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6">
+            {error}
+          </div>
+        )}
 
-      <label>
-        <input
-          type="checkbox"
-          checked={agreed}
-          onChange={() => setAgreed(!agreed)}
-          style={{ marginRight: 8 }}
-        />
-        I agree to the <a href="/terms">Terms</a> & <a href="/privacy">Privacy Policy</a>
-      </label>
+        {/* Email Sign-up Form Only */}
+        <form onSubmit={handleEmailSignup}>
+          <div className="mb-6">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              Email address
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0B4422] focus:border-transparent"
+              required
+            />
+          </div>
 
-      <button
-        onClick={handleSubmit}
-        disabled={!isFormValid || loading}
-        style={{
-          marginTop: '16px',
-          padding: '10px 20px',
-          backgroundColor: isFormValid ? '#0B4422' : '#ccc',
-          color: '#fff',
-          border: 'none',
-          cursor: isFormValid ? 'pointer' : 'not-allowed',
-        }}
-      >
-        {loading ? 'Sending...' : 'Send Magic Link'}
-      </button>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full px-6 py-3 bg-[#0B4422] text-white rounded-lg hover:bg-[#083318] transition-colors disabled:opacity-50"
+          >
+            {isLoading ? 'Sending...' : 'Email link to this email Id'}
+          </button>
+        </form>
 
-      {message && (
-        <div style={{ marginTop: 12, fontSize: '0.95rem', color: '#333' }}>{message}</div>
-      )}
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Already have an account?{' '}
+          <Link
+            href="/signin"
+            className="text-[#0B4422] hover:underline"
+          >
+            Sign in
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

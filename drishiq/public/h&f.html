@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DrishiQ – Dual Footer Ads</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 2.5rem;
+    }
+
+    header {
+      background-color: #F5FAF6;
+      color: #0B4422;
+      padding: 0.6rem 0.6rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 18px;
+  margin-right: 0px;
+
+  flex: 1;
+}
+
+.logo-section .subtext {
+  font-size: 0.85rem;
+  color: #0B4422;
+  margin-top: 0.2rem;
+}
+
+.button-container {
+    margin-right: -186px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    .button {
+      background-color: #0B4422;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex: 3.6;
+}
+
+.nav-links a {
+  color: #0B4422;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 56px;
+  font-size: 0.95rem;
+}
+
+.social-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-center;
+  flex: 1;
+}
+
+.social-links a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  color: #0B4422;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1); 
+ margin: 0 6px;
+  transition: background-color 0.3s;
+}
+
+
+
+
+.profile-icon-container {
+  margin-top: 36px;
+  margin-right:24 px;
+  margin-left: 124px;
+  background-color: white;
+  border: 2px solid #0B4422;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-icon {
+position: relative;
+  width: 24px;
+  height: 24px;
+  fill: #0B4422;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background-color: #ffffff;
+      color: #0B4422;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      z-index: 999;
+      width: 100%;
+      max-width: 300px;
+      min-width: 260px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 8px;
+      margin: 2px 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .dropdown-item-content {
+      display: flex;
+      align-items: center;
+      color: #0B4422;
+      flex: 1;
+    }
+
+    .dropdown-item-content i {
+      margin-right: 12px;
+    }
+
+    .dropdown-item::after {
+      content: '>';
+      font-weight: bold;
+      margin-left: 12px;
+      color: #0B4422;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+.qr-code {
+      text-align: center;
+      padding: 1rem 1rem 1px 1rem;
+    }
+
+    .qr-code img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .qr-code div {
+      padding-top: 1px;
+      font-size: 0.85rem;
+      color: var(--primary-color);
+    }
+    .user-details {
+      font-size: 14px;
+      text-align: ceeter;
+      color: #0B4422;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #0B4422;
+      color: white;
+      text-align: center;
+      padding: 0.5rem 0.5rem;
+      font-size: 0.75rem;
+      z-index: 1000;
+	line-height: 0.5;
+      height: 54px;
+    }
+
+    footer a {
+      color: #FFD700;
+      text-decoration: none;
+
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- AD #1: Covers Footer Fully --- */
+#footerTakeoverAd {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: #FFD700;
+      color: #0B4422;
+      display: none;
+      z-index: 2001;
+      font-weight: bold;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+
+    #footerTakeoverAd a {
+      text-decoration: underline;
+      margin-left: 0.5rem;
+    }
+
+    #footerTakeoverAd button {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #0B4422;
+      cursor: pointer;
+    }
+
+    /* --- AD #2: Floating Banner --- */
+#floatingFooterAd {
+  position: fixed;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 36px;
+  background-color: #ff9800;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 1rem;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: 18px;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+#floatingFooterAd a {
+  margin-left: 0.5rem;
+  text-decoration: underline;
+  color: #856404;
+}
+
+#floatingFooterAd button {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  color: #856404;
+  cursor: pointer;
+}
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <!-- Logo + Subtext (Left) -->
+    <div class="logo-section">
+      <img src="https://via.placeholder.com/120x36?text=DrishiQ+Logo" alt="DrishiQ Logo" />
+      <span class="subtext">Intelligence of Perception</span>
+    </div>
+
+    <!-- Nav Links (Center) -->
+    <nav class="nav-links">
+      <a href="#">  DrishiQ ?    |</a>
+      <a href="#">  Support us    |</a>
+      <a href="#">  Our palns & pricing    |</a>
+      <a href="#">  Blog    |</a>
+      <a href="#">  Testimonial    |</a>
+     </nav>
+
+    <div class="button-container">
+        <a href="/app" class="button">Start Session</a>
+      </div>
+
+<div class="profile-icon-container">
+<div class="profile-icon" onclick="document.getElementById('dropdownMenu').classList.toggle('show')">
+      <img src="http://www.w3.org/2000/svg"/>
+<div id="dropdownMenu" class="dropdown-menu">
+ <div class="qr-code">
+          <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/QR%20code.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1FSIGNvZGUucG5nIiwiaWF0IjoxNzUwOTMzODkyLCJleHAiOjE4MzczMzM4OTJ9.d3gowv3zKoHXO2QkL74hyLmu2i4hol9RSsLe8rvPRbc" alt="QR Code" onclick="alert('Expand QR logic here')" />
+          <div><i class="fas fa-qrcode"></i> Signup URL</div>
+        </div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-adjust"></i> Theme Toggle</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-user-edit"></i> Enrich Your Profile</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-credit-card"></i> Plans & Payments</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-key"></i> Reset Password</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-info-circle"></i> About Drishiq</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-sign-out-alt"></i> Log Out</div></div>
+      </div>
+    </div>
+  </div>      
+
+</div>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- 📢 Footer Takeover Ad -->
+<div id="footerTakeoverAd">
+  <div>
+    🎁 <strong>Special Clarity Boost</strong> — <a href="/promo">Claim Now</a>
+  </div>
+  <button onclick="hideTakeoverAd()">✖</button>
+</div>
+
+<!-- 📢 Floating Banner -->
+<div id="floatingFooterAd">
+  🚀 Drishiq Premium: Unlock deeper insights!
+  <a href="/plans">View Plans</a>
+  <button onclick="hideFloatingAd()">✖</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<!-- Social + Profile Icon (Center) -->
+<div class="social-profile">
+  <div class="social-links">
+    <a href="#">📘</a>
+    <a href="#">🔗</a>
+    <a href="#">📸</a>
+  </div>
+</div>
+<a href="#language">🌐 Language</a> |
+    <a href="/terms">Terms & Conditions / Privacy Policy</a>
+  <p>support@drishiq.com | © 2025 Drishiq</p>
+</footer>
+
+<!-- JS Logic -->
+
+<script>
+const showTakeoverAd = false;
+
+window.addEventListener('load', () => {
+  const takeoverAd = document.getElementById('footerTakeoverAd');
+
+  if (showTakeoverAd) {
+    takeoverAd.style.display = 'flex';
+  } else {
+    takeoverAd.style.display = 'none';
+  }
+});
+  }
+</script>
+
+<script>
+  const showFloatingAd = true;       // Set to false to disable the ad entirely
+  const adDelay = 5000;              // Delay before showing the ad (in ms)
+  const autoHide = false;            // Set to true if you want it to disappear automatically
+  const hideAfter = 10000;           // How long the ad stays visible (in ms) if autoHide is true
+
+  function showFloatingFooterAd() {
+    const ad = document.getElementById('floatingFooterAd');
+    ad.style.display = 'flex';
+    
+    if (autoHide) {
+      setTimeout(() => {
+        ad.style.display = 'none';
+      }, hideAfter);
+    }
+  }
+
+  function hideFloatingAd() {
+    document.getElementById('floatingFooterAd').style.display = 'none';
+  }
+
+  window.addEventListener('load', () => {
+    if (showFloatingAd) {
+      setTimeout(showFloatingFooterAd, adDelay);
+    }
+  });
+</script>
+
+<script>
+  const adDelay = 3000; // 3 seconds
+
+  function shouldShowFloatingAd() {
+    // Your custom logic — return false to suppress ad
+    const isOnHomepage = window.location.pathname === "/";
+    const userType = "guest"; // Example: you could fetch this from login/session
+
+    return isOnHomepage && userType === "guest";
+  }
+
+  function showFloatingAd() {
+    if (
+      shouldShowFloatingAd() &&
+      !sessionStorage.getItem('floatingAdDismissed')
+    ) {
+      document.getElementById('floatingFooterAd').style.display = 'flex';
+    }
+  }
+
+  function hideFloatingAd() {
+    document.getElementById('floatingFooterAd').style.display = 'none';
+    sessionStorage.setItem('floatingAdDismissed', 'true');
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(showFloatingAd, adDelay);
+  });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

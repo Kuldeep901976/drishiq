@@ -1,0 +1,207 @@
+{
+  "500": "500",
+  "footer": {
+    "select_language": "Select Language",
+    "contact_info": "Contact us at support@drishiq.com",
+    "change_language_tooltip": "Change language"
+  },
+  "language": "language",
+  "language_selection": {
+    "title": "Let's get started",
+    "subtitle": "Choose your preferred language to start your journey towards barrier-free communication",
+    "more_languages_message": "Don't see your language? More languages coming soon!",
+    "continue_button": "Continue"
+  },
+  "dashboard": {
+    "subtitle": "Here's what's happening",
+    "quickActions": "Quick Actions",
+    "editProfile": "Edit Profile",
+    "watchVideos": "Watch Videos",
+    "profileInformation": "Profile Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "occupation": "Occupation",
+    "loading": "Loading...",
+    "chat_placeholder": "Ask me anything...",
+    "messages_count": "Messages: {{count}}",
+    "upgrade_message": "Upgrade for unlimited messages",
+    "welcome_message": "Welcome to DrishiQ! How can I help you today?"
+  },
+  "pricing": {
+    "title": "DrishiQ Access Plans",
+    "subtitle": "Whether you're exploring, actively seeking help, or scaling it across teams — we have a plan for you. Looking to empower others? Scroll down to support someone in need.",
+    "choose_plan": "Choose Your Plan",
+    "plans": {
+      "free": {
+        "name": "Free Plan",
+        "price": "Free",
+        "duration": "72 hours",
+        "features": [
+          "Invitation-based",
+          "1 session",
+          "Screenshot only",
+          "Valid for 72 hours"
+        ],
+        "cta": "Seek Invitation"
+      },
+      "seed": {
+        "name": "Seed Plan",
+        "price": "₹559",
+        "originalPrice": "₹699",
+        "duration": "2 weeks",
+        "features": [
+          "Everything in Free",
+          "1 session",
+          "PDF export",
+          "Valid for 2 weeks"
+        ],
+        "cta": "Choose"
+      },
+      "growth": {
+        "name": "Growth Plan",
+        "price": "₹4,899",
+        "originalPrice": "₹6,999",
+        "duration": "8 weeks",
+        "features": [
+          "Everything in Seed",
+          "10 sessions",
+          "Priority support",
+          "Valid 8 weeks"
+        ],
+        "cta": "Choose"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "duration": "Flexible",
+        "features": [
+          "Everything in Growth",
+          "20+ sessions",
+          "Admin panel",
+          "Reports",
+          "Multi-user"
+        ],
+        "cta": "Enquire"
+      }
+    },
+    "support_section": {
+      "title": "Support DrishiQ",
+      "subtitle": "Join our mission to make clarity accessible to everyone",
+      "seed_support": {
+        "title": "Seed Support",
+        "amount": "₹500",
+        "description": "Plant the seeds of clarity"
+      },
+      "growth_support": {
+        "title": "Growth Support",
+        "amount": "₹1,000",
+        "description": "Nurture growth and understanding"
+      },
+      "wisdom_support": {
+        "title": "Wisdom Support",
+        "amount": "₹2,500",
+        "description": "Share wisdom and insights"
+      },
+      "heart_support": {
+        "title": "Heart Support",
+        "amount": "₹5,000",
+        "description": "Support from the heart"
+      }
+    }
+  },
+  "invitation": {
+    "title": "Request Your Invitation",
+    "subtitle": "Join our exclusive community of forward-thinking individuals",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "language": "Preferred Language",
+      "location": "Region/Country",
+      "challenge": "Challenge or Problem to Share (Optional)",
+      "challenge_placeholder": "Tell us about a challenge you're facing...",
+      "terms": "I accept the Terms and Conditions",
+      "submit": "Request Invitation",
+      "submitting": "Requesting..."
+    },
+    "footer_message": "DrishiQ is more than an app—it's a movement for clarity, reflection, and growth. We welcome those who want to make a difference, starting with themselves."
+  },
+  "ads": {
+    "invitation": {
+      "title": "Join the DrishiQ Revolution",
+      "subtitle": "See Through the Challenge with Intelligence of Perception",
+      "cta": "Request Invitation"
+    },
+    "experience": {
+      "title": "Experience Clarity Like Never Before",
+      "subtitle": "Transform how you perceive and solve complex problems",
+      "cta": "Learn More"
+    },
+    "early_access": {
+      "title": "Limited Time: Early Access Available",
+      "subtitle": "Be among the first to experience DrishiQ's powerful insights",
+      "cta": "Get Started"
+    },
+    "community": {
+      "title": "Join 10,000+ Forward Thinkers",
+      "subtitle": "Connect with like-minded individuals who see beyond the surface",
+      "cta": "Join Community"
+    },
+    "premium": {
+      "title": "🚀 Upgrade to Premium",
+      "subtitle": "Get unlimited AI conversations! Get 50% off your first month.",
+      "cta": "Upgrade Now"
+    },
+    "pro_tip": {
+      "title": "💡 Pro Tip",
+      "subtitle": "Premium users get priority support and advanced AI features.",
+      "cta": "Learn More"
+    },
+    "enterprise": {
+      "title": "🎯 Boost your productivity",
+      "subtitle": "Enterprise plan - unlimited everything!",
+      "cta": "Contact Sales"
+    }
+  },
+  "landing": {
+    "welcomeBack": "Welcome back",
+    "signupTitle": "Create your account",
+    "signupMessage": "Choose your preferred sign-up method",
+    "signinTitle": "Sign in to your account",
+    "signinMessage": "Welcome back! Please sign in to continue",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithFacebook": "Continue with Facebook",
+    "continueWithLinkedIn": "Continue with LinkedIn",
+    "orSignupWithEmail": "or sign up with email",
+    "orSigninWithEmail": "or sign in with email",
+    "emailLabel": "Email address",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out",
+    "noAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "sending": "Sending...",
+    "signingIn": "Signing in...",
+    "creating": "Creating...",
+    "saving": "Saving..."
+  },
+  "typewriter1": "See Through the Challenge",
+  "typewriter2": "Intelligence of Perception",
+  "typewriter3": "Join DrishiQ Today",
+  "experience_button": "Experience DrishiQ",
+  "hero_call_to_action": {
+    "heading": "Ready to Transform Your Decision-Making?",
+    "paragraph1": "Join our exclusive community of forward-thinking individuals",
+    "paragraph2": "who are ready to unlock their potential through personalized guidance.",
+    "button_label": "Request Your Invitation"
+  },
+  "about": {
+    "heading": "About DrishiQ",
+    "description": "DrishiQ is an invite-only platform designed for individuals who seek clarity in their decision-making process. We combine AI-powered insights with human wisdom to help you navigate complex situations and unlock your potential.",
+    "discovery_message": "Discover how DrishiQ can help you see through the challenge and make better decisions."
+  }
+}

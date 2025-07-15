@@ -1,26 +1,237 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Global Theme Variables and Base Styles */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Theme Colors */
+  --drishiq-bg-primary: #F5FAF6;
+  --drishiq-bg-secondary: #ffffff;
+  --drishiq-bg-tertiary: #f8f9fa;
+  --drishiq-text-primary: #0B4422;
+  --drishiq-text-secondary: #166534;
+  --drishiq-text-muted: #6c757d;
+  --drishiq-border: rgba(11, 68, 34, 0.2);
+  --drishiq-shadow: rgba(0, 0, 0, 0.1);
+  --drishiq-hover: #f0f0f0;
+  --drishiq-accent: #0B4422;
+  --drishiq-accent-hover: #0a3a1e;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark-theme {
+  /* Dark Theme Colors */
+  --drishiq-bg-primary: #1a1a1a;
+  --drishiq-bg-secondary: #2d2d2d;
+  --drishiq-bg-tertiary: #3a3a3a;
+  --drishiq-text-primary: #e0e0e0;
+  --drishiq-text-secondary: #b0b0b0;
+  --drishiq-text-muted: #888888;
+  --drishiq-border: rgba(224, 224, 224, 0.2);
+  --drishiq-shadow: rgba(0, 0, 0, 0.3);
+  --drishiq-hover: #404040;
+  --drishiq-accent: #4ade80;
+  --drishiq-accent-hover: #22c55e;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.light-theme {
+  /* Light Theme Colors (explicit) */
+  --drishiq-bg-primary: #F5FAF6;
+  --drishiq-bg-secondary: #ffffff;
+  --drishiq-bg-tertiary: #f8f9fa;
+  --drishiq-text-primary: #0B4422;
+  --drishiq-text-secondary: #166534;
+  --drishiq-text-muted: #6c757d;
+  --drishiq-border: rgba(11, 68, 34, 0.2);
+  --drishiq-shadow: rgba(0, 0, 0, 0.1);
+  --drishiq-hover: #f0f0f0;
+  --drishiq-accent: #0B4422;
+  --drishiq-accent-hover: #0a3a1e;
 }
 
+/* Base Body Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--drishiq-bg-secondary);
+  color: var(--drishiq-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Main Content Areas */
+main {
+  background-color: var(--drishiq-bg-secondary);
+  color: var(--drishiq-text-primary);
+  transition: all 0.3s ease;
+}
+
+/* Common Components */
+.container {
+  transition: all 0.3s ease;
+}
+
+/* Sections */
+.section {
+  background-color: var(--drishiq-bg-secondary);
+  color: var(--drishiq-text-primary);
+  transition: all 0.3s ease;
+}
+
+.section:nth-child(even) {
+  background-color: var(--drishiq-bg-tertiary);
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--drishiq-text-primary);
+  transition: color 0.3s ease;
+}
+
+.section-title {
+  color: var(--drishiq-text-primary) !important;
+  transition: color 0.3s ease;
+}
+
+/* Paragraphs and Text */
+p {
+  color: var(--drishiq-text-primary);
+  transition: color 0.3s ease;
+}
+
+/* Links */
+a {
+  color: var(--drishiq-accent);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--drishiq-accent-hover);
+}
+
+/* Cards */
+.card {
+  background-color: var(--drishiq-bg-secondary);
+  border: 1px solid var(--drishiq-border);
+  box-shadow: 0 2px 4px var(--drishiq-shadow);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px var(--drishiq-shadow);
+}
+
+.card-content {
+  color: var(--drishiq-text-primary);
+}
+
+.card-content h3 {
+  color: var(--drishiq-text-primary);
+}
+
+.card-content p {
+  color: var(--drishiq-text-secondary);
+}
+
+/* Buttons */
+.button {
+  background-color: var(--drishiq-accent);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--drishiq-accent-hover);
+  color: white;
+}
+
+/* Forms */
+input, textarea, select {
+  background-color: var(--drishiq-bg-secondary);
+  color: var(--drishiq-text-primary);
+  border: 1px solid var(--drishiq-border);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--drishiq-accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--drishiq-accent), 0.2);
+}
+
+/* Areas Grid */
+.areas-grid {
+  transition: all 0.3s ease;
+}
+
+.area-card {
+  background-color: var(--drishiq-bg-secondary);
+  border: 1px solid var(--drishiq-border);
+  color: var(--drishiq-text-primary);
+  transition: all 0.3s ease;
+}
+
+.area-card:hover {
+  background-color: var(--drishiq-hover);
+}
+
+/* Features Grid */
+.features-grid {
+  transition: all 0.3s ease;
+}
+
+/* Blog Grid */
+.blog-grid {
+  transition: all 0.3s ease;
+}
+
+/* Testimonials */
+.testimonial {
+  background-color: var(--drishiq-bg-secondary);
+  border-left: 4px solid var(--drishiq-accent);
+  color: var(--drishiq-text-primary);
+  transition: all 0.3s ease;
+}
+
+/* CTA Section */
+.cta-section {
+  background-color: var(--drishiq-bg-primary);
+  color: var(--drishiq-text-primary);
+  transition: all 0.3s ease;
+}
+
+/* Footer */
+footer {
+  background-color: var(--drishiq-bg-primary);
+  color: var(--drishiq-text-primary);
+  border-top: 1px solid var(--drishiq-border);
+  transition: all 0.3s ease;
+}
+
+/* Smooth scrolling for theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Special handling for images in dark mode */
+.dark-theme img {
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* Dark mode scrollbar */
+.dark-theme::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark-theme::-webkit-scrollbar-track {
+  background: var(--drishiq-bg-secondary);
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background: var(--drishiq-text-secondary);
+  border-radius: 4px;
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover {
+  background: var(--drishiq-text-primary);
+} 

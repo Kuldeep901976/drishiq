@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Story – Drishiq</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #0B4422;
+    }
+    .form-section {
+      margin-top: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 4px;
+    }
+    .radio-group label {
+      font-weight: normal;
+    }
+    .hidden {
+      display: none;
+    }
+    .submit-button {
+      background-color: #0B4422;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      margin: 20px auto 0 auto;
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+    }
+    .submit-button:hover {
+      background-color: #0d5a2e;
+    }
+    .checkbox-label {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: auto;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+      .submit-button {
+        width: 100%;
+        font-size: 0.95rem;
+      }
+      .checkbox-label {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      input, textarea, select {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <form class="container" id="storyForm">
+    <h1>Share Your Story</h1>
+    <p>Your story might help someone else find clarity. Choose how you’d like to be represented.</p>
+    <div class="form-section">
+  <h2>Your Visibility</h2>
+  <div class="radio-group" style= "margin-top: -32px">
+    <label><input type="radio" name="visibility" value="full" checked> Show my name and details</label>
+    <label><input type="radio" name="visibility" value="anonymous"> Keep me anonymous</label>
+  </div>
+
+  <div id="full-details">
+    <label for="full-name">Full Name</label>
+    <input type="text" id="full-name" name="full-name">
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" min="16">
+
+    <div id="parental-confirmation" class="checkbox-label hidden" style="display: none;">
+      <input type="checkbox" id="parent-consent" name="parent-consent">
+      <label for="parent-consent">I confirm I have parental or guardian permission to share my story.</label>
+    </div>
+
+    <label for="gender">Gender (Optional)</label>
+    <select id="gender" name="gender">
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="profession">Profession</label>
+    <input type="text" id="profession" name="profession">
+
+    <label for="location">City & Country</label>
+    <input type="text" id="location" name="location">
+
+    <label for="photo">Upload a photo (optional)</label>
+    <input type="file" id="photo" name="photo">
+  </div>
+
+  <div id="anonymous-details" class="hidden">
+    <label for="alias-choice">Choose a Persona Name or Create Your Own</label>
+    <select id="alias-choice" name="alias-choice">
+      <option value="">Select a suggested name</option>
+      <option value="a daughter from">a daughter from close neighbourhood</option>
+      <option value="a father from Kerala">a father with family responsibilities</option>
+      <option value="the unheard voice">the unheard voice</option>
+      <option value="a survivor of change">a survivor of change</option>
+      <option value="Other">Other (I'll write my own)</option>
+    </select>
+
+    <input type="text" id="alias" name="alias" class="hidden" placeholder="Write your own persona name">
+
+    <label for="age-range">Age Range</label>
+    <select id="age-range" name="age-range">
+      <option value="">Select</option>
+      <option value="16-18">16–18</option>
+      <option value="18-24">18–24</option>
+      <option value="25-34">25–34</option>
+      <option value="35-44">35–44</option>
+      <option value="45+">45+</option>
+    </select>
+
+    <label for="anon-gender">Gender (Optional)</label>
+    <select id="anon-gender" name="anon-gender">
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="region">Region / Country (Optional)</label>
+    <input type="text" id="region" name="region">
+  </div>
+
+  <label for="email">Email (for confirmation, not published)</label>
+  <input type="email" id="email" name="email">
+</div>
+
+<div class="form-section">
+  <h2>Your Story</h2>
+  <label for="scenario">What area does your story fall under?</label>
+  <select id="scenario" name="scenario">
+    <option value="Relationships">Relationships</option>
+    <option value="Career">Career & Decisions</option>
+    <option value="Mental Health">Mental Health</option>
+    <option value="Family">Family & Expectations</option>
+    <option value="Purpose">Identity & Purpose</option>
+    <option value="Turning Point">A Life Turning Point</option>
+    <option value="Other">Other (please specify below)</option>
+  </select>
+  <input type="text" id="custom-category" name="custom-category" class="hidden" placeholder="Enter your own category">
+
+  <label for="challenge">1. What happened?</label>
+  <textarea id="challenge" name="challenge" rows="4"></textarea>
+
+  <label for="hardest">2. What was the hardest part for you?</label>
+  <textarea id="hardest" name="hardest" rows="4"></textarea>
+
+  <label for="learning">3. What shifted or what did you learn?</label>
+  <textarea id="learning" name="learning" rows="4"></textarea>
+
+  <label for="advice">4. What would you tell someone in a similar situation? (Optional)</label>
+  <textarea id="advice" name="advice" rows="3"></textarea>
+
+  <div class="checkbox-label">
+    <input type="checkbox" id="consent" name="consent">
+    <label for="consent">I give consent for Drishiq to publish my story with editing for clarity if needed.</label>
+  </div>
+</div>
+    <button type="submit" class="submit-button">Submit My Story</button>
+  </form>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const visibilityRadios = document.querySelectorAll('input[name="visibility"]');
+    const fullDetails = document.getElementById('full-details');
+    const anonDetails = document.getElementById('anonymous-details');
+    const scenarioDropdown = document.getElementById('scenario');
+    const customCategoryInput = document.getElementById('custom-category');
+    const aliasChoice = document.getElementById('alias-choice');
+    const aliasInput = document.getElementById('alias');
+    const ageInput = document.getElementById('age');
+    const parentalConfirmation = document.getElementById('parental-confirmation');
+    const parentConsentCheckbox = document.getElementById('parent-consent');
+    const storyForm = document.getElementById('storyForm');
+
+    function toggleParentalConsentVisibility() {
+      const age = parseInt(ageInput.value.trim());
+      const visibility = document.querySelector('input[name="visibility"]:checked').value;
+      if (visibility === 'full' && age >= 16 && age < 18) {
+        parentalConfirmation.classList.remove('hidden');
+        parentalConfirmation.style.display = 'flex';
+      } else {
+        parentalConfirmation.classList.add('hidden');
+        parentalConfirmation.style.display = 'none';
+        parentConsentCheckbox.checked = false;
+      }
+    }
+
+    // Clear age and hide parental confirmation ONLY after DOM is fully ready
+    window.addEventListener('load', () => {
+      ageInput.value = '';
+      parentalConfirmation.classList.add('hidden');
+      parentalConfirmation.style.display = 'none';
+      toggleParentalConsentVisibility();
+    });
+
+    storyForm.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' && event.target.tagName !== 'TEXTAREA') {
+        event.preventDefault();
+      }
+    });
+
+    visibilityRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        fullDetails.classList.toggle('hidden', radio.value !== 'full');
+        anonDetails.classList.toggle('hidden', radio.value === 'full');
+        toggleParentalConsentVisibility();
+      });
+    });
+
+    scenarioDropdown.addEventListener('change', () => {
+      customCategoryInput.classList.toggle('hidden', scenarioDropdown.value !== 'Other');
+    });
+
+    aliasChoice.addEventListener('change', () => {
+      if (aliasChoice.value === 'Other') {
+        aliasInput.classList.remove('hidden');
+        aliasInput.value = '';
+      } else {
+        aliasInput.classList.add('hidden');
+        aliasInput.value = aliasChoice.value;
+      }
+    });
+
+    ageInput.addEventListener('input', toggleParentalConsentVisibility);
+
+    storyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const isFull = document.querySelector('input[name="visibility"]:checked').value === 'full';
+
+      if (isFull) {
+        const age = parseInt(ageInput.value.trim());
+        const parentConsentChecked = parentConsentCheckbox.checked;
+
+        if (isNaN(age) || age < 16) {
+          alert("Please enter a valid age (16 or older).");
+          return;
+        }
+
+        if (age >= 16 && age < 18 && !parentConsentChecked) {
+          alert('Please confirm you have parental or guardian permission to share your story.');
+          return;
+        }
+      }
+
+      const data = new FormData(storyForm);
+      const payload = Object.fromEntries(data.entries());
+      console.log('Submitting story:', payload);
+
+      alert('Thank you for sharing your story! We’ve received it.');
+      storyForm.reset();
+      customCategoryInput.classList.add('hidden');
+      aliasInput.classList.add('hidden');
+      parentalConfirmation.classList.add('hidden');
+    });
+  });
+  </script>
+</body>
+</html>
