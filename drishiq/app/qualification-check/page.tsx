@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 export default function QualificationCheckPage() {
   const router = useRouter();
-  const t = (key) => key;
+  const t = (key: string) => key;
   const [currentStep, setCurrentStep] = useState('video'); // 'video', 'checking', 'result'
   const [videoCompleted, setVideoCompleted] = useState(false);
   const [qualified, setQualified] = useState(false);

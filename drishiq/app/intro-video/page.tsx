@@ -69,22 +69,7 @@ export default function IntroVideoPage() {
       position: 'relative'
     }}>
       {/* Banner Ad - positioned at top with skip functionality */}
-      <BannerAd 
-        position="top" 
-        dismissible={true}
-        autoRotate={true}
-        ads={[
-          {
-            id: 'skip-intro',
-            title: "Ready to Skip?",
-            subtitle: "Jump ahead to your personalized experience",
-            cta: "Skip to Main Content",
-            link: "/video-experience",
-            bg: "from-[#0B4422] to-green-600",
-            icon: "lightning"
-          }
-        ]}
-      />
+      <BannerAd />
       
       {/* Header */}
       <div style={{ 
@@ -123,7 +108,6 @@ export default function IntroVideoPage() {
             height="100%"
             autoplay={true}
             controls={true}
-            preferredLanguage={selectedLanguage}
             onStateChange={(state) => {
               if (state === 0) { // Video ended
                 handleVideoEnd();

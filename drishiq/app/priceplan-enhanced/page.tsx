@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 export default function PricePlanEnhanced() {
-  const t = (key) => key;
+  const t = (key: string) => key;
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [selectedSupport, setSelectedSupport] = useState<string | null>(null);
   
@@ -288,7 +288,7 @@ export default function PricePlanEnhanced() {
                 <p className="text-2xl font-bold text-[#0B4422] mb-2">{level.amount}</p>
                 <p className="text-sm text-gray-600 mb-4">{level.description}</p>
                 <button
-                  onClick={() => handleSupportClick(level.id, level.amount, level.description)}
+                  onClick={() => handleSupportClick(level.id, level.amount || '', level.description)}
                   className="w-full py-2 px-4 rounded-lg font-semibold bg-[#0B4422] text-white hover:bg-green-700 transition-colors"
                 >
                   Select

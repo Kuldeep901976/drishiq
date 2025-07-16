@@ -71,8 +71,8 @@ export default function YouTubeVideo({
           showinfo: showInfo ? 1 : 0,
           fs: fullscreen ? 1 : 0,
           cc_load_policy: 1, // Force captions to be shown
-          cc_lang_pref: i18n.language, // Set preferred caption language
-          hl: i18n.language, // Set interface language
+          cc_lang_pref: 'en', // Set preferred caption language
+          hl: 'en', // Set interface language
           iv_load_policy: 3, // Hide video annotations
           modestbranding: 1, // Hide YouTube logo
           playsinline: 1, // Play inline on mobile
@@ -85,11 +85,11 @@ export default function YouTubeVideo({
             
             // Try to set captions for the selected language
             try {
-              event.target.setOption('captions', 'track', {'languageCode': i18n.language});
+              event.target.setOption('captions', 'track', {'languageCode': 'en'});
               event.target.loadModule('captions');
               event.target.setOption('captions', 'reload', true);
             } catch (error) {
-              console.log('Captions not available for language:', i18n.language);
+              console.log('Captions not available for language:', 'en');
             }
             
             onReady?.(event.target);
@@ -258,7 +258,8 @@ export function getYouTubeEmbedUrl(videoId: string, options: {
     cc_load_policy: '1',
     modestbranding: '1',
     rel: '0',
-    ...options
+    ...(options.cc_lang_pref ? { cc_lang_pref: options.cc_lang_pref } : {}),
+    ...(options.hl ? { hl: options.hl } : {})
   });
   
   return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;

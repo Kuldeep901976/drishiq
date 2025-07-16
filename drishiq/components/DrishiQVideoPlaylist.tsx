@@ -125,7 +125,6 @@ export default function DrishiQVideoPlaylist({
           height="400"
           autoplay={autoPlay}
           controls={true}
-          preferredLanguage={preferredLanguage}
           onStateChange={(state) => {
             if (state === 0) { // Video ended
               handleVideoEnd();
@@ -234,7 +233,8 @@ export function getYouTubePlaylistEmbedUrl(playlistId: string, options: {
     cc_load_policy: '1',
     modestbranding: '1',
     rel: '0',
-    ...options
+    ...(options.cc_lang_pref ? { cc_lang_pref: options.cc_lang_pref } : {}),
+    ...(options.hl ? { hl: options.hl } : {})
   });
   
   return `https://www.youtube.com/embed/videoseries?${params.toString()}`;

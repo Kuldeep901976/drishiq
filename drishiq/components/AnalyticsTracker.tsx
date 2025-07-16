@@ -65,7 +65,7 @@ export default function AnalyticsTracker({
     if (!enableAutoTracking) return;
 
     const trackPageView = async () => {
-      const currentPath = pathname + (searchParams.toString() ? `?${searchParams.toString()}` : '');
+      const currentPath = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
       
       // Don't track if it's the same page
       if (lastPathname.current === currentPath) return;

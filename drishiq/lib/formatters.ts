@@ -1,4 +1,5 @@
-import type { SupportedLanguages } from './i18n';
+type SupportedLanguages =
+  | 'en' | 'fr' | 'es' | 'pt' | 'it' | 'nl' | 'tr' | 'zh' | 'ja' | 'ko' | 'hi' | 'bn' | 'ta' | 'te' | 'mr' | 'ar' | 'ur';
 
 // Date formatters
 const dateFormatters: Record<SupportedLanguages, Intl.DateTimeFormat> = {

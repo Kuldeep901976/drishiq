@@ -18,7 +18,7 @@ interface BannerAdProps {
   className?: string;
 }
 
-const t = (key) => key;
+const t = (key: string): string => key;
 
 const BannerAd: React.FC<BannerAdProps> = ({ variant = 'default', className = '' }) => {
   const [currentAdIndex, setCurrentAdIndex] = useState(0);

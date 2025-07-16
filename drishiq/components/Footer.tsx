@@ -29,7 +29,7 @@ const LANGUAGES = [
   { code: 'kn', label: 'Kannada' },
 ];
 
-const t = (key) => key;
+const t = (key: string): string => key;
 
 const Footer: React.FC<FooterProps> = ({ variant = 'full', userType = 'guest' }) => {
   const currentLangNative = 'English';
@@ -116,7 +116,7 @@ const Footer: React.FC<FooterProps> = ({ variant = 'full', userType = 'guest' })
               {LANGUAGES.map(lang => (
                 <li key={lang.code}>
                   <button
-                    className={`w-full text-left px-3 py-1.5 rounded transition border ${i18n.language === lang.code ? 'bg-[#0B4422] text-white border-[#0B4422]' : 'bg-gray-100 text-gray-800 border-transparent'} hover:bg-[#0B4422] hover:text-white`}
+                    className={`w-full text-left px-3 py-1.5 rounded transition border ${lang.code === 'en' ? 'bg-[#0B4422] text-white border-[#0B4422]' : 'bg-gray-100 text-gray-800 border-transparent'} hover:bg-[#0B4422] hover:text-white`}
                     onClick={() => selectLanguage(lang.code)}
                   >
                     {lang.label}

@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import StyleSwitcher from '../../components/StyleSwitcher';
 
 export default function TermsPage() {
-  const t = (key) => key;
+  const t = (key: string) => key;
 
   return (
     <>

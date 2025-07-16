@@ -591,7 +591,7 @@ export class EnterpriseService {
       if (error || !data) return false;
 
       // Check role-based permissions
-      const rolePermissions = {
+      const rolePermissions: Record<string, string[]> = {
         owner: ['*'],
         admin: ['manage_members', 'manage_billing', 'manage_credits', 'view_analytics'],
         manager: ['manage_members', 'manage_credits', 'view_analytics'],

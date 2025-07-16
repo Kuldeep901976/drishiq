@@ -739,13 +739,13 @@ export class DemoService {
       if (invitation) {
         await supabase
           .from('demo_analytics')
-          .insert({
-            date: new Date().toISOString().split('T')[0],
-            demo_category_id: invitation.demo_category_id,
-            demos_cancelled: 1
-          })
-          .on('conflict', { column: 'date,demo_category_id' })
-          .upsert();
+          .upsert([
+            {
+              date: new Date().toISOString().split('T')[0],
+              demo_category_id: invitation.demo_category_id,
+              demos_cancelled: 1
+            }
+          ], { onConflict: 'date,demo_category_id' });
       }
 
       logger.info('Demo cancelled', { demoInvitationId, reason });
