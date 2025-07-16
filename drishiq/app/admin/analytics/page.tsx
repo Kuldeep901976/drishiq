@@ -38,6 +38,12 @@ export default function AdminAnalytics() {
 
   const checkAdminAccess = useCallback(async () => {
     try {
+      if (!supabase) {
+        setError('Database service unavailable');
+        setLoading(false);
+        return;
+      }
+
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {

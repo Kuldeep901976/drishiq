@@ -32,6 +32,11 @@ export default function AdminInvitationsPage() {
 
   const fetchInvitations = async () => {
     try {
+      if (!supabase) {
+        console.error('Supabase client not available');
+        return;
+      }
+
       const { data, error } = await supabase
         .from('Invitations')
         .select('*')
