@@ -6,6 +6,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Database service unavailable' },
+        { status: 503 }
+      );
+    }
+
     // Rate limiting
     const rateLimitResult = await rateLimiter.checkRateLimit(request);
     if (!rateLimitResult.success) {

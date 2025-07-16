@@ -5,6 +5,9 @@ import { NextResponse } from 'next/server';
 // Register health checks
 healthChecker.registerCheck('database', async () => {
   try {
+    if (!supabase) {
+      return false;
+    }
     const { data, error } = await supabase
       .from('users')
       .select('id')
