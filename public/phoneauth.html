@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Authentication</title>
+<!-- Supabase -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = "https://jfguztmagsdsunhychkl.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZ3V6dG1hZ3Nkc3VuaHljaGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3MDc4NDMsImV4cCI6MjA2NjI4Mzg0M30.fzSIpRP4MXzRvUdxxLTcH6sWJ3-R996xxoatB_PmFMg";
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey); 
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4faf5;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .auth-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #0B4422;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #333;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .country-select {
+      width: 80px;
+      height: 48px;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+      background: white;
+      position: relative;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 48px;
+    }
+
+    .dropdown {
+      position: absolute;
+      background-color: white;
+      border: 1px solid #ccc;
+      max-height: 200px;
+      overflow-y: auto;
+      width: 320px;
+      display: none;
+      z-index: 1000;
+    }
+
+    .dropdown input {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border-bottom: 1px solid #ddd;
+      outline: none;
+    }
+
+    .dropdown-item {
+      padding: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-item img {
+      margin-right: 10px;
+      width: 20px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      height: 48px;
+      padding: 0 12px;
+      border: 1px solid #ccc;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      background-color: #ccc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem;
+      font-size: 1rem;
+      cursor: not-allowed;
+    }
+
+    button.active {
+      background-color: #0B4422;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="auth-box">
+      <h2>Enter Your Phone Number</h2>
+      <p>We'll send you a one-time code to verify your number.</p>
+      <div class="input-group">
+        <div class="country-select" onclick="toggleDropdown()" id="selected-code">+91</div>
+        <input type="text" id="phone" placeholder="Enter phone number" oninput="validateNumber()" />
+      </div>
+      <div class="dropdown" id="countryDropdown">
+        <input type="text" id="searchCountry" placeholder="Search country..." oninput="filterCountries()" />
+        <div id="countryList"></div>
+      </div>
+      <button id="sendBtn">Send OTP</button>
+    </div>
+  </div>
+
+  <script>
+    const countries = [
+      { name: "India", code: "+91", iso: "in" },
+{ name: "United States", code: "+1", iso: "us" },
+{ name: "United Kingdom", code: "+44", iso: "gb" },
+{ name: "Australia", code: "+61", iso: "au" },
+{ name: "Canada", code: "+1", iso: "ca" },
+{ name: "Germany", code: "+49", iso: "de" },
+{ name: "France", code: "+33", iso: "fr" },
+{ name: "Algeria", code: "+213", iso: "dz" },
+{ name: "Angola", code: "+244", iso: "ao" },
+{ name: "Argentina", code: "+54", iso: "ar" },
+{ name: "Aruba", code: "+297", iso: "aw" },
+{ name: "Austria", code: "+43", iso: "at" },
+{ name: "Bahrain", code: "+973", iso: "bh" },
+{ name: "Belarus", code: "+375", iso: "by" },
+{ name: "Belgium", code: "+32", iso: "be" },
+{ name: "Bolivia", code: "+591", iso: "bo" },
+{ name: "Brazil", code: "+55", iso: "br" },
+{ name: "Brunei", code: "+673", iso: "bn" },
+{ name: "Cameroon", code: "+237", iso: "cm" },
+{ name: "Canada", code: "+1", iso: "ca" },
+{ name: "Chile", code: "+56", iso: "cl" },
+{ name: "Colombia", code: "+57", iso: "co" },
+{ name: "Cuba", code: "+53", iso: "cu" },
+{ name: "Curaçao", code: "+599", iso: "cw" },
+{ name: "Cyprus", code: "+357", iso: "cy" },
+{ name: "Czech republic", code: "+420", iso: "cz" },
+{ name: "Democratic Republic of Congo", code: "+243", iso: "cd" },
+{ name: "Denmark", code: "+45", iso: "dk" },
+{ name: "Ecuador", code: "+593", iso: "ec" },
+{ name: "Egypt", code: "+20", iso: "eg" },
+{ name: "Finland", code: "+358", iso: "fi" },
+{ name: "France", code: "+33", iso: "fr" },
+{ name: "Germany", code: "+49", iso: "de" },
+{ name: "Greece", code: "+30", iso: "gr" },
+{ name: "Greenland", code: "+299", iso: "gl" },
+{ name: "Guatemala", code: "+502", iso: "gt" },
+{ name: "Haiti", code: "+509", iso: "ht" },
+{ name: "Hungary", code: "+36", iso: "hu" },
+{ name: "Indonesia", code: "+62", iso: "id" },
+{ name: "Iraq", code: "+964", iso: "iq" },
+{ name: "Israel", code: "+972", iso: "il" },
+{ name: "Italy", code: "+39", iso: "it" },
+{ name: "Jordan", code: "+962", iso: "jo" },
+{ name: "Kazakhstan", code: "+7", iso: "kz" },
+{ name: "Kuwait", code: "+965", iso: "kw" },
+{ name: "Kyrgyzstan", code: "+996", iso: "kg" },
+{ name: "Lebanon", code: "+961", iso: "lb" },
+{ name: "Libya", code: "+218", iso: "ly" },
+{ name: "Liechtenstein", code: "+423", iso: "li" },
+{ name: "Luxembourg", code: "+352", iso: "lu" },
+{ name: "Madagascar", code: "+261", iso: "mg" },
+{ name: "Malaysia", code: "+60", iso: "my" },
+{ name: "Mali", code: "+223", iso: "ml" },
+{ name: "Mauritania", code: "+222", iso: "mr" },
+{ name: "Mexico", code: "+52", iso: "mx" },
+{ name: "Moldova", code: "+373", iso: "md" },
+{ name: "Monaco", code: "+377", iso: "mc" },
+{ name: "Morocco", code: "+212", iso: "ma" },
+{ name: "Mozambique", code: "+258", iso: "mz" },
+{ name: "Netherlands", code: "+31", iso: "nl" },
+{ name: "Norway", code: "+47", iso: "no" },
+{ name: "Oman", code: "+968", iso: "om" },
+{ name: "Palestine", code: "+970", iso: "ps" },
+{ name: "Paraguay", code: "+595", iso: "py" },
+{ name: "Peru", code: "+51", iso: "pe" },
+{ name: "Philippines", code: "+63", iso: "ph" },
+{ name: "Poland", code: "+48", iso: "pl" },
+{ name: "Portugal", code: "+351", iso: "pt" },
+{ name: "Qatar", code: "+974", iso: "qa" },
+{ name: "Romania", code: "+40", iso: "ro" },
+{ name: "Russia", code: "+7", iso: "ru" },
+{ name: "Saudi Arabia", code: "+966", iso: "sa" },
+{ name: "Senegal", code: "+221", iso: "sn" },
+{ name: "Singapore", code: "+65", iso: "sg" },
+{ name: "Spain", code: "+34", iso: "es" },
+{ name: "Sudan", code: "+249", iso: "sd" },
+{ name: "Suriname", code: "+597", iso: "sr" },
+{ name: "Sweden", code: "+46", iso: "se" },
+{ name: "Switzerland", code: "+41", iso: "ch" },
+{ name: "Syria", code: "+963", iso: "sy" },
+{ name: "Thailand", code: "+66", iso: "th" },
+{ name: "Tunisia", code: "+216", iso: "tn" },
+{ name: "Turkey", code: "+90", iso: "tr" },
+{ name: "United Arab Emirates", code: "+971", iso: "ae" },
+{ name: "Uruguay", code: "+598", iso: "uy" },
+{ name: "Vatican city", code: "+379", iso: "va" },
+{ name: "Venezuela", code: "+58", iso: "ve" },
+{ name: "Yemen", code: "+967", iso: "ye" },
+{ name: "Japan", code: "+81", iso: "jp" },
+{ name: "South Korea", code: "+82", iso: "kr" },
+
+      // Add more as needed
+    ];
+
+    const dropdown = document.getElementById("countryDropdown");
+    const countryList = document.getElementById("countryList");
+    const selectedCode = document.getElementById("selected-code");
+    const phoneInput = document.getElementById("phone");
+    const sendBtn = document.getElementById("sendBtn");
+
+    function toggleDropdown() {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    function filterCountries() {
+      const value = document.getElementById("searchCountry").value.toLowerCase();
+      renderCountryList(value);
+    }
+
+    function renderCountryList(filter = "") {
+      countryList.innerHTML = "";
+      countries
+        .filter(c => c.name.toLowerCase().includes(filter))
+        .forEach(country => {
+          const item = document.createElement("div");
+          item.classList.add("dropdown-item");
+          item.innerHTML = `<img src="https://flagcdn.com/w40/${country.iso}.png" /> ${country.name} (${country.code})`;
+          item.onclick = () => {
+            selectedCode.textContent = country.code;
+            dropdown.style.display = "none";
+            validateNumber();
+          };
+          countryList.appendChild(item);
+        });
+    }
+
+    function validateNumber() {
+      const number = phoneInput.value.trim();
+      const isValid = number.length === 10 && /^\d+$/.test(number);
+      if (isValid) {
+        sendBtn.classList.add("active");
+        sendBtn.disabled = false;
+        sendBtn.style.cursor = "pointer";
+      } else {
+        sendBtn.classList.remove("active");
+        sendBtn.disabled = true;
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      if (!dropdown.contains(event.target) && !selectedCode.contains(event.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+
+    renderCountryList();
+  </script>
+</body>
+</html>

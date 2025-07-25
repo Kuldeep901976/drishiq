@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drishiq Cause Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f5faf7;
+    }
+    label {
+      display: block;
+      margin-top: 1.2rem;
+      font-weight: bold;
+    }
+    select, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.3rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🌉 Connect Through Clarity</h2>
+
+  <label for="mode">Who are you?</label>
+  <select id="mode">
+    <option value="">-- Select One --</option>
+    <option value="seeker">I need support</option>
+    <option value="supporter">I want to support</option>
+  </select>
+
+  <div id="form-section" class="hidden">
+
+    <label for="domain">1. Domain of Life</label>
+    <select id="domain">
+      <option value="">-- Select Domain --</option>
+      <option value="personal">Personal</option>
+      <option value="professional">Professional</option>
+      <option value="academic">Academic</option>
+      <option value="creative">Creative</option>
+      <option value="athletic">Athletic / Performance</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="type">2. Type of Challenge</label>
+    <select id="type" disabled>
+      <option value="">-- Select Challenge Type --</option>
+    </select>
+
+    <label for="issue">3. Specific Issue</label>
+    <select id="issue" disabled>
+      <option value="">-- Select Specific Issue --</option>
+    </select>
+
+    <div id="openSupport" class="hidden">
+      <label>
+        <input type="checkbox" id="openToAll"> I’m open to support anyone in need, regardless of cause
+      </label>
+    </div>
+
+    <div id="other-inputs" class="hidden">
+      <label for="otherText">Please describe your issue or reason to support:</label>
+      <textarea id="otherText" rows="4" placeholder="Write your message here..."></textarea>
+    </div>
+
+  </div>
+
+  <script>
+    const typeMap = {
+      personal: [
+        "Mental & Emotional Wellbeing",
+        "Health & Lifestyle",
+        "Relationship & Family Strain",
+        "Decision Paralysis / Overthinking",
+        "Grief or Life Transitions",
+        "Financial Stress",
+        "Identity or Purpose Crisis",
+        "Motivational Drop / Burnout",
+        "Other"
+      ],
+      professional: [
+        "Career Confusion or Transitions",
+        "Financial Stress",
+        "Eligibility / Access Barriers",
+        "Work-related Burnout",
+        "Decision Paralysis / Overthinking",
+        "Identity or Purpose Crisis",
+        "Relationship Strain at Work",
+        "Motivational Drop / Apathy",
+        "Other"
+      ],
+      academic: [
+        "Academic Pressure / Exams",
+        "Career Uncertainty",
+        "Learning Challenges",
+        "Peer / Family Expectation Stress",
+        "Mental Fatigue / Performance Anxiety",
+        "Financial Burden (Education-related)",
+        "Other"
+      ],
+      creative: [
+        "Creative Block",
+        "Imposter Syndrome",
+        "Isolation or Lack of Support",
+        "Financial Pressure (Freelance/Art)",
+        "Identity Crisis as a Creator",
+        "Other"
+      ],
+      athletic: [
+        "Skill Technique Confusion",
+        "Performance Anxiety",
+        "Coaching/Training Overwhelm",
+        "Recovery from Injury / Block",
+        "Lack of Progress or Plateau",
+        "Other"
+      ],
+      other: ["Other"]
+    };
+
+    const issueMap = {
+      "Mental & Emotional Wellbeing": [
+        "Constant anxiety / low energy",
+        "Panic or racing thoughts",
+        "Emotional numbness",
+        "Feeling stuck or invisible"
+      ],
+      "Career Confusion or Transitions": [
+        "Choosing between job roles",
+        "Laid off or jobless",
+        "Stuck in unfulfilling work",
+        "Returning to work after break"
+      ],
+      "Academic Pressure / Exams": [
+        "Competitive exam stress",
+        "Lack of focus or retention",
+        "Parental pressure",
+        "Doubt in career direction"
+      ],
+      "Skill Technique Confusion": [
+        "Struggling with technique",
+        "Mental block during performance",
+        "Conflicting coaching feedback"
+      ],
+      "Creative Block": [
+        "Can't create or feel inspired",
+        "Feeling like a fraud",
+        "Not sharing work anymore"
+      ],
+      Other: ["Other"]
+    };
+
+    const mode = document.getElementById("mode");
+    const formSection = document.getElementById("form-section");
+    const domain = document.getElementById("domain");
+    const type = document.getElementById("type");
+    const issue = document.getElementById("issue");
+    const openSupport = document.getElementById("openSupport");
+    const openToAll = document.getElementById("openToAll");
+    const otherInputs = document.getElementById("other-inputs");
+
+    mode.addEventListener("change", () => {
+      const selectedMode = mode.value;
+      if (!selectedMode) {
+        formSection.classList.add("hidden");
+      } else {
+        formSection.classList.remove("hidden");
+        if (selectedMode === "supporter") {
+          openSupport.classList.remove("hidden");
+        } else {
+          openSupport.classList.add("hidden");
+        }
+      }
+    });
+
+    domain.addEventListener("change", () => {
+      const selected = domain.value;
+      type.innerHTML = `<option value="">-- Select Challenge Type --</option>`;
+      issue.innerHTML = `<option value="">-- Select Specific Issue --</option>`;
+      issue.disabled = true;
+
+      if (selected && typeMap[selected]) {
+        typeMap[selected].forEach(item => {
+          const opt = document.createElement("option");
+          opt.value = item;
+          opt.textContent = item;
+          type.appendChild(opt);
+        });
+        type.disabled = false;
+      } else {
+        type.disabled = true;
+      }
+
+      otherInputs.classList.add("hidden");
+    });
+
+    type.addEventListener("change", () => {
+      const selectedType = type.value;
+      issue.innerHTML = `<option value="">-- Select Specific Issue --</option>`;
+      if (selectedType && issueMap[selectedType]) {
+        issueMap[selectedType].forEach(item => {
+          const opt = document.createElement("option");
+          opt.value = item;
+          opt.textContent = item;
+          issue.appendChild(opt);
+        });
+        issue.disabled = false;
+      } else {
+        issue.disabled = true;
+      }
+
+      const isOther = selectedType === "Other" || domain.value === "other";
+      otherInputs.classList.toggle("hidden", !isOther);
+    });
+
+    openToAll.addEventListener("change", () => {
+      const isChecked = openToAll.checked;
+      domain.disabled = type.disabled = issue.disabled = isChecked;
+      if (isChecked) {
+        domain.value = type.value = issue.value = "";
+        otherInputs.classList.add("hidden");
+      }
+    });
+  </script>
+
+</body>
+</html>

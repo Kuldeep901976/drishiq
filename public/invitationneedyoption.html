@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drishiq Cause Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f9f5;
+    }
+    label {
+      display: block;
+      margin-top: 1.5rem;
+      font-weight: bold;
+    }
+    select, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🧭 Select Your Challenge</h2>
+
+  <label for="domain">1. Domain of Life</label>
+  <select id="domain">
+    <option value="">-- Select Domain --</option>
+    <option value="personal">Personal</option>
+    <option value="professional">Professional</option>
+    <option value="academic">Academic</option>
+    <option value="creative">Creative</option>
+    <option value="athletic">Athletic / Performance</option>
+    <option value="other">Other</option>
+  </select>
+
+  <label for="type">2. Type of Challenge</label>
+  <select id="type" disabled>
+    <option value="">-- Select Challenge Type --</option>
+  </select>
+
+  <label for="issue">3. Specific Issue</label>
+  <select id="issue" disabled>
+    <option value="">-- Select Specific Issue --</option>
+  </select>
+
+  <div id="other-inputs" class="hidden">
+    <label for="otherText">Please describe your issue:</label>
+    <textarea id="otherText" rows="4" placeholder="Describe your challenge here..."></textarea>
+  </div>
+
+  <script>
+    const typeMap = {
+      personal: [
+        "Mental & Emotional Wellbeing",
+        "Health & Lifestyle",
+        "Relationship & Family Strain",
+        "Decision Paralysis / Overthinking",
+        "Grief or Life Transitions",
+        "Financial Stress",
+        "Identity or Purpose Crisis",
+        "Motivational Drop / Burnout",
+        "Other"
+      ],
+      professional: [
+        "Career Confusion or Transitions",
+        "Financial Stress",
+        "Eligibility / Access Barriers",
+        "Work-related Burnout",
+        "Decision Paralysis / Overthinking",
+        "Identity or Purpose Crisis",
+        "Relationship Strain at Work",
+        "Motivational Drop / Apathy",
+        "Other"
+      ],
+      academic: [
+        "Academic Pressure / Exams",
+        "Career Uncertainty",
+        "Learning Challenges",
+        "Peer / Family Expectation Stress",
+        "Mental Fatigue / Performance Anxiety",
+        "Financial Burden (Education)",
+        "Other"
+      ],
+      creative: [
+        "Creative Block",
+        "Imposter Syndrome",
+        "Isolation / Lack of Support",
+        "Financial Pressure (Freelance/Art)",
+        "Identity Crisis as a Creator",
+        "Other"
+      ],
+      athletic: [
+        "Skill Technique Confusion",
+        "Performance Anxiety",
+        "Coaching/Training Overwhelm",
+        "Recovery from Injury / Block",
+        "Lack of Progress or Plateau",
+        "Other"
+      ],
+      other: ["Other"]
+    };
+
+    const issueMap = {
+      "Mental & Emotional Wellbeing": [
+        "Constant anxiety / low energy",
+        "Panic or racing thoughts",
+        "Emotional numbness",
+        "Feeling stuck or invisible"
+      ],
+      "Career Confusion or Transitions": [
+        "Choosing between job roles",
+        "Laid off or jobless",
+        "Stuck in unfulfilling work",
+        "Returning to work after break"
+      ],
+      "Academic Pressure / Exams": [
+        "Competitive exam stress",
+        "Lack of focus or retention",
+        "Parental pressure",
+        "Doubt in career direction"
+      ],
+      "Skill Technique Confusion": [
+        "Struggling with technique",
+        "Mental block during performance",
+        "Conflicting coaching feedback"
+      ],
+      "Creative Block": [
+        "Can't create or feel inspired",
+        "Feeling like a fraud",
+        "Not sharing work anymore"
+      ],
+      Other: ["Other"]
+    };
+
+    const domain = document.getElementById("domain");
+    const type = document.getElementById("type");
+    const issue = document.getElementById("issue");
+    const otherInputs = document.getElementById("other-inputs");
+
+    domain.addEventListener("change", () => {
+      const selected = domain.value;
+      type.innerHTML = `<option value="">-- Select Challenge Type --</option>`;
+      issue.innerHTML = `<option value="">-- Select Specific Issue --</option>`;
+      issue.disabled = true;
+
+      if (selected && typeMap[selected]) {
+        typeMap[selected].forEach(item => {
+          const opt = document.createElement("option");
+          opt.value = item;
+          opt.textContent = item;
+          type.appendChild(opt);
+        });
+        type.disabled = false;
+      } else {
+        type.disabled = true;
+      }
+
+      otherInputs.classList.add("hidden");
+    });
+
+    type.addEventListener("change", () => {
+      const selectedType = type.value;
+      issue.innerHTML = `<option value="">-- Select Specific Issue --</option>`;
+      if (selectedType && issueMap[selectedType]) {
+        issueMap[selectedType].forEach(item => {
+          const opt = document.createElement("option");
+          opt.value = item;
+          opt.textContent = item;
+          issue.appendChild(opt);
+        });
+        issue.disabled = false;
+      } else {
+        issue.disabled = true;
+      }
+
+      // show textarea if 'Other' selected
+      if (selectedType === "Other" || domain.value === "other") {
+        otherInputs.classList.remove("hidden");
+      } else {
+        otherInputs.classList.add("hidden");
+      }
+    });
+  </script>
+
+</body>
+</html>

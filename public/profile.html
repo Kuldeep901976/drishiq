@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drishiq Chat</title>
+<!-- Supabase SDK -->
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+
+<script>
+  // ✅ Replace with your actual Supabase project URL and anon key
+  const supabaseUrl = "https://jfguztmagsdsunhychkl.supabase.co";
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZ3V6dG1hZ3Nkc3VuaHljaGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3MDc4NDMsImV4cCI6MjA2NjI4Mzg0M30.fzSIpRP4MXzRvUdxxLTcH6sWJ3-R996xxoatB_PmFMg";
+
+  // 🔁 Initialize Supabase client
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+	:root {
+	      --font-color: #0B4422;
+	      --pressed-color: #000080;
+	      --disabled-opacity: 0.5;
+	      --light-grey: #e0e0e0;
+		}
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  color: #000;
+  overflow-y: auto;
+}
+.header, .footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+		 }
+    .header {
+	top: 0;      
+	display: flex;
+      	justify-content: space-between;
+	align-items: flex-start;
+      	background-color: #F5FAF6;
+       	padding: 10px 20px 0;
+      	border-bottom: 1px solid #0B4422;
+      	color: #0B4422;
+             }
+    .footer {
+      bottom: 0;
+      text-align: center;
+      background-color: #F2F2F2;      
+      padding: 0.1rem 2rem 0.3rem;
+      font-size: 0.85rem;
+      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
+      border-top: 1px solid #0B4422;
+      color:solid #0B4422;
+    }
+
+.footer-links {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.footer a {
+  color: #0000FF; /* URL blue */
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+} /* <-- This was missing! */
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #0044cc;
+}
+
+.footer a:visited {
+  color: #6A1B9A;
+  text-decoration: underline;
+}
+
+.terms-link:visited,
+.privacy-link:visited {
+  color: #6A1B9A;
+  text-decoration: underline;
+}
+    
+.logo-container {
+  display: flex;
+  flex-direction: column;  /* Stack items vertically */
+  align-items: left;     /* Center everything horizontally */
+  gap: 1px; /* spacing between image and text */
+  text-align: left;
+  color: #0B4422;
+		    }
+
+
+.logo-image 	{
+  height: 40px; /* adjust size */
+  width: auto;
+		}
+
+.logo-container span 	{
+  font-size: 16px;
+  color: #0B4422;
+margin-top: -10px;
+margin-left: 10px;
+			}
+
+.logo-container span1 	{
+  font-size: 44px;
+  color: #0B4422;
+
+			}
+
+    .header-center em 	{
+      font-style: italic;
+      font-size: 24px;
+      color: ##0B4422;
+    			}
+    .main {
+      flex: 1;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .form-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .form-box img {
+      width: 120px;
+      height: 120px;
+object-fit: cover;
+margin-bottom: -44px;
+      border-radius: 50%;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .input-field:read-only {
+      background-color: #f3f3f3;
+      color: #999;
+    }
+
+    select.input-field {
+      appearance: none;
+    }
+
+    .row-fields {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .row-fields .input-field {
+      flex: 1;
+    }
+
+    .btn-primary {
+      background-color: #0B4422;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.05s ease;
+      width: 100%;
+      opacity: var(--disabled-opacity);
+      pointer-events: none;
+      margin-top: 2rem;
+    }
+
+    .btn-primary.enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .btn-primary:hover {
+      background-color: #0B4422;
+    }
+
+    .btn-primary:active {
+      background-color: #000080;
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+    <div class="header">
+    <div class="logo-container">
+	    	<img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/LogoPicture1.png?		token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL0xvZ29QaWN0dXJlMS5wbmciLCJpYXQiOjE3NTA5MzkxODcsImV4cCI6MTgzNzMzOTE4N30.ggY7o4BY0As9PcjqGfHiANoW8w9ZfvH5d79HlGHcL84" alt="Drishiq Logo" class="logo-image" />
+      <span>Redefines Clarity</span>
+    </div>
+    <div class="header-center">
+      <em>“See Through the Challenge.”</em>
+    </div>
+    </div>
+</div>
+
+  <div class="main">
+    <div class="form-box">
+      <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/profile_toggle.gif?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL3Byb2ZpbGVfdG9nZ2xlLmdpZiIsImlhdCI6MTc1MDk0ODI5OCwiZXhwIjoxODM3MzQ4Mjk4fQ.bJhRz3qaTgi6TodIQInuyp66QL-EYc7gx_HhxICH2ls" alt="profile" />
+
+<!-- Dynamic name and age display -->
+      <h4 id="userNameDisplay" style="margin-bottom: 0 0 1px 0;">Your Name</h4>
+      <div id="userDetails" style="font-size: 0.9rem; color: #555; margin-top: -24px; margin-bottom: 24px; min-height: 20px;"></div>
+
+
+      <!-- Form fields -->
+      <input type="text" class="input-field" placeholder="First Name*" required oninput="validateForm(); updateUserDetails()" id="firstNameInput" />
+      <input type="text" class="input-field" placeholder="Last Name*" required oninput="validateForm()" />
+
+      <div class="row-fields">
+        <select class="input-field" required onchange="validateForm(); updateUserDetails()" id="genderInput">
+          <option value="">Select Gender*</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="No Comments">No Comments</option>
+        </select>
+        <input
+  type="date"
+  class="input-field"
+  required
+  onchange="validateForm(); updateUserDetails()"
+  id="dobInput"
+  title="Please click on the icon within this field to pick your date of birth"
+/>
+
+      </div>
+
+      <select class="input-field" required onchange="validateForm()" id="preferredLanguage">
+        <option value="">Preferred Language*</option>
+        <option value="English">English</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Urdu">Urdu</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Marathi">Marathi</option>
+        <option value="Spanish">Spanish</option>
+        <option value="French">French</option>
+        <option value="German">German</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Italian">Italian</option>
+        <option value="Dutch">Dutch</option>
+        <option value="Russian">Russian</option>
+        <option value="Chinese (Simplified)">Chinese (Simplified)</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Korean">Korean</option>
+        <option value="Arabic">Arabic</option>
+        <option value="Turkish">Turkish</option>
+      </select>
+
+      <input type="text" class="input-field" placeholder="City" />
+      <input type="text" class="input-field" placeholder="Country" />
+      <input type="email" class="input-field" readonly value="karm76@gmail.com" />
+
+      <button class="btn-primary" id="confirmBtn" title="Click here to initiate the process to attain the power to see through the challenges.">Confirm and Continue</button>
+    </div>
+  </div>
+
+    <div class="footer">
+    <div>Powered by YOU</div>
+    <div>&copy; 2025 Drishiq, All rights reserved</div>
+
+<div class="footer-links">
+  <a href="https://jfguztmagsdsunhychkl.supaba.co/storage/v1/object/sign/projectimages/T&X_PPFinal.html?token=..." 
+     class="terms-link" 
+     title="Read our Terms & Privacy Policy" 
+     target="_blank">
+     Terms & Conditions / Privacy Policy
+  </a>
+</div>
+
+
+  <script>
+    function validateForm() {
+      const inputs = document.querySelectorAll('.input-field[required]');
+      const button = document.getElementById('confirmBtn');
+      let allFilled = true;
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          allFilled = false;
+        }
+      });
+      if (allFilled) {
+        button.classList.add('enabled');
+      } else {
+        button.classList.remove('enabled');
+      }
+    }
+
+    function updateUserDetails() {
+      const name = document.getElementById('firstNameInput').value.trim();
+      const gender = document.getElementById('genderInput').value;
+      const dob = document.getElementById('dobInput').value;
+
+      const nameEl = document.getElementById('userNameDisplay');
+      nameEl.textContent = name || 'Your Name';
+
+      // Calculate age
+      let ageText = '';
+      if (dob) {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+        }
+        if (!isNaN(age)) {
+          ageText = `${age} years`;
+        }
+      }
+
+      let detailText = '';
+      if (gender && ageText) {
+        detailText = `${gender}, ${ageText}`;
+      } else if (gender) {
+        detailText = gender;
+      } else if (ageText) {
+        detailText = ageText;
+      }
+
+      document.getElementById('userDetails').textContent = detailText;
+    }
+
+    // Initialize on load (in case of pre-filled form)
+    window.addEventListener('DOMContentLoaded', updateUserDetails);
+  </script>
+</body>
+</html>

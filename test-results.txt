@@ -1,0 +1,188 @@
+🧪 Testing Flow Controller...
+
+============================================================
+🚀 Testing Complete User Flow...
+
+1️⃣ Landing → Pricing
+
+📊 Current Flow State:
+   Current Step: landing
+   Completed Steps: []
+   Next Step: pricing
+   User Data: {}
+
+✅ Moved to pricing step
+
+📊 Current Flow State:
+   Current Step: pricing
+   Completed Steps: []
+   Next Step: payment
+   User Data: {}
+
+2️⃣ Pricing → Payment
+✅ Selected plan: premium ($29.99)
+
+📊 Current Flow State:
+   Current Step: payment
+   Completed Steps: []
+   Next Step: phone-capture
+   User Data: { plan: 'premium', amount: '29.99', description: 'Premium Plan' }
+
+3️⃣ Payment → Phone Capture
+✅ Payment completed
+
+📊 Current Flow State:
+   Current Step: phone-capture
+   Completed Steps: [payment]
+   Next Step: phone-verification
+   User Data: { plan: 'premium', amount: '29.99', description: 'Premium Plan' }
+
+4️⃣ Phone Capture → Phone Verification
+✅ Phone captured: +11234567890
+
+📊 Current Flow State:
+   Current Step: phone-verification
+   Completed Steps: [payment, phone-capture]
+   Next Step: signup
+   User Data: {
+  plan: 'premium',
+  amount: '29.99',
+  description: 'Premium Plan',
+  phone: '1234567890',
+  countryCode: '+1'
+}
+
+5️⃣ Phone Verification → Signup
+✅ Phone verification completed
+
+📊 Current Flow State:
+   Current Step: signup
+   Completed Steps: [payment, phone-capture, phone-verification]
+   Next Step: profile
+   User Data: {
+  plan: 'premium',
+  amount: '29.99',
+  description: 'Premium Plan',
+  phone: '1234567890',
+  countryCode: '+1'
+}
+
+6️⃣ Signup → Profile (Google Auth)
+✅ Signup completed with social
+
+📊 Current Flow State:
+   Current Step: profile
+   Completed Steps: [payment, phone-capture, phone-verification, signup]
+   Next Step: chat
+   User Data: {
+  plan: 'premium',
+  amount: '29.99',
+  description: 'Premium Plan',
+  phone: '1234567890',
+  countryCode: '+1',
+  authProvider: 'social'
+}
+
+7️⃣ Profile → Chat
+✅ Profile completed
+
+📊 Current Flow State:
+   Current Step: chat
+   Completed Steps: [payment, phone-capture, phone-verification, signup, profile]
+   Next Step: null
+   User Data: {
+  plan: 'premium',
+  amount: '29.99',
+  description: 'Premium Plan',
+  phone: '1234567890',
+  countryCode: '+1',
+  authProvider: 'social',
+  isProfileComplete: true
+}
+
+🎉 Complete flow test finished!
+============================================================
+
+🔒 Testing Access Control...
+
+Testing access from landing step:
+   Can access landing: ❌
+   Can access pricing: ✅
+   Can access payment: ❌
+   Can access phone-capture: ❌
+   Can access phone-verification: ❌
+   Can access signup: ❌
+   Can access profile: ❌
+   Can access chat: ❌
+✅ Moved to pricing step
+
+Testing access from pricing step:
+   Can access landing: ❌
+   Can access pricing: ❌
+   Can access payment: ✅
+   Can access phone-capture: ❌
+   Can access phone-verification: ❌
+   Can access signup: ❌
+   Can access profile: ❌
+   Can access chat: ❌
+✅ Selected plan: basic ($9.99)
+✅ Payment completed
+✅ Phone captured: +19876543210
+
+Testing access after completing some steps:
+   Can access landing: ❌
+   Can access pricing: ❌
+   Can access payment: ✅
+   Can access phone-capture: ✅
+   Can access phone-verification: ❌
+   Can access signup: ✅
+   Can access profile: ❌
+   Can access chat: ❌
+============================================================
+
+⚠️ Testing Edge Cases...
+
+1️⃣ Testing completing steps out of order:
+✅ Payment completed
+❌ Should not be able to complete payment from landing
+
+2️⃣ Testing reset functionality:
+✅ Moved to pricing step
+✅ Selected plan: test ($19.99)
+   Before reset: payment
+🔄 Flow reset to landing
+   After reset: landing
+
+3️⃣ Testing user data persistence:
+✅ Selected plan: persistent ($39.99)
+✅ Phone captured: +15551234567
+   User data: {
+  plan: 'persistent',
+  amount: '39.99',
+  description: 'Persistent Plan',
+  phone: '5551234567',
+  countryCode: '+1'
+}
+============================================================
+
+🎯 Flow Controller Test Summary:
+✅ Complete user flow simulation
+✅ Access control validation
+✅ Edge case handling
+✅ State management
+✅ Step progression logic
+
+📋 Next Steps for Manual Testing:
+1. Visit http://localhost:3000/test-flow to see the debug interface
+2. Test the actual Google authentication flow
+3. Verify that users are redirected correctly after Google auth
+4. Check that the flow controller state persists in localStorage
+
+🔧 To test the actual flow:
+1. Go to http://localhost:3000
+2. Click "View Plans" or navigate to pricing
+3. Select a plan and proceed through payment
+4. Complete phone capture and verification
+5. Click "Sign up with Google"
+6. Verify you're redirected to profile page after Google auth
+7. Complete profile and verify you reach the chat page

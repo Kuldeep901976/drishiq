@@ -1,0 +1,412 @@
+{
+  "500": "500",
+  "footer": {
+    "terms": "Terms & Conditions / Privacy Policy",
+    "contact": "Contact: support@drishiq.com",
+    "social": {
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook",
+      "youtube": "YouTube"
+    }
+  },
+  "language": "language",
+  "language_selection": {
+    "title": "Let's get started",
+    "subtitle": "Choose your preferred language to start your journey towards barrier-free communication",
+    "more_languages_message": "Don't see your language? More languages coming soon!",
+    "continue_button": "Continue"
+  },
+  "dashboard": {
+    "subtitle": "Here's what's happening",
+    "quickActions": "Quick Actions",
+    "editProfile": "Edit Profile",
+    "watchVideos": "Watch Videos",
+    "profileInformation": "Profile Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "occupation": "Occupation",
+    "loading": "Loading...",
+    "chat_placeholder": "Ask me anything...",
+    "messages_count": "Messages: {{count}}",
+    "upgrade_message": "Upgrade for unlimited messages",
+    "welcome_message": "Welcome to DrishiQ! How can I help you today?"
+  },
+  "pricing": {
+    "title": "DrishiQ Access Plans",
+    "subtitle": "Whether you're exploring, actively seeking help, or scaling it across teams — we have a plan for you. Looking to empower others? Scroll down to support someone in need.",
+    "choose_plan": "Choose Your Plan",
+    "plans": {
+      "free": {
+        "name": "Free Plan",
+        "price": "Free",
+        "duration": "72 hours",
+        "features": [
+          "Invitation-based",
+          "1 session",
+          "Screenshot only",
+          "Valid for 72 hours"
+        ],
+        "cta": "Seek Invitation"
+      },
+      "seed": {
+        "name": "Seed Plan",
+        "price": "₹559",
+        "originalPrice": "₹699",
+        "duration": "2 weeks",
+        "features": [
+          "Everything in Free",
+          "1 session",
+          "PDF export",
+          "Valid for 2 weeks"
+        ],
+        "cta": "Choose"
+      },
+      "growth": {
+        "name": "Growth Plan",
+        "price": "₹4,899",
+        "originalPrice": "₹6,999",
+        "duration": "8 weeks",
+        "features": [
+          "Everything in Seed",
+          "10 sessions",
+          "Priority support",
+          "Valid 8 weeks"
+        ],
+        "cta": "Choose"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "duration": "Flexible",
+        "features": [
+          "Everything in Growth",
+          "20+ sessions",
+          "Admin panel",
+          "Reports",
+          "Multi-user"
+        ],
+        "cta": "Enquire"
+      }
+    },
+    "support_section": {
+      "title": "Support DrishiQ",
+      "subtitle": "Join our mission to make clarity accessible to everyone",
+      "seed_support": {
+        "title": "Seed Support",
+        "amount": "₹500",
+        "description": "Plant the seeds of clarity"
+      },
+      "growth_support": {
+        "title": "Growth Support",
+        "amount": "₹1,000",
+        "description": "Nurture growth and understanding"
+      },
+      "wisdom_support": {
+        "title": "Wisdom Support",
+        "amount": "₹2,500",
+        "description": "Share wisdom and insights"
+      },
+      "heart_support": {
+        "title": "Heart Support",
+        "amount": "₹5,000",
+        "description": "Support from the heart"
+      }
+    }
+  },
+  "invitation": {
+    "title": "Request Your Invitation",
+    "subtitle": "Join our exclusive community of forward-thinking individuals",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "language": "Preferred Language",
+      "location": "Region/Country",
+      "challenge": "Challenge or Problem to Share (Optional)",
+      "challenge_placeholder": "Tell us about a challenge you're facing...",
+      "terms": "I accept the Terms and Conditions",
+      "submit": "Request Invitation",
+      "submitting": "Requesting..."
+    },
+    "footer_message": "DrishiQ is more than an app—it's a movement for clarity, reflection, and growth. We welcome those who want to make a difference, starting with themselves."
+  },
+  "ads": {
+    "invitation": {
+      "title": "Join the DrishiQ Revolution",
+      "subtitle": "See Through the Challenge with Intelligence of Perception",
+      "cta": "Request Invitation"
+    },
+    "experience": {
+      "title": "Experience Clarity Like Never Before",
+      "subtitle": "Transform how you perceive and solve complex problems",
+      "cta": "Learn More"
+    },
+    "early_access": {
+      "title": "Limited Time: Early Access Available",
+      "subtitle": "Be among the first to experience DrishiQ's powerful insights",
+      "cta": "Get Started"
+    },
+    "community": {
+      "title": "Join 10,000+ Forward Thinkers",
+      "subtitle": "Connect with like-minded individuals who see beyond the surface",
+      "cta": "Join Community"
+    },
+    "premium": {
+      "title": "🚀 Upgrade to Premium",
+      "subtitle": "Get unlimited AI conversations! Get 50% off your first month.",
+      "cta": "Upgrade Now"
+    },
+    "pro_tip": {
+      "title": "💡 Pro Tip",
+      "subtitle": "Premium users get priority support and advanced AI features.",
+      "cta": "Learn More"
+    },
+    "enterprise": {
+      "title": "🎯 Boost your productivity",
+      "subtitle": "Enterprise plan - unlimited everything!",
+      "cta": "Contact Sales"
+    }
+  },
+  "landing": {
+    "welcomeBack": "Welcome to DrishiQ",
+    "signupTitle": "Create your account",
+    "signupMessage": "Choose your preferred sign-up method",
+    "signinTitle": "Sign in to your account",
+    "signinMessage": "Welcome back! Please sign in to continue",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithFacebook": "Continue with Facebook",
+    "continueWithLinkedIn": "Continue with LinkedIn",
+    "orSignupWithEmail": "or sign up with email",
+    "orSigninWithEmail": "or sign in with email",
+    "emailLabel": "Email address",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out",
+    "noAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "sending": "Sending...",
+    "signingIn": "Signing in...",
+    "creating": "Creating...",
+    "saving": "Saving..."
+  },
+  "typewriter1": "See Through the Challenge",
+  "typewriter2": "Discover the Intelligence of Perception",
+  "typewriter3": "Start Your DrishiQ Journey Today",
+  "experience_button": "Experience DrishiQ",
+  "hero_call_to_action": {
+    "heading": "Ready to Transform Your Decision-Making?",
+    "paragraph1": "Unlock your potential with guided self-inquiry and expert support.",
+    "paragraph2": "who are ready to unlock their potential through personalized guidance.",
+    "button_label": "Request Your Invitation"
+  },
+  "motivational": {
+    "line1": "Sometimes, all you know is that something feels off — but not why.",
+    "line2": "Other times, you know the problem, but not the way out.",
+    "line3": "Clarity isn't found — it's created.",
+    "experience_button": "Experience DrishiQ"
+  },
+  "areas": {
+    "heading": "🎯 Areas We Help",
+    "card1": {
+      "title": "Mental Clarity",
+      "quote1": "I keep overthinking everything — and end up doing nothing",
+      "quote2": "My mind feels cluttered all the time"
+    },
+    "card2": {
+      "title": "Finding Direction",
+      "quote1": "I'm not sure what I want in life",
+      "quote2": "Everyone expects something different from me — I feel pulled apart"
+    },
+    "card3": {
+      "title": "Peak Confidence",
+      "quote1": "I freeze during important moments — even when I'm prepared",
+      "quote2": "I know my subject, but I struggle to speak with confidence"
+    },
+    "card4": {
+      "title": "Skill Growth",
+      "quote1": "I'm stuck in a plateau with my tennis forehand",
+      "quote2": "I want to improve, but I don't know what's holding me back"
+    },
+    "card5": {
+      "title": "Relationship Clarity",
+      "quote1": "Not sure if I should continue my marriage",
+      "quote2": "We argue often — but I don't know what we're really fighting about"
+    },
+    "card6": {
+      "title": "Youth Choices",
+      "quote1": "I'm good at science, but don't know what's next",
+      "quote2": "My parents want one thing, but I want something else"
+    },
+    "card7": {
+      "title": "Life Decisions",
+      "quote1": "I got a job offer, but I'm not sure if it's the right move",
+      "quote2": "Should I move cities for growth… or stay close to family?"
+    },
+    "card8": {
+      "title": "Peer Pressure",
+      "quote1": "Everyone seems to be moving ahead — I feel stuck",
+      "quote2": "Social media makes me feel like I'm always behind"
+    },
+    "not_seeing_challenge": "Not seeing your challenge here? Explore how Drishiq can help you find clarity —",
+    "start_now": "Start Now"
+  },
+  "features": {
+    "heading": "Features",
+    "card1": {
+      "title": "1. Emotionally Intelligent, Judgment-Free Conversations",
+      "description": "Unlike typical solutions, Drishiq engages in deep, thoughtful dialogue. It listens, reflects, and helps you organize your thoughts without rushing to fix or label — creating a safe space for inner clarity."
+    },
+    "card2": {
+      "title": "2. Inclusive by Design — Paid, Sponsored, or Giving Back",
+      "description": "Clarity shouldn't be a privilege. Whether you're ready to purchase a session, need help but can't pay, or want to sponsor someone else's breakthrough, Drishiq connects seekers and supporters in a shared circle of growth."
+    },
+    "card3": {
+      "title": "3. Built for Global Connection — Multilingual, Human-Centric",
+      "description": "Drishiq speaks your language — literally. With multilingual support and cultural sensitivity, it ensures that anyone, anywhere, can explore their mind and challenges without barriers."
+    },
+    "cta_description": "Drishiq is here to help you pause, reflect, and move forward — no matter who you are or where you're from.",
+    "try_now_cta": "See DrishiQ in action.",
+    "try_now_button": "✨Try Now"
+  },
+  "support": {
+    "heading": "Clarity Shouldn't Be a Privilege",
+    "description": "Some people face tough choices every day — but don't have the space or support to reflect.",
+    "chai_seller_story": "A chai seller figuring out how to help his son pick a better path than his own.",
+    "security_guard_story": "A night shift security guard quietly wondering if it's time to change jobs — but unsure where to begin.",
+    "college_student_story": "A college student from a modest family, good at studies but completely lost about what comes next.",
+    "not_looking_for_sympathy": "They're not looking for sympathy. They're looking for clarity. While they've taken the first step by reaching out, they simply can't afford a session.",
+    "sponsorship_description": "At Drishiq, we make sure every sponsorship goes to someone who truly needs it — someone who's ready to reflect, grow, and move forward, but just needs a little help getting started.",
+    "sponsor_moment_heading": "Sponsor a Moment That Matters",
+    "become_supporter": "Become a Supporter"
+  },
+  "blog": {
+    "heading": "Insights from the Blog",
+    "card1": {
+      "title": "How to Build Self-Awareness",
+      "description": "Explore practical tips and stories to deepen your self-understanding and gain clarity in your decision-making process.",
+      "read_more": "Read More"
+    },
+    "card2": {
+      "title": "Personal Growth Journeys",
+      "description": "Real stories from people who transformed their lives with DrishiQ and found the clarity they were seeking.",
+      "read_more": "Read More"
+    },
+    "card3": {
+      "title": "Mindful Decision Making",
+      "description": "Learn techniques for making better decisions through mindful reflection and emotional intelligence.",
+      "read_more": "Read More"
+    },
+    "read_more_button": "Read More Blog Articles",
+    "read_more": "Read More",
+    "cards": {
+      "self_awareness": {
+        "title": "How to Build Self-Awareness",
+        "description": "Explore practical tips and stories to deepen your self-understanding and gain clarity in your decision-making process."
+      },
+      "growth_journey": {
+        "title": "Personal Growth Journeys",
+        "description": "Real stories from people who transformed their lives with DrishiQ and found the clarity they were seeking."
+      },
+      "decision_making": {
+        "title": "Mindful Decision Making",
+        "description": "Learn techniques for making better decisions through mindful reflection and emotional intelligence."
+      }
+    }
+  },
+  "testimonials": {
+    "heading": "What Users Say",
+    "real_stories": "Real stories. Honest reflections. See how DrishiQ made a difference",
+    "story1": "DrishiQ helped me break through my mental blocks and find clarity.",
+    "story2": "The self-inquiry process was eye-opening and empowering.",
+    "one_story": "One story. One spark. One step forward —",
+    "share_story": "Share your DrishiQ story"
+  },
+  "cta": {
+    "heading": "When Someone Needs Clarity - You Can Help Them Find It",
+    "every_day_someone_stuck": "Every day, someone is stuck — overwhelmed, uncertain, and unable to afford the space to think things through.",
+    "they_might_be": "They might be a student questioning their future, a parent weighed down by silent pressure, or a worker quietly asking, 'What's next for me?'",
+    "if_you_can_give": "If you can give, give someone that moment.",
+    "a_quiet_shift": "A quiet shift in someone's life might begin with your support.",
+    "your_donation_helps_us": "Your donation helps us match real people with real needs — no noise, no waste. Just honest, thoughtful reflection for those who need it most.",
+    "sponsor_session": "Sponsor a Session",
+    "if_you_need_help": "If you need help, ask — without hesitation.",
+    "cant_afford_session": "Can't afford a session? That doesn't make your challenge less important.",
+    "tell_us_challenge": "Tell us what you're going through. We'll try our best to match your request with a sponsored session — because your clarity matters, too.",
+    "share_challenge": "Share Your Challenge",
+    "we_hold_space": "At Drishiq, we hold space for both — because clarity should be shared, not gated."
+  },
+  "about": {
+    "heading": "About DrishiQ",
+    "description1": "Drishiq is your intelligent clarity companion — a platform where thoughtful conversations help you explore your inner world, untangle complex challenges, and make better decisions.",
+    "description2": "Blending emotional intelligence with smart, unbiased insight, Drishiq connects seekers, supporters, and storytellers in a human-centric space for personal growth, reflection, and support.",
+    "description3": {
+      "prefix": "Clarity is just one conversation away -",
+      "suffix": "— Reflect. Decide. Grow."
+    },
+    "join_button": "Join Drishiq"
+  },
+  "banner": {
+    "0": {
+      "title": "🧠 Get Unstuck. Get Clarity.",
+      "text": "Feeling foggy, overwhelmed, or torn between choices? Drishiq helps you organize your thoughts, reflect deeply, and make wiser decisions — through emotionally intelligent, AI-powered conversations.",
+      "cta": "🎯 Start Your Clarity Session"
+    },
+    "1": {
+      "title": "💬 Can't Pay? Your Challenge Still Matters.",
+      "text": "Struggling to figure things out but can't afford a session? We hear you. At Drishiq, no voice goes unheard. Share your challenge — and we'll try to connect you with a sponsored session.",
+      "cta": "📝 Submit Your Challenge for Support"
+    },
+    "2": {
+      "title": "💚 Give the Gift of Clarity",
+      "text": "A single conversation can shift someone's world. Donate a session to help someone move from confusion to confidence. Your kindness could be the turning point in their journey.",
+      "cta": "🌟 Sponsor a Session Now"
+    },
+    "3": {
+      "title": "🔄 Share to Inspire. Earn Credits.",
+      "text": "Did Drishiq help you solve a challenge or gain emotional clarity? Your story could inspire someone else — and earn you session credits in return.",
+      "cta": "📣 Share Your Story"
+    },
+    "4": {
+      "title": "🌍 One Platform. Many Journeys.",
+      "text": "Every journey to clarity is different. Some seek guidance, others offer support. Drishiq brings it all together — powered by insight, empathy, and shared human growth.",
+      "cta": "🧭 Explore the Drishiq Experience"
+    },
+    "5": {
+      "title": "🤝 Be Part of the Clarity Circle",
+      "text": "Join a growing community of seekers, sponsors, and storytellers. Drishiq isn't just about answers — it's about connection, compassion, and collective growth.",
+      "cta": "🔗 Join the Circle"
+    }
+  },
+  "header": {
+    "subtext": "Intelligence of Perception",
+    "nav": {
+      "drishiq": "DrishiQ",
+      "support": "Support",
+      "plans": "Our Plans",
+      "blog": "Blog",
+      "testimonials": "Testimonials",
+      "anchor": "Anchor"
+    },
+    "language": {
+      "english": "English"
+    },
+    "qr": {
+      "alt": "QR Code",
+      "signup": "Signup URL"
+    },
+    "dropdown": {
+      "theme": "Theme",
+      "dark": "Dark",
+      "light": "Light",
+      "enrichProfile": "Enrich Profile",
+      "plansPayments": "Plans & Payments",
+      "resetPassword": "Reset Password",
+      "about": "About DrishiQ",
+      "logout": "Log Out"
+    }
+  }
+}

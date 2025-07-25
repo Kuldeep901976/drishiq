@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drishiq Chat</title>
+<!-- Supabase SDK -->
+<script src="https://unpkg.com/@supabase/supabase-js"></script>
+
+<script>
+  // ✅ Replace with your actual Supabase project URL and anon key
+  const supabaseUrl = "https://jfguztmagsdsunhychkl.supabase.co";
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZ3V6dG1hZ3Nkc3VuaHljaGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3MDc4NDMsImV4cCI6MjA2NjI4Mzg0M30.fzSIpRP4MXzRvUdxxLTcH6sWJ3-R996xxoatB_PmFMg";
+
+  // 🔁 Initialize Supabase client
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+	:root {
+	      --font-color: #0B4422;
+	      --pressed-color: #000080;
+	      --disabled-opacity: 0.5;
+	      --light-grey: #e0e0e0;
+		}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #FFFFFF;
+      color: #000;
+           }
+.header, .footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+		 }
+    .header {
+	top: 0;      
+	display: flex;
+      	justify-content: space-between;
+	align-items: flex-start;
+      	background-color: #F7F7F7;
+       	padding: 10px 20px 0;
+      	border-bottom: 1px solid #0B4422;
+      	color: #0B4422;
+             }
+
+    .logo-container {
+  display: flex;
+  flex-direction: column;  /* Stack items vertically */
+  align-items: left;     /* Center everything horizontally */
+  gap: 1px; /* spacing between image and text */
+  text-align: left;
+  color: #0B4422;
+		    }
+
+
+.logo-image 	{
+  height: 40px; /* adjust size */
+  width: auto;
+		}
+
+.logo-container span 	{
+  font-size: 16px;
+  color: #0B4422;
+margin-top: -10px;
+margin-left: 10px;
+			}
+
+.logo-container span1 	{
+  font-size: 44px;
+  color: #0B4422;
+
+			}
+
+    .header-center em 	{
+      font-style: italic;
+      font-size: 24px;
+      color: ##0B4422;
+    			}
+
+.user-icon {
+      position: relative;
+      cursor: pointer;
+
+    }
+   
+.dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background-color: #ffffff;
+      color: #0B4422;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      z-index: 999;
+      width: 100%;
+      max-width: 300px;
+      min-width: 260px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 8px;
+      margin: 2px 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .dropdown-item-content {
+      display: flex;
+      align-items: center;
+      color: #0B4422;
+      flex: 1;
+    }
+
+    .dropdown-item-content i {
+      margin-right: 12px;
+    }
+
+    .dropdown-item::after {
+      content: '>';
+      font-weight: bold;
+      margin-left: 12px;
+      color: #0B4422;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+.qr-code {
+      text-align: center;
+      padding: 1rem 1rem 1px 1rem;
+    }
+
+    .qr-code img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .qr-code div {
+      padding-top: 1px;
+      font-size: 0.85rem;
+      color: var(--primary-color);
+    }
+
+    .user-icon img {
+      width: 32px;
+      height: 32px;
+      align: Right;
+    }
+    .user-details {
+      font-size: 14px;
+      text-align: ceeter;
+      color: #0B4422;
+    }
+    .search-toggle-container {
+      position: fixed;
+      top: 75px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+    .icon-button {
+      background: none;
+	bottom: -2px;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+    }
+    .icon-button img {
+      width: 24px;
+      height: 24px;
+      transition: filter 0.3s;
+    }
+    .icon-button:hover::after {
+      content: attr(title);
+      position: absolute;
+      top: -20px;
+      right: 0;
+      background: #000;
+      color: #fff;
+      padding: 4px;
+      font-size: 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+    .dark-mode .chat-container {
+      background-color: #333;
+    }
+    .dark-mode .chat-input-area {
+      background-color: #0B4422;
+    }
+    .dark-mode .icon-button img {
+      filter: invert(1);
+    }
+    .chat-container {
+      padding: 80px 20px 80px 80px ;
+      background-color: #fff;
+    }
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .option-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .details-input {
+      display: none;
+      margin-left: 34px;
+      margin-top: 4px;
+      width: calc(90% - 30px);
+      resize: none;
+      min-height: 12px;
+      max-height: 120px;
+      overflow-y: auto;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 6px 6px 6px 6px;
+      line-height: 1.4;
+    }
+    .details-wrapper {
+      position: relative;
+    }
+    .option-mic {
+      display: none;
+      position: absolute;
+      right: +75px;
+      bottom: 5px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .option-mic:hover::after {
+      content: "Press and hold me to submit your response for this option.";
+      position: absolute;
+      top: -20px;
+      right: 0;
+      background: #000;
+      color: #fff;
+      padding: 4px;
+      font-size: 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .chat-input-area {
+      display: flex;
+      align-items: flex-end;
+      padding: 8px 40px 8px 12px;
+      background-color: #F2F2F2;
+      border-top: 1px solid #0B4422;
+      position: fixed;
+      bottom: 0;
+      width: 98%;
+    }
+    .chat-input-wrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
+    .chat-input {
+      flex-grow: 1;
+      padding: 8px 40px 8px 8px;
+      resize: none;
+      overflow-y: auto;
+      height: auto;
+      max-height: 120px;
+      min-height: 36px;
+      line-height: 1.4;
+      background-color: #fff;
+      border: 1px solid #0B4422;
+      border-radius: 4px;
+    }
+    .send-button {
+      position: absolute;
+      right: 16px;
+      bottom: 5px;
+      background: none;
+      border: none;
+ 
+ cursor: pointer;
+      display: none;
+    }
+    .input-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-left: 6px;
+      justify-content: flex-end;
+    }
+    .add-details-btn {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0B4422;
+      cursor: pointer;
+      vertical-align: middle;
+      margin-left: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-container">
+	    	<img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/LogoPicture1.png?		token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL0xvZ29QaWN0dXJlMS5wbmciLCJpYXQiOjE3NTA5MzkxODcsImV4cCI6MTgzNzMzOTE4N30.ggY7o4BY0As9PcjqGfHiANoW8w9ZfvH5d79HlGHcL84" alt="Drishiq Logo" class="logo-image" />
+      <span>Redefines Clarity</span>
+    </div>
+    <div class="header-center">
+      <em>“See Through the Challenge.”</em>
+    </div>
+    
+
+<div class="user-icon" onclick="document.getElementById('dropdownMenu').classList.toggle('show')">
+      <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/profile_toggle.gif?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL3Byb2ZpbGVfdG9nZ2xlLmdpZiIsImlhdCI6MTc1MDk0ODI5OCwiZXhwIjoxODM3MzQ4Mjk4fQ.bJhRz3qaTgi6TodIQInuyp66QL-EYc7gx_HhxICH2ls"/>
+<div id="dropdownMenu" class="dropdown-menu">
+ <div class="qr-code">
+          <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/QR%20code.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1FSIGNvZGUucG5nIiwiaWF0IjoxNzUwOTMzODkyLCJleHAiOjE4MzczMzM4OTJ9.d3gowv3zKoHXO2QkL74hyLmu2i4hol9RSsLe8rvPRbc" alt="QR Code" onclick="alert('Expand QR logic here')" />
+          <div><i class="fas fa-qrcode"></i> Signup URL</div>
+        </div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-adjust"></i> Theme Toggle</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-user-edit"></i> Enrich Your Profile</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-credit-card"></i> Plans & Payments</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-key"></i> Reset Password</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-info-circle"></i> About Drishiq</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-sign-out-alt"></i> Log Out</div></div>
+      </div>
+      <div class="user-details">Kuldeep</div>
+    </div>
+  </div>
+
+  <div class="search-toggle-container">
+    <button class="icon-button" id="searchBtn" title="Search within the chat history"><img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/Search.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1NlYXJjaC5wbmciLCJpYXQiOjE3NTA5MzM5MTIsImV4cCI6MTgzNzMzMzkxMn0.G84yvubhPPlbpM7fPi2ltiSMshDr_Tm14YvT9Dk6WTk" alt="Search" /></button>
+
+    <button class="icon-button" id="toggleBtn" title="Please select your dark or light mode from here"><img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/Toggle.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1RvZ2dsZS5wbmciLCJpYXQiOjE3NTA5MzM5NDUsImV4cCI6MTgzNzMzMzk0NX0.1C_Sll5iyibN-X3qJz_ZK_XkxuuaYsc1fQ44NMvtO9M" alt="Toggle" /></button>
+
+  </div>
+  <div class="chat-container">
+    <p><strong>Q1:</strong> What seems to be your main challenge today?</p>
+    <div class="options-list">
+      <div class="option-item">
+        <div class="option-header">
+          <input type="checkbox" class="option-check" onchange="togglePlus(this)">
+          <span>Stress at work</span>
+          <span class="add-details-btn" onclick="toggleDetails(this)">+</span>
+        </div>
+<div class="details-wrapper">
+          <textarea class="details-input" placeholder="Add details (optional)"></textarea>
+          <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/MainMic.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL01haW5NaWMucG5nIiwiaWF0IjoxNzUwOTMzODU2LCJleHAiOjE4MzczMzM4NTZ9.eQpejwCQjhm9UNGFuc_GaGrCPXK6CCAYIrRvbBFt8Pc
+" class="option-mic" alt="Mic" />
+        </div>
+      </div>
+      <div class="option-item">
+        <div class="option-header">
+          <input type="checkbox" class="option-check" onchange="togglePlus(this)">
+          <span>Unclear goals</span>
+          <span class="add-details-btn" onclick="toggleDetails(this)">+</span>
+        </div>
+        <div class="details-wrapper">
+          <textarea class="details-input" placeholder="Add details (optional)"></textarea>
+          <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/MainMic.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL01haW5NaWMucG5nIiwiaWF0IjoxNzUwOTMzODU2LCJleHAiOjE4MzczMzM4NTZ9.eQpejwCQjhm9UNGFuc_GaGrCPXK6CCAYIrRvbBFt8Pc
+" class="option-mic" alt="Mic" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="chat-input-area">
+
+  
+  <!-- Input Text Area -->
+  <div class="chat-input-wrapper">
+    <textarea class="chat-input" id="chatInput" rows="1" placeholder="Type your message..."></textarea>
+
+    <!-- Send Button (inside wrapper so it's positioned absolutely if needed) -->
+    <button class="send-button" id="sendBtn" title="Submit your message">
+  <img 
+    src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/Send.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1NlbmQucG5nIiwiaWF0IjoxNzUwOTY0NjA2LCJleHAiOjE4MzczNjQ2MDZ9.9HCZQL7BSYeG3vIlS2qKKHtlCi75R64vZ0CAkF1c7B4
+" 
+    alt="Send" 
+    onerror="this.style.display='none'" 
+    style="width: 36px; height: 36px;" />
+</button>
+  </div>
+
+  <!-- Mic Button -->
+  <div class="icon-button" title="Press to share the speech note that will be embedded in the text box">
+    <button class="icon-button">
+      <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/MainMic.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL01haW5NaWMucG5nIiwiaWF0IjoxNzUwOTMzODU2LCJleHAiOjE4MzczMzM4NTZ9.eQpejwCQjhm9UNGFuc_GaGrCPXK6CCAYIrRvbBFt8Pc
+" alt="Mic" />
+    </button>
+
+<!-- Attach Button -->
+  <div class="icon-button chat-attach" title="Attach">
+    <button class="icon-button" title="Please upload your files (pdf, images, .docs, .txt)">
+      <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/attach.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL2F0dGFjaC5wbmciLCJpYXQiOjE3NTA5MzM4MzYsImV4cCI6MTgzNzMzMzgzNn0.ESabkcCeREuI6Mq2pA-yCk78toMSNeNHqazy8qOTJPA
+" alt="Attach" />
+    </button>
+  </div>
+  </div>
+
+</div>
+
+
+
+    <div class="input-controls">
+  <script>
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (!SpeechRecognition) {
+  alert("Your browser does not support speech recognition. Please use Chrome or Edge.");
+}
+function attachSpeechToMicIcons() {
+  const micButtons = document.querySelectorAll('.option-mic, .icon-button img[alt="Mic"]');
+
+  micButtons.forEach(mic => {
+    let recognition;
+    let isOptionMic = mic.classList.contains('option-mic');
+
+    mic.addEventListener('mousedown', () => {
+      recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onresult = function (event) {
+        const speechText = event.results[0][0].transcript;
+        if (isOptionMic) {
+          const textarea = mic.parentElement.querySelector('textarea');
+          textarea.value += (textarea.value ? ' ' : '') + speechText;
+          textarea.dispatchEvent(new Event('input'));
+        } else {
+          const chatInput = document.querySelector('.chat-input');
+          chatInput.value += (chatInput.value ? ' ' : '') + speechText;
+          chatInput.dispatchEvent(new Event('input'));
+        }
+      };
+
+      recognition.start();
+    });
+
+    mic.addEventListener('mouseup', () => {
+      if (recognition) recognition.stop();
+    });
+  });
+}
+	attachSpeechToMicIcons();
+
+    const toggleBtn = document.getElementById('toggleBtn');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    function togglePlus(checkbox) {
+      const optionHeader = checkbox.closest('.option-header');
+      const addBtn = optionHeader.querySelector('.add-details-btn');
+      const wrapper = optionHeader.nextElementSibling;
+      const textarea = wrapper.querySelector('textarea');
+      const mic = wrapper.querySelector('.option-mic');
+      addBtn.style.display = checkbox.checked ? 'inline' : 'none';
+      if (!checkbox.checked) {
+        textarea.style.display = 'none';
+        mic.style.display = 'none';
+        addBtn.textContent = '+';
+      }
+    }
+
+    function toggleDetails(btn) {
+      const textarea = btn.parentElement.nextElementSibling.querySelector('textarea');
+      const mic = btn.parentElement.nextElementSibling.querySelector('.option-mic');
+      const isOpen = textarea.style.display === 'block';
+      textarea.style.display = isOpen ? 'none' : 'block';
+      mic.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? '+' : '-';
+      if (!isOpen) {
+        textarea.focus();
+      }
+    }
+
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    chatInput.addEventListener('input', () => {
+      chatInput.style.height = 'auto';
+      chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+      sendBtn.style.display = chatInput.value.trim() ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('.details-input').forEach(textarea => {
+      textarea.addEventListener('input', () => {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+      });
+    });
+  </script>
+<script>
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognizer = SpeechRecognition ? new SpeechRecognition() : null;
+
+  const chatInput = document.querySelector('.chat-input');
+  const micButton = document.querySelector('.chat-mic');
+  const listeningIndicator = document.getElementById('listening-indicator');
+
+  // 🌐 You can change language here: 'hi-IN' for Hindi, 'en-US' for English
+
+
+  if (recognizer) {
+    recognizer.continuous = false;
+    recognizer.interimResults = false;
+    recognizer.lang = 'en-US';
+
+    micButton.addEventListener('click', () => {
+      if (!chatInput) return;
+      recognizer.lang = 'en-US';
+      recognizer.start();
+      listeningIndicator.style.display = 'block';
+    });
+
+    recognizer.onresult = function (event) {
+      const transcript = event.results[0][0].transcript;
+      chatInput.value += (chatInput.value ? ' ' : '') + transcript;
+      chatInput.dispatchEvent(new Event('input'));
+      listeningIndicator.style.display = 'none';
+    };
+
+    recognizer.onend = () => {
+      listeningIndicator.style.display = 'none';
+    };
+
+    recognizer.onerror = function (event) {
+      alert("Speech recognition error: " + event.error);
+      listeningIndicator.style.display = 'none';
+    };
+  } else {
+    alert("Speech Recognition not supported in this browser.");
+  }
+</script>
+
+<div id="listening-indicator" style="
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0B4422;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+">Listening...
+</div>
+
+</body>
+</html>

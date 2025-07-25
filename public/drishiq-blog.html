@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="DrishiQ – AI-powered assistant for emotional clarity, reflection, and better life decisions."/>
+  <title>DrishiQ Blog</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #F5FAF6;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      align-items: flex-start;
+    }
+
+    .blog-container {
+      flex: 8;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .side-container {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #0B4422;
+      margin-bottom: 0.3rem;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 1rem 0;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    h2 {
+      color: #0B4422;
+      font-size: 1.4rem;
+      margin-top: 1.2rem;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
+    }
+
+    blockquote {
+      border-left: 4px solid #0B4422;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #444;
+      background: #EFF7F1;
+      margin: 1rem 0;
+      border-radius: 6px;
+    }
+
+    a {
+      color: #0B4422;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .tags {
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      background: #EFF7F1;
+      color: #0B4422;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-right: 6px;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #ccc;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+      text-align: center;
+    }
+
+    .video-slider-container {
+      height: 324px;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+    }
+
+    .video-slide {
+      scroll-snap-align: center;
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .video-slide img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .search-container input,
+    .search-articles input,
+    .search-videos input {
+      padding: 8px 12px;
+      width: 100%;
+      font-size: 0.85rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .feedback-section {
+      margin-top: 1.5rem;
+      background: #EFF7F1;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .feedback-section textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      font-size: 0.95rem;
+    }
+
+    .feedback-section button {
+      margin-top: 6px;
+      padding: 0.45rem 1rem;
+      background-color: #0B4422;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .star-rating span {
+      font-size: 1.2rem;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .star-rating span:hover,
+    .star-rating span.active {
+      color: #FFD700;
+    }
+
+    .related-articles {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .related-articles h3 {
+      font-size: 1rem;
+      color: #0B4422;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-links {
+      margin-top: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .article-links a {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #0B4422;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    .article-links span {
+      display: block;
+      font-size: 0.75rem;
+      color: #444;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="blog-container">
+      <h1>Why We Struggle With Everyday Problems</h1>
+      <div class="meta">By Team DrishiQ • July 6, 2025</div>
+      <img src="https://via.placeholder.com/800x600" alt="Struggling with problems" />
+      <p>We all face problems. Some are obvious — a missed deadline, a relationship argument, a looming health concern. Others simmer beneath the surface: dissatisfaction at work, an unclear life direction, or emotional burnout. Yet, strangely enough, most of these problems don’t explode because of how serious they are, but because of how long they go unaddressed.</p>
+      <p>This delay — this tendency to ignore, postpone, or overcomplicate our challenges — creates a cascading effect. A small misunderstanding becomes a permanent fallout. A minor stressor becomes chronic anxiety. A moment of confusion becomes years of feeling lost.</p>
+      <h2>The Hidden Layers of Everyday Problems</h2>
+      <p>Contrary to popular belief, most problems are not isolated events. They are often multi-layered experiences influenced by our environment, relationships, unspoken expectations, and personal beliefs. Think of them like onions — you have to peel through the emotional layers, assumptions, and perspectives to truly understand what you're dealing with.</p>
+      <p>For instance:</p>
+      <ul>
+        <li>A fight with your partner may not be about the dishes — it could be about feeling unappreciated.</li>
+        <li>Trouble focusing at work may not be about laziness — it might signal a deeper disconnect with your goals.</li>
+        <li>Feeling stuck in life isn't always about a lack of options — it could stem from not knowing how to process your inner conflict.</li>
+      </ul>
+      <h2>So Why Don’t We Solve These Problems Sooner?</h2>
+      <p>There are three main reasons:</p>
+      <ul>
+        <li><strong>Lack of Clarity:</strong> When you’re in the problem, it’s hard to see the problem. Emotions cloud judgment.</li>
+        <li><strong>Fear of Confrontation:</strong> Many problems involve other people. Bringing them up feels risky, so we suppress them.</li>
+        <li><strong>Overthinking vs. Action:</strong> We think in circles, hoping for the perfect moment — but it rarely arrives.</li>
+      </ul>
+      <p>The result? Unresolved issues become life patterns.</p>
+      <h2>DrishiQ: Your Thinking Partner in a Noisy World</h2>
+      <p>DrishiQ is built to address this exact human dilemma. It’s more than a tool — it’s a thinking companion that helps you organize your thoughts, confront your challenges, and gain clarity through intelligent, unbiased conversation.</p>
+      <p>Unlike motivational quotes or advice threads, DrishiQ doesn’t throw pre-cooked solutions at you. It:</p>
+      <ul>
+        <li>Listens deeply.</li>
+        <li>Asks the right questions.</li>
+        <li>Maps out the people and expectations around your problem.</li>
+        <li>Helps you peel back the layers — until the core is revealed.</li>
+      </ul>
+      <p>Once that happens, solutions become obvious. They arise naturally, because you finally understand the real issue.</p>
+      <h2>Why Timing Is a Myth — and Understanding Is Power</h2>
+      <p>We often tell ourselves, “I’ll deal with this when the time is right.” But truthfully, time doesn’t fix problems — understanding does.</p>
+      <p>When you know:</p>
+      <ul>
+        <li>What the problem actually is</li>
+        <li>Who it affects</li>
+        <li>What expectations are driving the pain</li>
+        <li>What outcomes matter most to you</li>
+      </ul>
+      <p>— you gain power. Not the power to control everything, but the power to act with clarity, courage, and conviction.</p>
+      <p>That’s what DrishiQ empowers you to do.</p>
+      <h2>Start Small. Think Deep. Live Clear.</h2>
+      <p>You don’t need to wait for a crisis. You can bring your smallest confusions, daily tensions, or emotional fog into DrishiQ — and start peeling.</p>
+      <p>You’ll be surprised how much clarity can come from a single conversation.</p>
+      <blockquote>
+        Because sometimes, the problem is not the problem. It’s how you’ve been thinking about it.
+      </blockquote>
+      <p><strong>Let DrishiQ help you change that — one problem at a time.</strong></p>
+      <div class="tags">
+        <span class="tag">Clarity</span>
+        <span class="tag">Reflection</span>
+        <span class="tag">Emotional Intelligence</span>
+      </div>
+      <div class="footer-note">
+        Want to experience DrishiQ? <a href="/app">Start your session →</a>
+      </div>
+    </div>
+
+    <div class="side-container">
+      <div class="search-videos" style= "margin-bottom: -18px; max-width: 216px";>
+        <input type="text" placeholder="Search videos..." />
+      </div>
+
+      <div class="video-slider-container">
+        <div class="video-slide" onclick="playVideo(this, 'Ks-_Mh1QhMc')">
+          <img src="https://img.youtube.com/vi/Ks-_Mh1QhMc/0.jpg" alt="Video 1" />
+        </div>
+        <div class="video-slide" onclick="playVideo(this, 'lTTajzrSkCw')">
+          <img src="https://img.youtube.com/vi/lTTajzrSkCw/0.jpg" alt="Video 2" />
+        </div>
+        <div class="video-slide" onclick="playVideo(this, '3fumBcKC6RE')">
+          <img src="https://img.youtube.com/vi/3fumBcKC6RE/0.jpg" alt="Video 3" />
+        </div>
+      </div>
+      
+<div class="search-articles" style="max-width: 216px; margin-bottom:-16px; margin-top: 8px;">
+
+              <input type="text" placeholder="Search for more articles..." />
+      </div>
+
+      <div class="related-articles">
+        <h3>More Articles</h3>
+        <div class="article-links">
+          <a href="#">Dealing with Decision Fatigue</a>
+          <span>Learn how to reduce emotional overload.</span>
+          <a href="#">When Everything Feels Stuck</a>
+          <span>Start by clarifying what you truly want.</span>
+          <a href="#">Why Expectations Hurt</a>
+          <span>Mapping emotional expectations can free you.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    function playVideo(container, videoId) {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.style.width = '100%';
+      iframe.style.height = '180px';
+      iframe.style.borderRadius = '8px';
+      iframe.style.border = 'none';
+      container.innerHTML = '';
+      container.appendChild(iframe);
+    }
+  </script>
+</body>
+</html>

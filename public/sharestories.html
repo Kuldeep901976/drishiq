@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inspiring Stories – Drishiq</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .main {
+      padding: 0 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cta {
+      margin-top: 32px;
+    }
+
+    .cta a {
+      background: #ff9800;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .featured {
+      margin-top: 16px;
+      margin-bottom: -24px;
+      color: #FFD700;
+    }
+
+    .content-section {
+      display: flex;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .category-column {
+      width: 200px;
+      position: fixed;
+      top: 180px;
+      left: 6px;
+      align-self: flex-start;
+    }
+
+    .category-column h3 {
+      margin-bottom: 12px;
+    }
+
+    .category-column button {
+      display: block;
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .category-column button.active {
+      background-color: #0B4422;
+      color: white;
+    }
+
+    .story-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      flex: 1;
+      justify-content: center;
+      scroll-padding: 0 50%;
+      margin-left: 220px;
+    }
+
+    .story-card {
+      min-width: 180px;
+      max-width: 280px;
+      min-height: 180px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .story-card h3 {
+      margin-top: 0;
+      color: #0B4422;
+    }
+
+    .story-card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .tagline {
+      background: #eef6ee;
+      padding: 10px 5px;
+      text-align: center;
+      font-style: italic;
+      margin-top: 40px;
+    }
+
+    .tagline strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 800px) {
+      .content-section {
+        flex-direction: column;
+      }
+
+      .category-column {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+        position: static;
+      }
+
+      .story-slider {
+        margin-left: 0;
+      }
+
+      .category-column button {
+        flex: 1 1 45%;
+        margin-bottom: 8px;
+      }
+    }
+
+    .hidden { display: none; }
+    .hidden + .full { margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<main class="main">
+
+  <section style="background: #0B4422; color: white; padding: 40px 20px; text-align: center;">
+    <h1 style="margin-bottom: 10px; margin-top: -16px;">🗣️ Your Story Could Help Someone Else Find Clarity</h1>
+    <p style="max-width: 700px; margin: 0 auto;">
+      At Drishiq, we believe real stories have the power to unlock real understanding. 
+      Read what others have shared and be inspired to share your own journey.
+    </p>
+    <div class="cta">
+      <a href="/submit-story">🎁 Share your story & win a free session</a>
+    </div>
+    <div class="featured">(offered for selected featured stories)</div>
+  </section>
+
+  <section class="content-section">
+    <div class="category-column" style="margin-top:56px; margin-left:16px;">
+      <h3>Filter by Category</h3>
+      <button onclick="filterStories('all')" class="active">📚 All</button>
+      <button onclick="filterStories('career')">💼 Career & Growth</button>
+      <button onclick="filterStories('mental')">🧠 Mental Health</button>
+      <button onclick="filterStories('family')">🏠 Family & Identity</button>
+    </div>
+
+    <div class="story-slider" id="storySlider">
+      <!-- Cards will be rendered here dynamically -->
+    </div>
+  </section>
+
+  <section class="tagline">
+    “You’re not alone. Every insight shared makes us stronger together.”
+    <strong><a href="/submit-story" style="color: #0000FF; text-decoration: underline;">Want to be featured? Submit your story today!</a></strong>
+  </section>
+
+</main>
+
+<script>
+const stories = [
+  {
+    category: 'family',
+    title: 'A daughter from close neighbourhood',
+    preview: '“After months of silence, I finally opened up to my parents about how I felt.”',
+    full: `Growing up, I was always the obedient child...`
+  },
+  {
+    category: 'career',
+    title: 'A father from Kerala',
+    preview: '“Switching careers at 45 was terrifying. But now I wake up with purpose.”',
+    full: `For over 20 years, I worked in banking...`
+  },
+  {
+    category: 'mental',
+    title: 'The unheard voice',
+    preview: '“Struggling with anxiety made me feel alone.”',
+    full: `It started with restlessness...`
+  },
+  {
+    category: 'career',
+    title: 'A survivor of change',
+    preview: '“Losing my job was devastating. But it forced me to rebuild — on my terms.”',
+    full: `The pandemic changed everything...`
+  },
+  {
+    category: 'family',
+    title: 'A young mother finding herself',
+    preview: '“Motherhood was overwhelming. I lost myself.”',
+    full: `When my daughter was born...`
+  },
+  {
+    category: 'career',
+    title: 'A student at crossroads',
+    preview: '“I failed an exam I’d prepared for all year.”',
+    full: `I gave everything to that exam...`
+  }
+];
+
+function renderStories(filter = 'all') {
+  const slider = document.getElementById('storySlider');
+  slider.innerHTML = '';
+  stories.filter(s => filter === 'all' || s.category === filter).forEach(story => {
+    const card = document.createElement('div');
+    card.className = 'story-card';
+    card.innerHTML = `
+      <h3>${story.title}</h3>
+      <p class="short">${story.preview}</p>
+      <p class="full hidden">${story.full}</p>
+    `;
+    card.addEventListener('click', () => toggleStory(card));
+    slider.appendChild(card);
+  });
+}
+
+function filterStories(category) {
+  document.querySelectorAll('.category-column button').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  renderStories(category);
+}
+
+function toggleStory(card) {
+  const short = card.querySelector('.short');
+  const full = card.querySelector('.full');
+  const allCards = document.querySelectorAll('.story-card');
+  allCards.forEach(c => {
+    if (c !== card) {
+      c.querySelector('.short').classList.remove('hidden');
+      c.querySelector('.full').classList.add('hidden');
+    }
+  });
+  short.classList.toggle('hidden');
+  full.classList.toggle('hidden');
+}
+
+window.addEventListener('DOMContentLoaded', () => renderStories());
+</script>
+
+</body>
+</html>

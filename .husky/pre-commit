@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run auto-translate script before commit
+echo "Running auto-translate-all.js to update translations..."
+node scripts/auto-translate-all.js 

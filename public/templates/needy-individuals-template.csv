@@ -1,0 +1,6 @@
+full_name,email,phone,age,gender,country,state,city,postal_code,language,income_level,employment_status,education_level,support_needs,preferred_invitation_types,urgency_level,contact_preference,contact_time,notes
+John Doe,john.doe@example.com,+1234567890,25,male,United States,California,Los Angeles,90210,en,low,unemployed,bachelor,education;employment,investment_management;story,high,email,anytime,Interested in investment opportunities
+Jane Smith,jane.smith@example.com,+1234567891,30,female,United States,New York,New York,10001,en,very_low,part_time,secondary,healthcare;housing,story;testimonial,critical,phone,evening,Urgent need for housing support
+Bob Johnson,bob.johnson@example.com,+1234567892,45,male,United States,Texas,Houston,77001,en,medium,full_time,bachelor,education,investment_management,medium,email,morning,Looking to learn about investment strategies
+Alice Brown,alice.brown@example.com,+1234567893,22,female,United States,Florida,Miami,33101,en,low,student,secondary,employment;education,story;testimonial,high,sms,afternoon,Student seeking career guidance
+Charlie Wilson,charlie.wilson@example.com,+1234567894,55,male,United States,Illinois,Chicago,60601,en,high,full_time,master,education,investment_management,low,email,anytime,Experienced professional looking to diversify portfolio 

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="DrishiQ – AI-powered assistant for emotional clarity, reflection, and better life decisions."/>
+  <title>DrishiQ – Gain Life Clarity for better tomorrow</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> 
+ <style>
+   body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 2.5rem;
+    }
+
+    header {
+      background-color: #F5FAF6;
+      color: #0B4422;
+      padding: 0.6rem 0.6rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 18px;
+  margin-right: 0px;
+
+  flex: 1;
+}
+
+.logo-section .subtext {
+  font-size: 0.85rem;
+  color: #0B4422;
+  margin-top: 0.2rem;
+}
+
+.button-container {
+    margin-right: -186px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    .button {
+      background-color: #0B4422;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex: 3.6;
+}
+
+.nav-links a {
+  color: #0B4422;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 56px;
+  font-size: 0.95rem;
+}
+
+.social-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-center;
+  flex: 1;
+}
+
+.social-links a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  color: #0B4422;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1); 
+ margin: 0 6px;
+  transition: background-color 0.3s;
+}
+
+
+
+
+.profile-icon-container {
+  margin-top: 36px;
+  margin-right:24 px;
+  margin-left: 124px;
+  background-color: white;
+  border: 2px solid #0B4422;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-icon {
+position: relative;
+  width: 24px;
+  height: 24px;
+  fill: #0B4422;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 40px;
+      background-color: #ffffff;
+      color: #0B4422;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      z-index: 999;
+      width: 100%;
+      max-width: 300px;
+      min-width: 260px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 8px;
+      margin: 2px 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .dropdown-item-content {
+      display: flex;
+      align-items: center;
+      color: #0B4422;
+      flex: 1;
+    }
+
+    .dropdown-item-content i {
+      margin-right: 12px;
+    }
+
+    .dropdown-item::after {
+      content: '>';
+      font-weight: bold;
+      margin-left: 12px;
+      color: #0B4422;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+.qr-code {
+      text-align: center;
+      padding: 1rem 1rem 1px 1rem;
+    }
+
+    .qr-code img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .qr-code div {
+      padding-top: 1px;
+      font-size: 0.85rem;
+      color: var(--primary-color);
+    }
+    .user-details {
+      font-size: 14px;
+      text-align: ceeter;
+      color: #0B4422;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #0B4422;
+      color: white;
+      text-align: center;
+      padding: 0.5rem 0.5rem;
+      font-size: 0.75rem;
+      z-index: 1000;
+	line-height: 0.5;
+      height: 54px;
+    }
+
+    footer a {
+      color: #FFD700;
+      text-decoration: none;
+
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- AD #1: Covers Footer Fully --- */
+#footerTakeoverAd {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: #FFD700;
+      color: #0B4422;
+      display: none;
+      z-index: 2001;
+      font-weight: bold;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+
+    #footerTakeoverAd a {
+      text-decoration: underline;
+      margin-left: 0.5rem;
+    }
+
+    #footerTakeoverAd button {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #0B4422;
+      cursor: pointer;
+    }
+
+    /* --- AD #2: Floating Banner --- */
+#floatingFooterAd {
+  position: fixed;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 36px;
+  background-color: #ff9800;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 1rem;
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: 18px;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+#floatingFooterAd a {
+  margin-left: 0.5rem;
+  text-decoration: underline;
+  color: #856404;
+}
+
+#floatingFooterAd button {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  color: #856404;
+  cursor: pointer;
+}
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+.motivational-container {
+  position: relative;
+  text-align: center;
+  margin-top: 120px;
+}
+
+/* Common style for all lines */
+.typewriter {
+  position: relative;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0; /* Hidden initially */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2px;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Line-specific delays */
+.line1 {
+  animation-delay: 0s;
+  color: #000080;
+  margin-top: -36px;
+}
+.line2 {
+  animation-delay: 1.5s;
+  color: #0B4422; 
+  margin-top: -5px;
+}
+.line3 {
+  animation-delay: 3s;
+  color: #000080; 
+  margin-top: -5px;
+  margin-bottom: 8px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Button fade & glow */
+.glow-button {
+  display: inline-block;herapy
+
+  opacity: 0;
+  margin-top: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background-color: #0B4422;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  animation: glow 1.5s ease-in-out infinite alternate, fadeIn 0.5s ease forwards;
+  animation-delay: 4.5s, 4.5s;
+}
+
+/* Glowing effect */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #0B442280, 0 0 10px #0B442240;
+  }
+  100% {
+    box-shadow: 0 0 12px #0B4422cc, 0 0 20px #0B4422;
+  }
+}
+
+/* Button fade-in */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.contact { color: white; text-align:left; font-size: .7rem; line-height: .5;}
+    .container { max-width: 1100px; margin: auto; padding: 2rem; }
+    section { padding: 3rem 2rem; }
+    .section-title { font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+    .features-grid, .blog-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { border: 1px solid #ddd; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card-content { padding: 1rem; }
+    .testimonial { font-style: italic; background: #f0f0f0; border-left: 4px solid #0B4422; padding: 1rem; margin-bottom: 1rem; }
+    .footer-links a { color: white; margin-right: 1rem; font-size: 0.9rem; text-decoration: none; }
+    .cta-section { text-align: center; max-width:100%; background-color: #F2F2F2; color: #0B4422; padding: 3rem 1rem;}
+    .cta-section a { display: inline-block; background: #0B4422; color:white ; padding: 0.75rem 1.5rem; border-radius: 20px; font-weight: bold; text-decoration: none; }
+
+.animated-arrow {
+  display: inline-block;
+  margin-left: 6px;
+  animation: arrowMove 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes arrowMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(6px); }
+}
+
+
+
+
+/* Style only the 'features' section cards */
+.features-cards .card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.features-grid .card:nth-child(odd) {
+  background-color: #F5F5F5;
+  border: 1px solid #E0E0E0;
+}
+
+.features-grid .card {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+
+
+
+/* Only affect cards inside #features section */
+.features-cards .card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.features-cards .card:nth-child(odd) {
+	background-color: #ffffff; /* light green tint for DrishiQ */
+	transform: translateY(-5px);
+  	border: 1px solid #cce4d1;
+transform: translateY(-5px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+}
+
+.features-cards .card:hover {
+	background-color: #ffffff; /* light green tint for DrishiQ */
+  	border: 1px solid #cce4d1;
+	background-color: #ffffff; /* light green tint for DrishiQ */
+transform: translateY(-5px);
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  	
+}
+  </style>
+</head>
+
+<body>
+ <!-- HEADER -->
+<header>
+  <div class="header-container">
+    <!-- Logo + Subtext (Left) -->
+    <div class="logo-section">
+      <img src="https://via.placeholder.com/120x36?text=DrishiQ+Logo" alt="DrishiQ Logo" />
+      <span class="subtext">Intelligence of Perception</span>
+    </div>
+
+    <!-- Nav Links (Center) -->
+    <nav class="nav-links">
+      <a href="#">  DrishiQ ?    |</a>
+      <a href="#">  Support us    |</a>
+      <a href="#">  Our palns & pricing    |</a>
+      <a href="#">  Blog    |</a>
+      <a href="#">  Testimonial    |</a>
+     </nav>
+
+    <div class="button-container">
+        <a href="/app" class="button">Start Session</a>
+      </div>
+
+<div class="profile-icon-container">
+<div class="profile-icon" onclick="document.getElementById('dropdownMenu').classList.toggle('show')">
+      <img src="http://www.w3.org/2000/svg"/>
+<div id="dropdownMenu" class="dropdown-menu">
+ <div class="qr-code">
+          <img src="https://jfguztmagsdsunhychkl.supabase.co/storage/v1/object/sign/projectimages/QR%20code.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9mNjQ1YWM5OS03MjJiLTQ4NWYtYTcwYy0xYTUyZGRiMGZlMjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9qZWN0aW1hZ2VzL1FSIGNvZGUucG5nIiwiaWF0IjoxNzUwOTMzODkyLCJleHAiOjE4MzczMzM4OTJ9.d3gowv3zKoHXO2QkL74hyLmu2i4hol9RSsLe8rvPRbc" alt="QR Code" onclick="alert('Expand QR logic here')" />
+          <div><i class="fas fa-qrcode"></i> Signup URL</div>
+        </div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-adjust"></i> Theme Toggle</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-user-edit"></i> Enrich Your Profile</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-credit-card"></i> Plans & Payments</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-key"></i> Reset Password</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-info-circle"></i> About DrishiQ</div></div>
+        <div class="dropdown-item"><div class="dropdown-item-content"><i class="fas fa-sign-out-alt"></i> Log Out</div></div>
+      </div>
+    </div>
+  </div>      
+
+</div>
+    </div>
+  </div>
+</header>
+
+<div class="motivational-container">
+  <p class="typewriter line1"><strong>Sometimes, all you know is that something feels off — but not why.</strong></p>
+  <p class="typewriter line2"><strong>Other times, you know the problem, but not the way out.</strong></p>
+  <p class="typewriter line3"><strong>Clarity isn’t found — it’s created.</strong></p>
+
+  <a href="/app" class="glow-button">Click here to experience it</a>
+</div>
+
+
+<section style="background: linear-gradient(#092e18, #F2F2F2), url('https://via.placeholder.com/1200x600');  height: 150px; /* or auto if content-driven */;   min-width: 1200px;background-size: cover;   background-position: center;   color: #FFFFFF;   text-align: center;   padding: 5rem 1rem; margin-top: 24px; border-top: 0px solid #FFFFFF; border-bottom: 0px solid #0B4422;">
+
+    <div class="container">
+      <h2 class="section-title" style= "color:#0B4422; margin-top: -2.5rem;">Feeling Lost or Overwhelmed?</h2>
+      <p style="color:#FFD700; font-size:1.2rem;"><p>DrishiQ helps you find solution by organizing your thoughts, confronting your challenges, and gaining clarity</p> <p>through intelligent, unbiased conversation.</p>
+	<div class="nav-right" style="display: flex;align-items:center; justify-content: center; margin-top: 50px; gap: 1rem">
+        <a href="/app" class="button">Submit your details to receive our next invitation</a>
+        </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title" style= "margin-top: -2.5rem; color: #0B4422;";>DrishiQ?</h2>
+      <p>DrishiQ is your smart, emotional, and intelligent companion — built to help you explore deep inside, organize thoughts, solve life challenges, and grow through intelligent, unbiased conversations. Whether you're stuck, stressed, or simply seeking direction, DrishiQ transforms confusion into clarity. No judgments, no noise — just thoughtful, powered guidance tailored to your needs.</p>
+      <p style= "color: #0B4422;">Discover mental clarity, emotional insight, and personal growth — <b>one meaningful conversation at a time.</b></p>
+    </div>
+  </section>
+
+  <section id="">
+    <div class="container" style= "margin-top: -180px;">
+      <h2 class="section-title">Areas We Help</h2>
+      <div class="features-grid"><div class="card" ><div class="card-content">"I’m stuck in a loop of overthinking."</div></div>
+        <div class="card"><div class="card-content">"I don’t know what I want anymore."</div></div>
+        <div class="card"><div class="card-content">"Everyone expects something different from me."</div></div>
+        <div class="card"><div class="card-content">"I feel like I can’t talk to anyone without being judged."</div></div>
+        <div class="card"><div class="card-content">"I want to improve my tennis forehand."</div></div>
+	<div class="card"><div class="card-content">"I need to interview for senior position what should I ask."</div></div>
+	<div class="card"><div class="card-content">"I feel like I can’t talk to anyone without being judged."</div></div>
+	<div class="card"><div class="card-content">"I am good at Science but not sure what to do next."</div></div>
+	<div class="card"><div class="card-content">"I am not sure if I continue with my marriage or not."</div></div>
+      </div>
+
+<p style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">
+  Want to explore how DrishiQ can help in your situation? 
+  <a href="/app" style="color: #0B4422; font-weight: 500; text-decoration: underline;">Click here</a>
+</p>
+
+<p style="text-align: center;margin-bottom: -2rem;color: #000080;">
+  Share your story to win a free session 
+  <a href="/blog" style="color: #000080; font-weight: 500; text-decoration: none;">
+    <span class="animated-arrow">→</span>
+  </a>
+</p>
+    </div>
+  </section>
+
+<section id="features" style="background:#F5F5F5; padding: 0.1rem 0;">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom: 3rem;">What Makes DrishiQ Different</h2>
+
+    <div class="features-grid features-cards">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200" alt="Clarity Feature" />
+        <div class="card-content">
+          <h3>Structured Self-Inquiry</h3>
+          <p>We guide you with intelligent, reflective questions—not advice.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200" alt="Matrix Feature" />
+        <div class="card-content">
+          <h3>Expectation Matrix</h3>
+          <p>Visualize who expects what from you—and why it matters.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200" alt="Voice Feature" />
+        <div class="card-content">
+          <h3>Voice + Multilingual</h3>
+          <p>Speak your truth in your language. DrishiQ understands.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center; margin-top: 3rem;">
+      Want to see this in action? <a href="/app" class="button">Talk to DrishiQ Now →</a>
+    </p>
+  </div>
+</section>
+
+
+
+
+  <section id="plan">
+
+
+
+
+     
+<section id="support">
+    <div class="container">
+      <h2 class="section-title" style= "margin-top: -3rem;color: #0B4422">Why do we need support?</h2>
+<p>We live in a world of increasing complexity. Each day, individuals silently battle emotional and mental weight:</p>
+
+<p>These dilemmas may appear personal, but their consequences are universal—burnout, fractured relationships, depression, disengagement.</p>
+
+</p>The truth? Most of these issues stem not from lack of solutions but from a lack of clarity.</p>
+
+      <ol style="font-size: 1.1rem; items-align:center;">
+        <li>- step : A student unsure whether to pursue passion or stability.</li>
+        <li>- step : A working mother who can’t find space for her own needs.</li>
+        <li>- step : A job-seeker paralyzed by fear of making the wrong choice.</li>
+	<li>- step : A buiness man need to set targets for his sebior employee.</li>      
+</ol>
+     <br> <p style="text-align:center; color: #0B4422"; margin-top: 0.1rem;margin-bottom:-2rem;">
+        DrishiQ is not a therapy.—<strong>It’s not an advice.</strong> DrishiQ is a guided understanding. <strong>Join a movement today</strong>-><a href="/app" class="button">Support us</a>
+      </p>
+    </div>
+  </section>
+
+
+<section id="blog" style="background:#f5f5f5; margin-top: 6px; padding-top: 0.1rem;">
+  <div class="container">
+    <h2 class="section-title" style="margin-bottom: 2.5rem;">Insights from the Blog</h2>
+
+    <div class="blog-grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x200" alt="Blog 1" />
+        <div class="card-content">
+          <h3>How to Make Better Life Decisions</h3>
+          <p>Discover how structured reflection can improve your choices.</p>
+          <a href="#">Read more →</a>
+        </div>
+      </div>
+<div class="card">
+          <img src="https://via.placeholder.com/400x200" alt="Blog 2" />
+          <div class="card-content">
+            <h3>Signs You Need a Self-Reflection Tool</h3>
+            <p>Clarity often starts with awareness. Are you ignoring the signs?</p>
+            <a href="#">Read more →</a>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top: 1rem; margin-bottom: -1rem;">
+        <a href="/blog" class="button">Read More Blog Articles →</a>
+      </p>
+    </div>
+  </section>
+
+<section id="testimonials" style="background:#ffffff; margin-top: -20px; padding-top: 0.1rem;">
+    <div class="container" style= "margin-top: -30px";>
+      <h2 class="section-title">What Users Say</h2>
+      <p style="text-align:center; margin-bottom: 0.4rem;">
+        More user stories coming soon → <a href="/testimonials">Read All Testimonials</a></p>
+
+      <div class="testimonial">“I felt like I was talking to someone who really listened. I got clarity, not advice.”</div>
+      <div class="testimonial">“I walked in confused, walked out with a plan. This was different.”</div>
+
+<p style="text-align:center; margin-bottom: -3rem;">
+Your journey with DrishiQ can inspire others.→ <a href="/testimonials">Want to share it?</a>
+      </p>
+    </div>
+  </section>
+
+  
+
+  <section class="cta-section" style= "margin-bottom: -0.5rem"; "margin-top: -3rem";>
+<h2 class="section-title" style= "margin-top: -1.8rem;">Ready to Clear the Mental Fog?</h2>
+     <p>Start a session with DrishiQ and experience clarity through intelligent reflection.</p>
+    <a href="/app">Start Session</a>
+  </section>
+
+
+
+<!-- 📢 Footer Takeover Ad -->
+<div id="footerTakeoverAd">
+  <div>
+    🎁 <strong>Special Clarity Boost</strong> — <a href="/promo">Claim Now</a>
+  </div>
+  <button onclick="hideTakeoverAd()">✖</button>
+</div>
+
+<!-- 📢 Floating Banner -->
+<div id="floatingFooterAd">
+  🚀 DrishiQ Premium: Unlock deeper insights!
+  <a href="/plans">View Plans</a>
+  <button onclick="hideFloatingAd()">✖</button>
+</div>
+  <footer>
+<footer>
+<!-- Social + Profile Icon (Center) -->
+<div class="social-profile">
+  <div class="social-links">
+    <a href="#">📘</a>
+    <a href="#">🔗</a>
+    <a href="#">📸</a>
+  </div>
+</div>
+<a href="#language">🌐 Language</a> |
+    <a href="/terms">Terms & Conditions / Privacy Policy</a>
+  <p>support@drishiq.com | © 2025 DrishiQ</p>
+</footer>
+<!-- JS Logic -->
+
+<script>
+const showTakeoverAd = false;
+
+window.addEventListener('load', () => {
+  const takeoverAd = document.getElementById('footerTakeoverAd');
+
+  if (showTakeoverAd) {
+    takeoverAd.style.display = 'flex';
+  } else {
+    takeoverAd.style.display = 'none';
+  }
+});
+  }
+</script>
+
+<script>
+  const showFloatingAd = true;       // Set to false to disable the ad entirely
+  const adDelay = 5000;              // Delay before showing the ad (in ms)
+  const autoHide = false;            // Set to true if you want it to disappear automatically
+  const hideAfter = 10000;           // How long the ad stays visible (in ms) if autoHide is true
+
+  function showFloatingFooterAd() {
+    const ad = document.getElementById('floatingFooterAd');
+    ad.style.display = 'flex';
+    
+    if (autoHide) {
+      setTimeout(() => {
+        ad.style.display = 'none';
+      }, hideAfter);
+    }
+  }
+
+  function hideFloatingAd() {
+    document.getElementById('floatingFooterAd').style.display = 'none';
+  }
+
+  window.addEventListener('load', () => {
+    if (showFloatingAd) {
+      setTimeout(showFloatingFooterAd, adDelay);
+    }
+  });
+</script>
+
+<script>
+  const adDelay = 3000; // 3 seconds
+
+  function shouldShowFloatingAd() {
+    // Your custom logic — return false to suppress ad
+    const isOnHomepage = window.location.pathname === "/";
+    const userType = "guest"; // Example: you could fetch this from login/session
+
+    return isOnHomepage && userType === "guest";
+  }
+
+  function showFloatingAd() {
+    if (
+      shouldShowFloatingAd() &&
+      !sessionStorage.getItem('floatingAdDismissed')
+    ) {
+      document.getElementById('floatingFooterAd').style.display = 'flex';
+    }
+  }
+
+  function hideFloatingAd() {
+    document.getElementById('floatingFooterAd').style.display = 'none';
+    sessionStorage.setItem('floatingAdDismissed', 'true');
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(showFloatingAd, adDelay);
+  });
+</script>
+
+<script>
+  setTimeout(() => {
+    const el = document.querySelector('.motivational-line');
+    el.classList.add('glow');
+    el.style.width = 'auto'; // ensure width stays fixed
+    el.style.borderRight = 'none'; // just in case
+
+    // remove the blinking cursor
+    el.classList.remove('typing');
+    el.style.setProperty('--hide-cursor', 'true');
+    el.querySelector('::after')?.remove();
+  }, 4000); // start glow after typing ends
+</script>
+
+
+</body>
+</html>
