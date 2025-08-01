@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import BannerCarousel from '../components/BannerCarousel';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import Footer from '../components/FooterUpdated';
+import HeaderUpdated from '../components/HeaderUpdated';
 import LandingBlogCards from '../components/LandingBlogCards';
 import { LanguageProvider, useLanguage } from '../lib/drishiq-i18n';
 
 function HomePageContent() {
   const [animationStage, setAnimationStage] = useState(0);
+  const [currentMessage, setCurrentMessage] = useState(0);
   const router = useRouter();
   const { t, isLoading } = useLanguage();
 
@@ -41,19 +42,28 @@ function HomePageContent() {
     return () => timers.forEach(clearTimeout);
   }, []);
 
+  // Animation for rolling messages
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMessage((prev) => (prev + 1) % 6); // 6 messages total
+    }, 5000); // 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   if (isLoading) return null;
 
   const handleExperienceClick = () => {
-    router.push('/sessions');
+    router.push('/invitation');
   };
 
   return (
     <>
-      <Header />
-      <div className="flex-grow pt-20">
+      <HeaderUpdated />
+      <div className="flex-grow" style={{ marginTop: '-16px' }}>
         <style jsx>{`
           .container {
-            max-width: 1100px;
+            max-width: 1400px;
             margin: auto;
             padding: 2rem;
           }
@@ -310,30 +320,201 @@ function HomePageContent() {
         .area-card:hover::before {
           left: 0;
         }
+
+        /* Animation Styles for Rolling Messages */
+        .animated-message {
+          animation: fadeOutIn 1s ease-in-out;
+        }
+
+        @keyframes fadeOutIn {
+          0% { opacity: 0; transform: translateY(10px); }
+          50% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+
         `}</style>
 
-        {/* Hero Section with Typewriter Animation */}
-        <div className="motivational-container" style={{ marginBottom: '3rem', position: 'relative', zIndex: 10 }}>
-          <p className="typewriter line1 show">
-            <strong>{t('motivational.line1')}</strong>
-          </p>
-          <p className="typewriter line2 show">
-            <strong>{t('motivational.line2')}</strong>
-          </p>
-          <p className="typewriter line3 show">
-            <strong>{t('motivational.line3')}</strong>
-          </p>
-          <button onClick={() => router.push('/invitation')} className="glow-button" style={{ marginBottom: '8px', position: 'relative', zIndex: 15 }}>
-            ✨ {t('motivational.experience_button')}
-          </button>
-        </div>
-        <div style={{ marginTop: '2rem' }}>
+        {/* Hero Section with Rolling Message Animation */}
+                    <section className="hero-section">
+          <div className="message-roller">
+            <div className="animated-message" style={{ display: currentMessage === 0 ? 'block' : 'none' }}>
+                            <h1>
+                Something feels off — and you can't quite name it.
+              </h1>
+              <p>
+                Discover with Drishiq the spaces that remain unexplored.
+              </p>
+                             <button 
+                 onClick={() => router.push('/invitation')}
+                 className="banner-cta-button" 
+                 style={{ 
+                   background: '#0B4422',
+                   color: '#fff',
+                   padding: '0.8rem 2rem',
+                   border: 'none',
+                   borderRadius: '25px',
+                   fontSize: '1.1rem',
+                   fontWeight: '600',
+                   cursor: 'pointer',
+                   display: 'inline-block',
+                   transition: 'all 0.3s ease',
+                   boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                   textDecoration: 'none'
+                 }}
+               >
+                 🔍 Look Deeper
+                </button>
+            </div>
+            <div className="animated-message" style={{ display: currentMessage === 1 ? 'block' : 'none' }}>
+              <h1>
+                The problem is clear, the path isn't.
+              </h1>
+              <p>
+                Trace the blurry parts. Drishiq walks beside you through the unclear.
+              </p>
+                             <button 
+                 onClick={() => router.push('/invitation')}
+                 className="banner-cta-button" 
+                 style={{ 
+                   background: '#0B4422',
+                   color: '#fff',
+                   padding: '0.8rem 2rem',
+                   border: 'none',
+                   borderRadius: '25px',
+                   fontSize: '1.1rem',
+                   fontWeight: '600',
+                   cursor: 'pointer',
+                   display: 'inline-block',
+                   transition: 'all 0.3s ease',
+                   boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                   textDecoration: 'none'
+                 }}
+               >
+                 🌟 Experience Edges
+               </button>
+            </div>
+            <div className="animated-message" style={{ display: currentMessage === 2 ? 'block' : 'none' }}>
+              <h1>
+                You're tired of pretending it's all okay.
+              </h1>
+              <p>
+                You don't have to carry that alone. Let Drishiq be with you in what's real.
+              </p>
+                             <button 
+                 onClick={() => router.push('/invitation')}
+                 className="banner-cta-button" 
+                 style={{ 
+                   background: '#0B4422',
+                   color: '#fff',
+                   padding: '0.8rem 2rem',
+                   border: 'none',
+                   borderRadius: '25px',
+                   fontSize: '1.1rem',
+                   fontWeight: '600',
+                   cursor: 'pointer',
+                   display: 'inline-block',
+                   transition: 'all 0.3s ease',
+                   boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                   textDecoration: 'none'
+                 }}
+               >
+                 👤 Meet Yourself
+               </button>
+            </div>
+            <div className="animated-message" style={{ display: currentMessage === 3 ? 'block' : 'none' }}>
+              <h1>
+                You don't need a fix. You just need a moment that sees you.
+              </h1>
+              <p>
+                Work with Drishiq to let yourself be seen — not fixed, not judged.
+              </p>
+                             <button 
+                 onClick={() => router.push('/invitation')}
+                 className="banner-cta-button" 
+                 style={{ 
+                   background: '#0B4422',
+                   color: '#fff',
+                   padding: '0.8rem 2rem',
+                   border: 'none',
+                   borderRadius: '25px',
+                   fontSize: '1.1rem',
+                   fontWeight: '600',
+                   cursor: 'pointer',
+                   display: 'inline-block',
+                   transition: 'all 0.3s ease',
+                   boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                   textDecoration: 'none'
+                 }}
+               >
+                 💪 Stand Tall
+               </button>
+            </div>
+            <div className="animated-message" style={{ display: currentMessage === 4 ? 'block' : 'none' }}>
+              <h1>
+                Let's begin — gently.
+              </h1>
+              <p>
+                This isn't a leap. Just a quiet step — when you're ready.
+              </p>
+                             <button 
+                 onClick={() => router.push('/invitation')}
+                 className="banner-cta-button" 
+                 style={{ 
+                   background: '#0B4422',
+                   color: '#fff',
+                   padding: '0.8rem 2rem',
+                   border: 'none',
+                   borderRadius: '25px',
+                   fontSize: '1.1rem',
+                   fontWeight: '600',
+                   cursor: 'pointer',
+                   display: 'inline-block',
+                   transition: 'all 0.3s ease',
+                   boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                   textDecoration: 'none'
+                 }}
+               >
+                 🚀 Let's Begin
+               </button>
+            </div>
+            <div className="animated-message" style={{ display: currentMessage === 5 ? 'block' : 'none' }}>
+              <h1>
+                You're trying, but not convinced.
+              </h1>
+              <p>
+                Sometimes it's a hitch. Sometimes it's skill. Sometimes just support. Let's see what it is in your case.
+              </p>
+                             <button 
+                 onClick={() => router.push('/invitation')}
+                 className="banner-cta-button" 
+                 style={{ 
+                   background: '#0B4422',
+                   color: '#fff',
+                   padding: '0.8rem 2rem',
+                   border: 'none',
+                   borderRadius: '25px',
+                   fontSize: '1.1rem',
+                   fontWeight: '600',
+                   cursor: 'pointer',
+                   display: 'inline-block',
+                   transition: 'all 0.3s ease',
+                   boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                   textDecoration: 'none'
+                 }}
+               >
+                 🤝 Drishiq Can Help
+               </button>
+            </div>
+          </div>
+        </section>
+        <div style={{ marginTop: '0' }}>
           <BannerCarousel />
         </div>
         {/* About Section */}
         <section id="about" className="section" style={{ 
           background: '#fff',
-          marginBottom: '-30px',
+          marginBottom: '-66px',
           paddingTop: 'calc(3rem - 20px)',
           paddingBottom: 'calc(3rem - 20px)',
           scrollMarginTop: '80px'
@@ -355,9 +536,9 @@ function HomePageContent() {
                 {t('about.heading')}
               </span>
             </h2>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>{t('about.description1')}</p>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>{t('about.description2')}</p>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem', color: '#374151', fontWeight: '400' }}>{t('about.description1')}</p>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem', color: '#374151', fontWeight: '400' }}>{t('about.description2')}</p>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '1.5rem', color: '#374151', fontWeight: '400' }}>
               {t('about.description3.prefix')} 🌟 
               <button 
                 onClick={() => router.push('/invitation')} 
@@ -382,7 +563,7 @@ function HomePageContent() {
 
         <section className="section" style={{ 
           background: '#f5f5f5', 
-          marginTop: '-2rem', 
+          marginTop: '-3rem', 
           paddingTop: '2rem', 
           paddingBottom: '2rem',
           minHeight: '400px',
@@ -589,8 +770,15 @@ function HomePageContent() {
                   <h3 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '1rem', color: '#0B4422' }}>
                     🧠 {t('features.card1.title')}
                   </h3>
-                  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#374151' }}>
-                    {t('features.card1.description')}
+                  <div style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', fontWeight: '400' }}>
+                    {t('features.card1.description').split('\n').map((line, index) => (
+                      <div key={index} style={{ marginBottom: '0.75rem' }}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                  <p style={{ fontSize: '1.05rem', fontStyle: 'italic', color: '#6b7280', marginTop: '1.5rem', fontWeight: '400' }}>
+                    💬 "Finally, something that listens without jumping to conclusions."
                   </p>
                 </div>
               </div>
@@ -598,10 +786,17 @@ function HomePageContent() {
               <div className="card">
                 <div className="card-content">
                   <h3 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '1rem', color: '#0B4422' }}>
-                    🤝 {t('features.card2.title')}
+                    🌍 {t('features.card2.title')}
                   </h3>
-                  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#374151' }}>
-                    {t('features.card2.description')}
+                  <div style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', fontWeight: '400' }}>
+                    {t('features.card2.description').split('\n').map((line, index) => (
+                      <div key={index} style={{ marginBottom: '0.75rem' }}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                  <p style={{ fontSize: '1.05rem', fontStyle: 'italic', color: '#6b7280', marginTop: '1.5rem', fontWeight: '400' }}>
+                    🌐 "Feels like it was built for me — in my language, my way."
                   </p>
                 </div>
               </div>
@@ -609,21 +804,46 @@ function HomePageContent() {
               <div className="card">
                 <div className="card-content">
                   <h3 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '1rem', color: '#0B4422' }}>
-                    🌍 {t('features.card3.title')}
+                    🗣️ {t('features.card3.title')}
                   </h3>
-                  <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#374151' }}>
-                    {t('features.card3.description')}
+                  <div style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', fontWeight: '400' }}>
+                    {t('features.card3.description').split('\n').map((line, index) => (
+                      <div key={index} style={{ marginBottom: '0.75rem' }}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                  <p style={{ fontSize: '1.05rem', fontStyle: 'italic', color: '#6b7280', marginTop: '1.5rem', fontWeight: '400' }}>
+                    🎧 "It understood what I couldn't even explain in words."
+                  </p>
+                </div>
+              </div>
+
+              <div className="card">
+                <div className="card-content">
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '1rem', color: '#0B4422' }}>
+                    🤝 {t('features.card4.title')}
+                  </h3>
+                  <div style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', fontWeight: '400' }}>
+                    {t('features.card4.description').split('\n').map((line, index) => (
+                      <div key={index} style={{ marginBottom: '0.75rem' }}>
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                  <p style={{ fontSize: '1.05rem', fontStyle: 'italic', color: '#6b7280', marginTop: '1.5rem', fontWeight: '400' }}>
+                    ❤️ "Even when I couldn't pay, someone had my back."
                   </p>
                 </div>
               </div>
             </div>
 
-            <p style={{ textAlign: 'center', marginTop: '2rem', fontSize: '1.2rem', color: '#0B4422', fontStyle: 'italic' }}>
+            <p style={{ textAlign: 'center', marginTop: '2.5rem', fontSize: '1.2rem', color: '#0B4422', fontStyle: 'italic', fontWeight: '400' }}>
               {t('features.cta_description')}
             </p>
 
-            <p style={{ textAlign: 'center', marginTop: '3rem' }}>
-              {t('features.try_now_cta')} <span onClick={() => router.push('/invitation')} className="button" style={{ cursor: 'pointer' }}>{t('features.try_now_button')}</span>
+            <p style={{ textAlign: 'center', marginTop: 'calc(3rem - 70px)', fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', fontWeight: '400' }}>
+              {t('features.try_now_cta')} <button onClick={() => router.push('/invitation')} className="banner-cta-button" style={{ cursor: 'pointer', background: '#0B4422', color: '#fff', padding: '0.8rem 2rem', border: 'none', borderRadius: '25px', fontSize: '1.1rem', fontWeight: '600', display: 'inline-block', transition: 'all 0.3s ease', boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)', textDecoration: 'none' }}>{t('features.try_now_button')}</button>
             </p>
           </div>
         </section>
@@ -634,13 +854,13 @@ function HomePageContent() {
             <h2
               className="section-title"
               style={{ marginTop: '-2.5rem', marginBottom: '2.5rem', cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent', transition: 'text-decoration-color 0.3s' }}
-              onClick={() => router.push('/support-details')}
+              onClick={() => router.push('/support-in-need')}
               onMouseEnter={e => (e.currentTarget.style.textDecorationColor = '#0B4422')}
               onMouseLeave={e => (e.currentTarget.style.textDecorationColor = 'transparent')}
             >
               {t('support.heading')}
             </h2>
-            <p style={{ fontSize: '1.2rem', color: '#374151', marginBottom: '2rem' }}>
+            <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', marginBottom: '2.5rem', fontWeight: '400' }}>
               {t('support.description')}
             </p>
 
@@ -665,34 +885,35 @@ function HomePageContent() {
                 width: '100%'
               }}>
                 <p style={{ fontSize: '1.1rem', marginBottom: '1rem', color: '#0B4422', fontWeight: '600' }}>
-                    <span style={{ fontSize: '1.2rem', fontWeight: 300, color: '#1a1a1a', display: 'block', marginBottom: '1rem', lineHeight: '1.6' }}>
+                    <span style={{ fontSize: '1.15rem', fontWeight: 400, color: '#374151', display: 'block', marginBottom: '1.5rem', lineHeight: '1.7' }}>
                       🫖 {t('support.chai_seller_story')}
                     </span>
-                    <span style={{ fontSize: '1.2rem', fontWeight: 300, color: '#1a1a1a', display: 'block', marginBottom: '1rem', lineHeight: '1.6' }}>
+                    <span style={{ fontSize: '1.15rem', fontWeight: 400, color: '#374151', display: 'block', marginBottom: '1.5rem', lineHeight: '1.7' }}>
                       🛡️ {t('support.security_guard_story')}
                     </span>
-                    <span style={{ fontSize: '1.2rem', fontWeight: 300, color: '#1a1a1a', display: 'block', marginBottom: '1rem', lineHeight: '1.6' }}>
+                    <span style={{ fontSize: '1.15rem', fontWeight: 400, color: '#374151', display: 'block', marginBottom: '1.5rem', lineHeight: '1.7' }}>
                       🎓 {t('support.college_student_story')}
                     </span>
                 </p>
-                <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: '#374151' }}>
+                <p style={{ fontSize: '1.15rem', lineHeight: '1.7', fontStyle: 'italic', color: '#374151', fontWeight: '400' }}>
                   {t('support.not_looking_for_sympathy')}
                 </p>
               </div>
             </div>
 
             <p style={{
-              fontSize: '1.2rem',
+              fontSize: '1.15rem',
+              lineHeight: '1.7',
               color: '#374151',
-              marginTop: '2rem',
-              marginBottom: '2rem',
-              fontWeight: '500',
+              marginTop: '2.5rem',
+              marginBottom: '2.5rem',
+              fontWeight: '400',
               textAlign: 'center'
             }}>
               {t('support.sponsorship_description')}
             </p>
 
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
               <h3 style={{
                 fontSize: '1.8rem',
                 color: '#0B4422',
@@ -702,21 +923,25 @@ function HomePageContent() {
                 🎁 {t('support.sponsor_moment_heading')}
               </h3>
               <button
-                onClick={() => router.push('/support-details')}
-                className="glow-button"
+                onClick={() => router.push('/support-in-need')}
+                className="banner-cta-button"
                 style={{
                   fontSize: '1.1rem',
-                  padding: '0.8rem 1.5rem',
+                  padding: '0.8rem 2rem',
                   marginTop: '0.5rem',
-                  background: 'linear-gradient(45deg, #ffffff, #f0f9ff)',
-                  color: '#0B4422',
+                  background: '#0B4422',
+                  color: '#fff',
                   border: 'none',
-                  borderRadius: '50px',
-                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
-                  fontWeight: 600
+                  borderRadius: '25px',
+                  boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'inline-block',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none'
                 }}
               >
-                🔗 {t('support.become_supporter')}
+                💝 {t('support.become_supporter')}
               </button>
             </div>
           </div>
@@ -737,14 +962,14 @@ function HomePageContent() {
 
             <LandingBlogCards />
             
-            <p style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '1rem' }}>
-              <button onClick={() => router.push('/blog')} className="glow-button">{t('blog.read_more_button')}</button>
+            <p style={{ textAlign: 'center', marginTop: 'calc(2rem - 20px - 24px)', marginBottom: 'calc(1rem - 20px)' }}>
+              <button onClick={() => router.push('/blog')} className="banner-cta-button" style={{ background: '#0B4422', color: '#fff', padding: '0.8rem 2rem', border: 'none', borderRadius: '25px', fontSize: '1.1rem', fontWeight: '600', cursor: 'pointer', display: 'inline-block', transition: 'all 0.3s ease', boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)', textDecoration: 'none' }}>{t('blog.read_more_button')}</button>
             </p>
           </div>
         </section>
 
         {/* Testimonials Section */}
-        <section id="testimonials-usersay" className="section" style={{ background: '#f5f5f5', padding: '3rem 2rem', scrollMarginTop: '80px' }}>
+        <section id="testimonials-usersay" className="section" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', padding: '4rem 2rem calc(2rem - 16px)', scrollMarginTop: '80px' }}>
           <div className="container" style={{ marginTop: '-10px' }}>
             <h2
               className="section-title"
@@ -755,20 +980,226 @@ function HomePageContent() {
             >
               {t('testimonials.heading')}
             </h2>
-            <p style={{ textAlign: 'center', marginBottom: '0.4rem' }}>
-              🔗 {t('testimonials.real_stories')}
+            <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: '#374151', textAlign: 'center' }}>
+              ✨ {t('testimonials.real_stories')}
             </p>
 
-            <div className="testimonial">
-              {t('testimonials.story1')}
-            </div>
-            <div className="testimonial">
-              {t('testimonials.story2')}
+            {/* Enhanced Testimonials Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+              gap: '2rem',
+              marginBottom: '2rem'
+            }}>
+              {/* Testimonial Card 1 */}
+              <div style={{
+                background: 'white',
+                borderRadius: '20px',
+                padding: '2rem',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                border: '1px solid #e5e7eb',
+                position: 'relative',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(11, 68, 34, 0.15)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+              }}
+              onClick={() => router.push('/testimonials')}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: '-10px',
+                  left: '20px',
+                  background: '#0B4422',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '20px',
+                  fontSize: '0.8rem',
+                  fontWeight: '600'
+                }}>
+                  🌟 Featured Story
+                </div>
+                
+                <div style={{ marginTop: '1rem' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: '1rem'
+                  }}>
+                    <div style={{
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '50%',
+                      background: '#0B4422',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'white',
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold',
+                      marginRight: '1rem'
+                    }}>
+                      S
+                    </div>
+                    <div>
+                      <h4 style={{ margin: '0', color: '#0B4422', fontWeight: '600' }}>Sarah M.</h4>
+                      <p style={{ margin: '0', color: '#6b7280', fontSize: '0.9rem' }}>Student, 22</p>
+                    </div>
+                  </div>
+                  
+                  <div style={{
+                    fontSize: '1.1rem',
+                    lineHeight: '1.6',
+                    color: '#374151',
+                    fontStyle: 'italic',
+                    marginBottom: '1rem'
+                  }}>
+                    "{t('testimonials.story1')}"
+                  </div>
+                  
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}>
+                    <div style={{ display: 'flex', color: '#fbbf24' }}>
+                      {'★'.repeat(5)}
+                    </div>
+                    <span style={{ color: '#6b7280', fontSize: '0.9rem' }}>Verified User</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial Card 2 */}
+              <div style={{
+                background: 'white',
+                borderRadius: '20px',
+                padding: '2rem',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                border: '1px solid #e5e7eb',
+                position: 'relative',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(11, 68, 34, 0.15)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+              }}
+              onClick={() => router.push('/testimonials')}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: '-10px',
+                  left: '20px',
+                  background: '#0B4422',
+                  color: 'white',
+                  padding: '0.5rem 1rem',
+                  borderRadius: '20px',
+                  fontSize: '0.8rem',
+                  fontWeight: '600'
+                }}>
+                  💡 Clarity Found
+                </div>
+                
+                <div style={{ marginTop: '1rem' }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: '1rem'
+                  }}>
+                    <div style={{
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '50%',
+                      background: '#0B4422',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'white',
+                      fontSize: '1.5rem',
+                      fontWeight: 'bold',
+                      marginRight: '1rem'
+                    }}>
+                      M
+                    </div>
+                    <div>
+                      <h4 style={{ margin: '0', color: '#0B4422', fontWeight: '600' }}>Michael R.</h4>
+                      <p style={{ margin: '0', color: '#6b7280', fontSize: '0.9rem' }}>Professional, 34</p>
+                    </div>
+                  </div>
+                  
+                  <div style={{
+                    fontSize: '1.1rem',
+                    lineHeight: '1.6',
+                    color: '#374151',
+                    fontStyle: 'italic',
+                    marginBottom: '1rem'
+                  }}>
+                    "{t('testimonials.story2')}"
+                  </div>
+                  
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}>
+                    <div style={{ display: 'flex', color: '#fbbf24' }}>
+                      {'★'.repeat(5)}
+                    </div>
+                    <span style={{ color: '#6b7280', fontSize: '0.9rem' }}>Verified User</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <p style={{ textAlign: 'center', marginBottom: '-1rem' }}>
-              {t('testimonials.one_story')} <Link href="/testimonials">{t('testimonials.share_story')}</Link>
-            </p>
+            {/* Call to Action */}
+            <div style={{
+              textAlign: 'center',
+              background: '#0B4422',
+              borderRadius: '15px',
+              padding: '2rem',
+              color: 'white',
+              marginTop: '2rem'
+            }}>
+              <h3 style={{ margin: '0 0 1rem 0', fontSize: '1.3rem', color: 'white' }}>
+                {t('testimonials.one_story').replace(' —', '')}
+              </h3>
+              <button 
+                onClick={() => router.push('/testimonials')}
+                style={{
+                  background: 'white',
+                  color: '#0B4422',
+                  border: 'none',
+                  padding: '0.8rem 2rem',
+                  borderRadius: '25px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 15px rgba(255,255,255,0.3)'
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(255,255,255,0.4)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(255,255,255,0.3)';
+                }}
+              >
+                ✨ {t('testimonials.share_story')}
+              </button>
+            </div>
           </div>
         </section>
 
@@ -777,16 +1208,16 @@ function HomePageContent() {
           <h2
             className="section-title"
             style={{ marginTop: 'calc(-2.5rem + 15px)', cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent', transition: 'text-decoration-color 0.3s' }}
-            onClick={() => router.push('/payment')}
+            onClick={() => router.push('/invitation')}
             onMouseEnter={e => (e.currentTarget.style.textDecorationColor = '#0B4422')}
             onMouseLeave={e => (e.currentTarget.style.textDecorationColor = 'transparent')}
           >
             {t('cta.heading')}
           </h2>
-          <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: '#374151' }}>
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2.5rem', color: '#374151', fontWeight: '400' }}>
             {t('cta.every_day_someone_stuck')}
           </p>
-          <p style={{ fontSize: '1.1rem', marginBottom: '2rem', color: '#374151' }}>
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2.5rem', color: '#374151', fontWeight: '400' }}>
             {t('cta.they_might_be')}
           </p>
 
@@ -812,25 +1243,29 @@ function HomePageContent() {
               <h3 style={{ fontSize: '1.4rem', color: '#0B4422', marginBottom: '1rem', fontWeight: '600' }}>
                 💚 {t('cta.if_you_can_give')}
               </h3>
-              <p style={{ fontSize: '1rem', color: '#374151', marginBottom: '1rem' }}>
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', marginBottom: '1.5rem', fontWeight: '400' }}>
                 {t('cta.a_quiet_shift')}
               </p>
-              <p style={{ fontSize: '1rem', color: '#374151', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', marginBottom: '2rem', fontWeight: '400' }}>
                 {t('cta.your_donation_helps_us')}
               </p>
               <button 
-                onClick={() => router.push('/payment')} 
-                className="glow-button"
+                onClick={() => router.push('/support-in-need')} 
+                className="banner-cta-button"
                 style={{ 
                   fontSize: '1.1rem', 
-                  padding: '0.8rem 1.5rem',
+                  padding: '0.8rem 2rem',
                   marginTop: '0.5rem',
-                  background: 'linear-gradient(45deg, #ffffff, #f0f9ff)',
-                  color: '#0B4422',
+                  background: '#0B4422',
+                  color: '#fff',
                   border: 'none',
-                  borderRadius: '50px',
-                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
-                  fontWeight: 600
+                  borderRadius: '25px',
+                  boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'inline-block',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none'
                 }}
               >
                 🎁 {t('cta.sponsor_session')} →
@@ -851,25 +1286,29 @@ function HomePageContent() {
               <h3 style={{ fontSize: '1.4rem', color: '#0B4422', marginBottom: '1rem', fontWeight: '600' }}>
                 🌱 {t('cta.if_you_need_help')}
               </h3>
-              <p style={{ fontSize: '1rem', color: '#374151', marginBottom: '1rem' }}>
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', marginBottom: '1.5rem', fontWeight: '400' }}>
                 {t('cta.cant_afford_session')}
               </p>
-              <p style={{ fontSize: '1rem', color: '#374151', marginBottom: '1.5rem' }}>
+              <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', marginBottom: '2rem', fontWeight: '400' }}>
                 {t('cta.tell_us_challenge')}
               </p>
               <button 
-                onClick={() => router.push('/supportdetails')} 
-                className="glow-button"
+                onClick={() => router.push('/invitation')} 
+                className="banner-cta-button"
                 style={{ 
                   fontSize: '1.1rem', 
-                  padding: '0.8rem 1.5rem',
+                  padding: '0.8rem 2rem',
                   marginTop: '0.5rem',
-                  background: 'linear-gradient(45deg, #ffffff, #f0f9ff)',
-                  color: '#0B4422',
+                  background: '#0B4422',
+                  color: '#fff',
                   border: 'none',
-                  borderRadius: '50px',
-                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
-                  fontWeight: 600
+                  borderRadius: '25px',
+                  boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'inline-block',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none'
                 }}
               >
                 ✍️ {t('cta.share_challenge')} →

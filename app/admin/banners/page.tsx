@@ -13,7 +13,7 @@ const initialBanners = [
     image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImhvcGUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZjhmOGY4O3N0b3Atb3BhY2l0eTowLjkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmZmY7c3RvcC1vcGFjaXR5OjAuNyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjaG9wZSkiLz48cmVjdCB4PSIyMCUiIHk9IjMwJSIgd2lkdGg9IjYwJSIgaGVpZ2h0PSI0MCUiIHJ4PSI1IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjkiLz48Y2lyY2xlIGN4PSIzMCUiIGN5PSI2MCUiIHI9IjEwIiBmaWxsPSIjMzMzIi8+PHBhdGggZD0iTTI1JSA2MCUgUTMwJSA1MCAzNSUgNjAlIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjx0ZXh0IHg9IjMwJSIgeT0iNDAlIiBmb250LWZhbWlseT0iQ291cmllciIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SGVscDwvdGV4dD48L3N2Zz4=',
     title: '💬 Can\'t Pay? Your Challenge Still Matters.',
     text: 'Struggling to figure things out but can\'t afford a session? We hear you. At DrishiQ, no voice goes unheard. Share your challenge — and we\'ll try to connect you with a sponsored session.',
-    cta: { label: '📝 Submit Your Challenge for Support', link: '/supportdetails' }
+            cta: { label: '📝 Submit Your Challenge for Support', link: '/support-in-need' }
   },
   {
     image: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cmFkaWFsR3JhZGllbnQgaWQ9ImdpZnQiIGN4PSIwLjUiIGN5PSIwLjUiIHI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmZjM5OTtzdG9wLW9wYWNpdHk6MC45Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmO3N0b3Atb3BhY2l0eTowIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNnaWZ0KSIvPjxjaXJjbGUgY3g9IjM1JSIgY3k9IjQwJSIgcj0iMTUiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSI2NSUiIGN5PSI0MCUiIHI9IjE1IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTM1JSA0MCUgUTUwJSAzMCUgNjUlIDQwJSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSI1MCUiIGN5PSIzMCUiIHI9IjgiIGZpbGw9IiNmZmYzOTkiLz48dGV4dCB4PSI1MCUiIHk9IjU1JSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5HaWZ0PC90ZXh0Pjwvc3ZnPg==',
@@ -332,7 +332,7 @@ export default function BannerAdminPage() {
                 
                 {/* Hidden file input */}
                 <input
-                  ref={el => fileInputRefs.current[idx] = el}
+                  ref={(el) => { fileInputRefs.current[idx] = el; }}
                   type="file"
                   accept="image/*"
                   onChange={(e) => handleFileSelect(idx, e)}

@@ -224,7 +224,7 @@ export default function AdminInvitationsDashboard() {
           </Link>
 
           <Link 
-            href="/admin/invitations/need-support"
+                            href="/admin/invitations/support-in-need"
             className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-400 hover:bg-green-50 transition-colors text-center"
           >
             <div className="text-green-600 mb-2">

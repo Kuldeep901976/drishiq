@@ -90,7 +90,7 @@ export default function TestInvitationsPage() {
         <ul className="space-y-2">
           <li><a href="/admin/invitations" className="text-blue-600 hover:underline">Main Invitation Dashboard</a></li>
           <li><a href="/admin/invitations/trial" className="text-blue-600 hover:underline">Trial Invitations</a></li>
-          <li><a href="/admin/invitations/need-support" className="text-blue-600 hover:underline">Need Support</a></li>
+                          <li><a href="/admin/invitations/support-in-need" className="text-blue-600 hover:underline">Need Support</a></li>
           <li><a href="/admin/invitations/testimonials" className="text-blue-600 hover:underline">Testimonials</a></li>
           <li><a href="/admin/invitations/bulk-uploaded" className="text-blue-600 hover:underline">Bulk Uploaded</a></li>
         </ul>
