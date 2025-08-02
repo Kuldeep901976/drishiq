@@ -625,18 +625,18 @@ export class DemoService {
       }
 
       // Calculate aggregated statistics
-      const totalInvitations = dailyStats?.reduce((sum, stat) => sum + stat.invitations_sent, 0) || 0;
-      const scheduledDemos = dailyStats?.reduce((sum, stat) => sum + stat.demos_scheduled, 0) || 0;
-      const completedDemos = dailyStats?.reduce((sum, stat) => sum + stat.demos_completed, 0) || 0;
+      const totalInvitations = dailyStats?.reduce((sum: number, stat: any) => sum + stat.invitations_sent, 0) || 0;
+      const scheduledDemos = dailyStats?.reduce((sum: number, stat: any) => sum + stat.demos_scheduled, 0) || 0;
+      const completedDemos = dailyStats?.reduce((sum: number, stat: any) => sum + stat.demos_completed, 0) || 0;
       const conversionRate = totalInvitations > 0 ? (completedDemos / totalInvitations) * 100 : 0;
-      const avgDuration = dailyStats?.reduce((sum, stat) => sum + stat.avg_duration_minutes, 0) / (dailyStats?.length || 1) || 0;
-      const avgEngagement = dailyStats?.reduce((sum, stat) => sum + stat.avg_engagement_score, 0) / (dailyStats?.length || 1) || 0;
-      const avgSatisfaction = dailyStats?.reduce((sum, stat) => sum + stat.avg_satisfaction_score, 0) / (dailyStats?.length || 1) || 0;
-      const avgNPS = dailyStats?.reduce((sum, stat) => sum + stat.avg_likelihood_to_recommend, 0) / (dailyStats?.length || 1) || 0;
-      const followUpsRequired = dailyStats?.reduce((sum, stat) => sum + stat.follow_ups_requested, 0) || 0;
+      const avgDuration = dailyStats?.reduce((sum: number, stat: any) => sum + stat.avg_duration_minutes, 0) / (dailyStats?.length || 1) || 0;
+      const avgEngagement = dailyStats?.reduce((sum: number, stat: any) => sum + stat.avg_engagement_score, 0) / (dailyStats?.length || 1) || 0;
+      const avgSatisfaction = dailyStats?.reduce((sum: number, stat: any) => sum + stat.avg_satisfaction_score, 0) / (dailyStats?.length || 1) || 0;
+      const avgNPS = dailyStats?.reduce((sum: number, stat: any) => sum + stat.avg_likelihood_to_recommend, 0) / (dailyStats?.length || 1) || 0;
+      const followUpsRequired = dailyStats?.reduce((sum: number, stat: any) => sum + stat.follow_ups_requested, 0) || 0;
 
       // Aggregate stakeholder breakdown
-      const stakeholderBreakdown = dailyStats?.reduce((acc, stat) => {
+      const stakeholderBreakdown = dailyStats?.reduce((acc: any, stat: any) => {
         const breakdown = stat.stakeholder_breakdown || {};
         Object.keys(breakdown).forEach(key => {
           acc[key] = (acc[key] || 0) + breakdown[key];

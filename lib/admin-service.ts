@@ -111,9 +111,9 @@ export class AdminService {
         .select('status, created_at');
 
       const totalInvitations = invitations?.length || 0;
-      const pendingInvitations = invitations?.filter(i => i.status === 'pending').length || 0;
-      const approvedInvitations = invitations?.filter(i => i.status === 'approved').length || 0;
-      const todayInvitations = invitations?.filter(i => new Date(i.created_at) >= today).length || 0;
+      const pendingInvitations = invitations?.filter((i: any) => i.status === 'pending').length || 0;
+      const approvedInvitations = invitations?.filter((i: any) => i.status === 'approved').length || 0;
+      const todayInvitations = invitations?.filter((i: any) => new Date(i.created_at) >= today).length || 0;
 
       // Get story stats
       const { data: stories } = await supabase
@@ -121,8 +121,8 @@ export class AdminService {
         .select('status, created_at');
 
       const totalStories = stories?.length || 0;
-      const pendingStories = stories?.filter(s => s.status === 'pending').length || 0;
-      const approvedStories = stories?.filter(s => s.status === 'approved' || s.status === 'published').length || 0;
+      const pendingStories = stories?.filter((s: any) => s.status === 'pending').length || 0;
+      const approvedStories = stories?.filter((s: any) => s.status === 'approved' || s.status === 'published').length || 0;
 
       // Get user stats
       const { data: users } = await supabase
@@ -130,8 +130,8 @@ export class AdminService {
         .select('created_at, last_login, status');
 
       const totalUsers = users?.length || 0;
-      const activeUsers = users?.filter(u => u.status === 'active').length || 0;
-      const todaySignups = users?.filter(u => new Date(u.created_at) >= today).length || 0;
+      const activeUsers = users?.filter((u: any) => u.status === 'active').length || 0;
+      const todaySignups = users?.filter((u: any) => new Date(u.created_at) >= today).length || 0;
 
       return {
         totalInvitations,
@@ -177,7 +177,7 @@ export class AdminService {
       }
 
       return {
-        data: data?.map(item => ({
+        data: data?.map((item: any) => ({
           id: item.id,
           email: item.email,
           name: item.name,
@@ -331,7 +331,7 @@ export class AdminService {
       }
 
       return {
-        data: data?.map(item => ({
+        data: data?.map((item: any) => ({
           id: item.id,
           email: item.email,
           name: item.name,
@@ -461,7 +461,7 @@ export class AdminService {
       }
 
       return {
-        data: data?.map(item => ({
+        data: data?.map((item: any) => ({
           id: item.id,
           email: item.email,
           name: item.name,

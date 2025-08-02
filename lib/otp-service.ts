@@ -301,10 +301,10 @@ export class OTPService {
       }
 
       const totalSent = data.length;
-      const totalVerified = data.filter(otp => otp.verified).length;
+      const totalVerified = data.filter((otp: any) => otp.verified).length;
       const lastSent = data.length > 0 ? new Date(data[0].created_at) : undefined;
-      const lastVerified = data.find(otp => otp.verified_at)?.verified_at 
-        ? new Date(data.find(otp => otp.verified_at)!.verified_at) 
+      const lastVerified = data.find((otp: any) => otp.verified_at)?.verified_at 
+        ? new Date(data.find((otp: any) => otp.verified_at)!.verified_at) 
         : undefined;
 
       return { totalSent, totalVerified, lastSent, lastVerified };

@@ -357,7 +357,7 @@ export class AnalyticsService {
         .update({
           ended_at: new Date().toISOString(),
           duration_seconds: duration,
-          page_views: this.sessionEvents.filter(e => e.eventType === 'page_view').length
+          page_views: this.sessionEvents.filter((e: any) => e.eventType === 'page_view').length
         })
         .eq('session_id', this.currentSession.sessionId);
 
@@ -496,7 +496,7 @@ export class AnalyticsService {
       return;
     }
 
-    const pageViews = this.sessionEvents.filter(e => e.eventType === 'page_view').length;
+    const pageViews = this.sessionEvents.filter((e: any) => e.eventType === 'page_view').length;
     
     await supabase
       .from('user_sessions')

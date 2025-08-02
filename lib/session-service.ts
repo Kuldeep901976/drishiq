@@ -407,11 +407,11 @@ export class SessionService {
       }
 
       // Calculate aggregated statistics
-      const totalSessions = stats?.reduce((sum, stat) => sum + stat.total_sessions, 0) || 0;
-      const completedSessions = stats?.reduce((sum, stat) => sum + stat.completed_sessions, 0) || 0;
-      const cancelledSessions = stats?.reduce((sum, stat) => sum + stat.cancelled_sessions, 0) || 0;
-      const totalMinutes = stats?.reduce((sum, stat) => sum + stat.total_minutes, 0) || 0;
-      const totalCreditsUsed = stats?.reduce((sum, stat) => sum + stat.credits_used, 0) || 0;
+      const totalSessions = stats?.reduce((sum: number, stat: any) => sum + stat.total_sessions, 0) || 0;
+      const completedSessions = stats?.reduce((sum: number, stat: any) => sum + stat.completed_sessions, 0) || 0;
+      const cancelledSessions = stats?.reduce((sum: number, stat: any) => sum + stat.cancelled_sessions, 0) || 0;
+      const totalMinutes = stats?.reduce((sum: number, stat: any) => sum + stat.total_minutes, 0) || 0;
+      const totalCreditsUsed = stats?.reduce((sum: number, stat: any) => sum + stat.credits_used, 0) || 0;
       const avgSessionDuration = totalSessions > 0 ? totalMinutes / totalSessions : 0;
       const completionRate = totalSessions > 0 ? (completedSessions / totalSessions) * 100 : 0;
 
@@ -646,11 +646,11 @@ export class SessionService {
       }
 
       // Calculate aggregated statistics
-      const totalSessions = dailyStats?.reduce((sum, stat) => sum + stat.total_sessions, 0) || 0;
-      const completedSessions = dailyStats?.reduce((sum, stat) => sum + stat.completed_sessions, 0) || 0;
-      const totalMinutes = dailyStats?.reduce((sum, stat) => sum + stat.total_minutes, 0) || 0;
-      const totalCreditsUsed = dailyStats?.reduce((sum, stat) => sum + stat.total_credits_used, 0) || 0;
-      const activeUsers = Math.max(...(dailyStats?.map(stat => stat.active_users) || [0]));
+      const totalSessions = dailyStats?.reduce((sum: number, stat: any) => sum + stat.total_sessions, 0) || 0;
+      const completedSessions = dailyStats?.reduce((sum: number, stat: any) => sum + stat.completed_sessions, 0) || 0;
+      const totalMinutes = dailyStats?.reduce((sum: number, stat: any) => sum + stat.total_minutes, 0) || 0;
+      const totalCreditsUsed = dailyStats?.reduce((sum: number, stat: any) => sum + stat.total_credits_used, 0) || 0;
+      const activeUsers = Math.max(...(dailyStats?.map((stat: any) => stat.active_users) || [0]));
       const avgSessionDuration = totalSessions > 0 ? totalMinutes / totalSessions : 0;
 
       return {

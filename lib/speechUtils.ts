@@ -32,7 +32,7 @@ export function speak(text: string, locale: string = getCurrentLocale()): void {
   
   // Get available voices and select the best match for the locale
   const voices = window.speechSynthesis.getVoices();
-  const voice = voices.find(v => v.lang.startsWith(locale)) || voices[0];
+  const voice = voices.find((v: any) => v.lang.startsWith(locale)) || voices[0];
   if (voice) {
     utterance.voice = voice;
   }
@@ -96,7 +96,7 @@ export function speakWithCallbacks(
   
   // Get available voices and select the best match for the locale
   const voices = window.speechSynthesis.getVoices();
-  const voice = voices.find(v => v.lang.startsWith(locale)) || voices[0];
+  const voice = voices.find((v: any) => v.lang.startsWith(locale)) || voices[0];
   if (voice) {
     utterance.voice = voice;
   }
@@ -196,7 +196,7 @@ export function getAvailableVoices(): SpeechSynthesisVoice[] {
 // 🎯 GET VOICE FOR LOCALE
 export function getVoiceForLocale(locale: string): SpeechSynthesisVoice | null {
   const voices = getAvailableVoices();
-  return voices.find(v => v.lang.startsWith(locale)) || voices[0] || null;
+  return voices.find((v: any) => v.lang.startsWith(locale)) || voices[0] || null;
 }
 
 // 🎤 SPEECH RECOGNITION STATUS

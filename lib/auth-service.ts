@@ -207,7 +207,7 @@ export class AuthService {
 
         // Simple check for IP changes (in production, use geolocation service)
         if (recentSessions && recentSessions.length > 0) {
-          const uniqueIPs = new Set(recentSessions.map(s => s.ip_address));
+          const uniqueIPs = new Set(recentSessions.map((s: any) => s.ip_address));
           if (uniqueIPs.size > 3) {
             reasons.push('Multiple IP addresses in recent sessions');
           }

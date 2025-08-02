@@ -480,8 +480,8 @@ export class NeedySupportService {
       // Parse CSV file
       const text = await file.text();
       const lines = text.split('\n');
-      const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-      const records = lines.slice(1).filter(line => line.trim());
+      const headers = lines[0].split(',').map((h: any) => h.trim().replace(/"/g, ''));
+      const records = lines.slice(1).filter((line: any) => line.trim());
 
       let successfulRecords = 0;
       let failedRecords = 0;
@@ -490,7 +490,7 @@ export class NeedySupportService {
       // Process each record
       for (let i = 0; i < records.length; i++) {
         const line = records[i];
-        const values = line.split(',').map(v => v.trim().replace(/"/g, ''));
+        const values = line.split(',').map((v: any) => v.trim().replace(/"/g, ''));
         const record: any = {};
 
         // Map CSV columns to record fields

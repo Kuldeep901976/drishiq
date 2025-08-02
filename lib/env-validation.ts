@@ -25,11 +25,11 @@ export function validateEnv(): Env {
     'NEXT_PUBLIC_FIREBASE_APP_ID',
   ];
 
-  const missing = requiredVars.filter(key => !process.env[key]);
+  const missing = requiredVars.filter((key: any) => !process.env[key]);
   
   if (missing.length > 0) {
     console.warn('⚠️ Environment validation warning (using placeholders):');
-    missing.forEach(key => console.warn(`  - ${key}: Using placeholder`));
+    missing.forEach((key: any) => console.warn(`  - ${key}: Using placeholder`));
     // Don't throw error, use placeholders instead
   }
 
@@ -61,11 +61,11 @@ export function checkRequiredEnvVars(): boolean {
     'NEXT_PUBLIC_FIREBASE_APP_ID',
   ];
 
-  const missing = required.filter(key => !process.env[key]);
+  const missing = required.filter((key: any) => !process.env[key]);
 
   if (missing.length > 0) {
     console.warn('⚠️ Missing environment variables (using placeholders):');
-    missing.forEach(key => console.warn(`  - ${key}`));
+    missing.forEach((key: any) => console.warn(`  - ${key}`));
     return true; // Return true to allow build to continue
   }
 

@@ -618,7 +618,7 @@ export class MVPService {
         throw achievementsError;
       }
 
-      const totalPoints = userAchievements?.reduce((sum, ua) => {
+      const totalPoints = userAchievements?.reduce((sum: number, ua: any) => {
         const achievement = ua.achievements as any;
         return sum + (achievement?.points || 0);
       }, 0) || 0;

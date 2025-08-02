@@ -180,7 +180,7 @@ export class PaymentService {
         throw error;
       }
 
-      return data?.map(item => ({
+      return data?.map((item: any) => ({
         ...item.credit_packages,
         regional_price: item.price,
         currency_code: item.currency_code

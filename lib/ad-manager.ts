@@ -288,16 +288,16 @@ class AdManager {
   public getAdsForPage(currentPage: string, userType: string = 'guest') {
     const settings = this.pageSettings[currentPage] || this.pageSettings['/'];
     
-    const availableAds = this.adConfigs.filter(ad => 
+    const availableAds = this.adConfigs.filter((ad: any) => 
       !this.isAdDismissed(ad.id) &&
       this.matchesConditions(ad, currentPage, userType)
     );
 
     return {
-      bannerAds: settings.bannerAds ? availableAds.filter(ad => ad.type === 'banner') : [],
-      headerCenteredAd: settings.headerCenteredAd ? availableAds.find(ad => ad.type === 'header-centered') : null,
-      footerFloatingAd: settings.footerFloatingAd ? availableAds.find(ad => ad.type === 'footer-floating') : null,
-      footerTakeoverAd: settings.footerTakeoverAd ? availableAds.find(ad => ad.type === 'footer-takeover') : null,
+      bannerAds: settings.bannerAds ? availableAds.filter((ad: any) => ad.type === 'banner') : [],
+      headerCenteredAd: settings.headerCenteredAd ? availableAds.find((ad: any) => ad.type === 'header-centered') : null,
+      footerFloatingAd: settings.footerFloatingAd ? availableAds.find((ad: any) => ad.type === 'footer-floating') : null,
+      footerTakeoverAd: settings.footerTakeoverAd ? availableAds.find((ad: any) => ad.type === 'footer-takeover') : null,
       settings
     };
   }
@@ -311,7 +311,7 @@ class AdManager {
   }
 
   public removeAd(adId: string) {
-    this.adConfigs = this.adConfigs.filter(ad => ad.id !== adId);
+    this.adConfigs = this.adConfigs.filter((ad: any) => ad.id !== adId);
   }
 
   public updateAd(adId: string, updates: Partial<AdConfig>) {

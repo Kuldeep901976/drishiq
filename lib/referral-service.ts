@@ -442,9 +442,9 @@ export class ReferralService {
       }
 
       const totalReferrals = referrals?.length || 0;
-      const confirmedReferrals = referrals?.filter(r => r.status === 'confirmed').length || 0;
-      const pendingReferrals = referrals?.filter(r => r.status === 'pending').length || 0;
-      const totalRewards = referrals?.reduce((sum, r) => sum + (r.reward_amount || 0), 0) || 0;
+      const confirmedReferrals = referrals?.filter((r: any) => r.status === 'confirmed').length || 0;
+      const pendingReferrals = referrals?.filter((r: any) => r.status === 'pending').length || 0;
+      const totalRewards = referrals?.reduce((sum: number, r: any) => sum + (r.reward_amount || 0), 0) || 0;
 
       return {
         totalReferrals,
@@ -492,8 +492,8 @@ export class ReferralService {
       }
 
       const totalCommissions = commissions?.length || 0;
-      const pendingCommissions = commissions?.filter(c => c.status === 'pending').length || 0;
-      const paidCommissions = commissions?.filter(c => c.status === 'paid').length || 0;
+      const pendingCommissions = commissions?.filter((c: any) => c.status === 'pending').length || 0;
+      const paidCommissions = commissions?.filter((c: any) => c.status === 'paid').length || 0;
 
       const conversionRate = affiliate.total_referrals > 0 
         ? (totalCommissions / affiliate.total_referrals) * 100 

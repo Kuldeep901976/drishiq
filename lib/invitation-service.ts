@@ -308,10 +308,10 @@ export class InvitationService {
 
       const analytics = {
         total: stats.length,
-        pending: stats.filter(s => s.status === 'pending').length,
-        used: stats.filter(s => s.status === 'used').length,
-        expired: stats.filter(s => s.status === 'expired').length,
-        byType: stats.reduce((acc, s) => {
+        pending: stats.filter((s: any) => s.status === 'pending').length,
+        used: stats.filter((s: any) => s.status === 'used').length,
+        expired: stats.filter((s: any) => s.status === 'expired').length,
+        byType: stats.reduce((acc: any, s: any) => {
           acc[s.invitation_type] = (acc[s.invitation_type] || 0) + 1;
           return acc;
         }, {} as Record<string, number>)

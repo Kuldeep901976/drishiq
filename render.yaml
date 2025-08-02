@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: drishiq
+    env: node
+    plan: starter
+    region: oregon
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_APP_URL
+        value: https://drishiq.onrender.com
+    healthCheckPath: /
+    autoDeploy: true
+    branch: main 
