@@ -1,6 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+
 import type { Database } from '../supabase.types';
 
+import { supabase } from '..\lib/supabase';
 if (!process.env.NEXT_PUBLIC_SUPABASE_URL) throw new Error('Missing SUPABASE_URL');
 if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) throw new Error('Missing SUPABASE_ANON_KEY');
 

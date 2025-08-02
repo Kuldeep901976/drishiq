@@ -79,7 +79,7 @@ export default function BlogManagementPage() {
       
       if (!session) throw new Error('Not authenticated');
 
-      let updateData: any = {
+      const updateData: any = {
         admin_notes: adminNotes,
         updated_at: new Date().toISOString(),
         updated_by: session.user.id

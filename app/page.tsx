@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import BannerCarousel from '../components/BannerCarousel';
-import Footer from '../components/FooterUpdated';
-import HeaderUpdated from '../components/HeaderUpdated';
+import Footer from '../components/Footer';
+import HeaderUpdated from '../components/Header';
 import LandingBlogCards from '../components/LandingBlogCards';
 import { LanguageProvider, useLanguage } from '../lib/drishiq-i18n';
 
@@ -336,15 +336,15 @@ function HomePageContent() {
         `}</style>
 
         {/* Hero Section with Rolling Message Animation */}
-                    <section className="hero-section">
+        <section className="hero-section">
           <div className="message-roller">
             <div className="animated-message" style={{ display: currentMessage === 0 ? 'block' : 'none' }}>
-                            <h1>
-                Something feels off — and you can't quite name it.
-              </h1>
-              <p>
-                Discover with Drishiq the spaces that remain unexplored.
-              </p>
+                <h1>
+                  Something feels off — and you can't quite name it.
+                </h1>
+                <p>
+                  Discover with Drishiq the spaces that remain unexplored.
+                </p>
                              <button 
                  onClick={() => router.push('/invitation')}
                  className="banner-cta-button" 
@@ -365,14 +365,14 @@ function HomePageContent() {
                >
                  🔍 Look Deeper
                 </button>
-            </div>
+              </div>
             <div className="animated-message" style={{ display: currentMessage === 1 ? 'block' : 'none' }}>
-              <h1>
-                The problem is clear, the path isn't.
-              </h1>
-              <p>
-                Trace the blurry parts. Drishiq walks beside you through the unclear.
-              </p>
+                <h1>
+                  The problem is clear, the path isn't.
+                </h1>
+                <p>
+                  Trace the blurry parts. Drishiq walks beside you through the unclear.
+                </p>
                              <button 
                  onClick={() => router.push('/invitation')}
                  className="banner-cta-button" 
@@ -392,15 +392,15 @@ function HomePageContent() {
                  }}
                >
                  🌟 Experience Edges
-               </button>
-            </div>
+                </button>
+              </div>
             <div className="animated-message" style={{ display: currentMessage === 2 ? 'block' : 'none' }}>
-              <h1>
-                You're tired of pretending it's all okay.
-              </h1>
-              <p>
-                You don't have to carry that alone. Let Drishiq be with you in what's real.
-              </p>
+                <h1>
+                  You're tired of pretending it's all okay.
+                </h1>
+                <p>
+                  You don't have to carry that alone. Let Drishiq be with you in what's real.
+                </p>
                              <button 
                  onClick={() => router.push('/invitation')}
                  className="banner-cta-button" 
@@ -420,15 +420,15 @@ function HomePageContent() {
                  }}
                >
                  👤 Meet Yourself
-               </button>
-            </div>
+                </button>
+              </div>
             <div className="animated-message" style={{ display: currentMessage === 3 ? 'block' : 'none' }}>
-              <h1>
-                You don't need a fix. You just need a moment that sees you.
-              </h1>
-              <p>
-                Work with Drishiq to let yourself be seen — not fixed, not judged.
-              </p>
+                <h1>
+                  You don't need a fix. You just need a moment that sees you.
+                </h1>
+                <p>
+                  Work with Drishiq to let yourself be seen — not fixed, not judged.
+                </p>
                              <button 
                  onClick={() => router.push('/invitation')}
                  className="banner-cta-button" 
@@ -448,15 +448,15 @@ function HomePageContent() {
                  }}
                >
                  💪 Stand Tall
-               </button>
-            </div>
+                </button>
+              </div>
             <div className="animated-message" style={{ display: currentMessage === 4 ? 'block' : 'none' }}>
-              <h1>
-                Let's begin — gently.
-              </h1>
-              <p>
-                This isn't a leap. Just a quiet step — when you're ready.
-              </p>
+                <h1>
+                  Let's begin — gently.
+                </h1>
+                <p>
+                  This isn't a leap. Just a quiet step — when you're ready.
+                </p>
                              <button 
                  onClick={() => router.push('/invitation')}
                  className="banner-cta-button" 
@@ -476,15 +476,15 @@ function HomePageContent() {
                  }}
                >
                  🚀 Let's Begin
-               </button>
-            </div>
+                </button>
+              </div>
             <div className="animated-message" style={{ display: currentMessage === 5 ? 'block' : 'none' }}>
-              <h1>
-                You're trying, but not convinced.
-              </h1>
-              <p>
-                Sometimes it's a hitch. Sometimes it's skill. Sometimes just support. Let's see what it is in your case.
-              </p>
+                <h1>
+                  You're trying, but not convinced.
+                </h1>
+                <p>
+                  Sometimes it's a hitch. Sometimes it's skill. Sometimes just support. Let's see what it is in your case.
+                </p>
                              <button 
                  onClick={() => router.push('/invitation')}
                  className="banner-cta-button" 
@@ -504,8 +504,8 @@ function HomePageContent() {
                  }}
                >
                  🤝 Drishiq Can Help
-               </button>
-            </div>
+                </button>
+              </div>
           </div>
         </section>
         <div style={{ marginTop: '0' }}>
@@ -797,9 +797,9 @@ function HomePageContent() {
                   </div>
                   <p style={{ fontSize: '1.05rem', fontStyle: 'italic', color: '#6b7280', marginTop: '1.5rem', fontWeight: '400' }}>
                     🌐 "Feels like it was built for me — in my language, my way."
-                  </p>
+                    </p>
+                  </div>
                 </div>
-              </div>
 
               <div className="card">
                 <div className="card-content">
@@ -815,9 +815,9 @@ function HomePageContent() {
                   </div>
                   <p style={{ fontSize: '1.05rem', fontStyle: 'italic', color: '#6b7280', marginTop: '1.5rem', fontWeight: '400' }}>
                     🎧 "It understood what I couldn't even explain in words."
-                  </p>
+                    </p>
+                  </div>
                 </div>
-              </div>
 
               <div className="card">
                 <div className="card-content">
@@ -844,8 +844,8 @@ function HomePageContent() {
 
             <p style={{ textAlign: 'center', marginTop: 'calc(3rem - 70px)', fontSize: '1.15rem', lineHeight: '1.7', color: '#374151', fontWeight: '400' }}>
               {t('features.try_now_cta')} <button onClick={() => router.push('/invitation')} className="banner-cta-button" style={{ cursor: 'pointer', background: '#0B4422', color: '#fff', padding: '0.8rem 2rem', border: 'none', borderRadius: '25px', fontSize: '1.1rem', fontWeight: '600', display: 'inline-block', transition: 'all 0.3s ease', boxShadow: '0 4px 15px rgba(11, 68, 34, 0.3)', textDecoration: 'none' }}>{t('features.try_now_button')}</button>
-            </p>
-          </div>
+                    </p>
+                  </div>
         </section>
 
         {/* Support Section */}
@@ -898,7 +898,7 @@ function HomePageContent() {
                 <p style={{ fontSize: '1.15rem', lineHeight: '1.7', fontStyle: 'italic', color: '#374151', fontWeight: '400' }}>
                   {t('support.not_looking_for_sympathy')}
                 </p>
-              </div>
+                </div>
             </div>
 
             <p style={{
@@ -921,7 +921,7 @@ function HomePageContent() {
                 fontWeight: '700'
               }}>
                 🎁 {t('support.sponsor_moment_heading')}
-              </h3>
+                  </h3>
               <button
                 onClick={() => router.push('/support-in-need')}
                 className="banner-cta-button"
@@ -1024,7 +1024,7 @@ function HomePageContent() {
                   fontWeight: '600'
                 }}>
                   🌟 Featured Story
-                </div>
+                  </div>
                 
                 <div style={{ marginTop: '1rem' }}>
                   <div style={{
@@ -1046,12 +1046,12 @@ function HomePageContent() {
                       marginRight: '1rem'
                     }}>
                       S
-                    </div>
+                </div>
                     <div>
                       <h4 style={{ margin: '0', color: '#0B4422', fontWeight: '600' }}>Sarah M.</h4>
                       <p style={{ margin: '0', color: '#6b7280', fontSize: '0.9rem' }}>Student, 22</p>
-                    </div>
-                  </div>
+              </div>
+            </div>
                   
                   <div style={{
                     fontSize: '1.1rem',
@@ -1061,7 +1061,7 @@ function HomePageContent() {
                     marginBottom: '1rem'
                   }}>
                     "{t('testimonials.story1')}"
-                  </div>
+          </div>
                   
                   <div style={{
                     display: 'flex',
@@ -1070,9 +1070,9 @@ function HomePageContent() {
                   }}>
                     <div style={{ display: 'flex', color: '#fbbf24' }}>
                       {'★'.repeat(5)}
-                    </div>
+                </div>
                     <span style={{ color: '#6b7280', fontSize: '0.9rem' }}>Verified User</span>
-                  </div>
+              </div>
                 </div>
               </div>
 
@@ -1131,12 +1131,12 @@ function HomePageContent() {
                       marginRight: '1rem'
                     }}>
                       M
-                    </div>
+              </div>
                     <div>
                       <h4 style={{ margin: '0', color: '#0B4422', fontWeight: '600' }}>Michael R.</h4>
                       <p style={{ margin: '0', color: '#6b7280', fontSize: '0.9rem' }}>Professional, 34</p>
-                    </div>
-                  </div>
+            </div>
+          </div>
                   
                   <div style={{
                     fontSize: '1.1rem',
@@ -1270,7 +1270,7 @@ function HomePageContent() {
               >
                 🎁 {t('cta.sponsor_session')} →
               </button>
-            </div>
+          </div>
 
             <div style={{
               background: 'white',

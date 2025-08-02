@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function BlogPostPage() {
   const [playingVideo, setPlayingVideo] = useState<string | null>(null);
@@ -42,9 +43,11 @@ export default function BlogPostPage() {
             marginBottom: '1.2rem'
           }}>By Team DrishiQ • July 6, 2025</div>
           
-          <img 
+          <Image 
             src="https://via.placeholder.com/800x600" 
             alt="Struggling with problems"
+            width={800}
+            height={600}
             style={{
               width: '100%',
               borderRadius: '8px',
@@ -250,9 +253,11 @@ export default function BlogPostPage() {
                   style={{ width: '100%', height: '180px', borderRadius: '8px', border: 'none' }}
                 />
               ) : (
-                <img 
+                <Image 
                   src="https://img.youtube.com/vi/Ks-_Mh1QhMc/0.jpg" 
                   alt="Video 1" 
+                  width={320}
+                  height={120}
                   style={{
                     width: '100%',
                     height: '120px',
@@ -282,9 +287,11 @@ export default function BlogPostPage() {
                   style={{ width: '100%', height: '180px', borderRadius: '8px', border: 'none' }}
                 />
               ) : (
-                <img 
+                <Image 
                   src="https://img.youtube.com/vi/lTTajzrSkCw/0.jpg" 
                   alt="Video 2" 
+                  width={320}
+                  height={120}
                   style={{
                     width: '100%',
                     height: '120px',
@@ -314,9 +321,11 @@ export default function BlogPostPage() {
                   style={{ width: '100%', height: '180px', borderRadius: '8px', border: 'none' }}
                 />
               ) : (
-                <img 
+                <Image 
                   src="https://img.youtube.com/vi/3fumBcKC6RE/0.jpg" 
                   alt="Video 3" 
+                  width={320}
+                  height={120}
                   style={{
                     width: '100%',
                     height: '120px',

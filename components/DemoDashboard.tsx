@@ -1,13 +1,10 @@
 'use client';
 
-import { createClient } from '@supabase/supabase-js';
+
 import { useEffect, useState } from 'react';
 import { useAuth } from '../lib/auth-context';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from '@/lib/supabase';
 
 interface DemoCategory {
   id: string;

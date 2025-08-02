@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function PricePlanEnhanced() {
   const t = (key: string) => key;
@@ -278,9 +279,11 @@ export default function PricePlanEnhanced() {
                 }`}
               >
                 <div className="w-16 h-16 mx-auto mb-4">
-                  <img
+                  <Image
                     src={level.image}
                     alt={level.title}
+                    width={64}
+                    height={64}
                     className="w-full h-full object-contain"
                   />
                 </div>

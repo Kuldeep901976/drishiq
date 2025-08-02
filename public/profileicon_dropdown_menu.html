@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Dropdown Menu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px;
+    }
+    .dropdown-menu {
+      display: block;
+      position: relative;
+      background-color: #ffffff;
+      color: #0B4422;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      width: 300px;
+      max-height: 600px;
+      overflow-y: auto;
+      margin: auto;
+    }
+    .dropdown-item {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 8px;
+      margin: 2px 10px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    }
+    .dropdown-item-content {
+      display: flex;
+      align-items: center;
+      color: #0B4422;
+      flex: 1;
+    }
+    .dropdown-item-content i {
+      margin-right: 12px;
+    }
+    .dropdown-item::after {
+      content: '>';
+      font-weight: bold;
+      margin-left: 12px;
+      color: #0B4422;
+    }
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+    .qr-code {
+      text-align: center;
+      padding: 1rem 1rem 1px 1rem;
+    }
+    .qr-code img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .qr-code div {
+      padding-top: 1px;
+      font-size: 0.85rem;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+  <div id="dropdownMenu" class="dropdown-menu">
+  <div style="text-align: center; padding: 1rem 1rem 0.25rem 1rem;">
+    <img src="/mnt/data/profile_toggle.gif" alt="Profile Toggle" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;" />
+    <div style="font-size: 0.85rem; color: #0B4422; padding-top: 4px;">Profile</div>
+  </div>
+  <div class="qr-code" style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 1rem 1rem 0.5rem 1rem; cursor: pointer;" onclick="openQRPopup()" onmouseover="document.getElementById('qr-img').style.transform='scale(4)'" onmouseout="document.getElementById('qr-img').style.transform='scale(1)'">
+  <img id="qr-img" src="/mnt/data/drishiq_signup_qr_drishiq_green.png" alt="Drishiq Signup QR" style="width: 28px; height: 28px; object-fit: contain; border-radius: 4px; transition: transform 0.3s ease;" />
+  <span style="font-size: 0.95rem; color: #0B4422;">Sign Up</span>
+</div>
+
+<script>
+  function openQRPopup() {
+    const qrWin = window.open("/mnt/data/drishiq_signup_qr_drishiq_green.png", "_blank", "width=500,height=500");
+    if (qrWin) qrWin.focus();
+  }
+</script>
+
+    
+<div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-sign-in-alt"></i> Sign In
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-user"></i> Your Account
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-user-edit"></i> Enrich Your Profile
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-key"></i> Reset Password
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-cog"></i> Settings
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-adjust"></i> Theme Toggle
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-life-ring"></i> Support
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-info-circle"></i> About Drishiq
+      </div>
+    </div>
+
+    <div class="dropdown-item">
+      <div class="dropdown-item-content">
+        <i class="fas fa-sign-out-alt"></i> Log Out
+      </div>
+    </div>
+  </div>
+</body>
+</html>

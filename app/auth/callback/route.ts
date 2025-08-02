@@ -1,8 +1,9 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { createClient } from '@supabase/supabase-js';
+
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
+import { supabase } from '@/lib/supabase';
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code');
@@ -44,10 +45,7 @@ export async function GET(request: NextRequest) {
       console.log('User metadata:', data.user?.user_metadata);
 
       // Create service role client for profile creation
-      const serviceClient = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.SUPABASE_SERVICE_ROLE_KEY!
-      );
+      const serviceClient = supabase;
 
       // Check if user profile exists
       if (data.user) {

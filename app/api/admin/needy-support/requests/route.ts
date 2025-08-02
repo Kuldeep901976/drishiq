@@ -1,8 +1,9 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { createClient } from '@supabase/supabase-js';
+
 import crypto from 'crypto';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
+
 
 export async function GET() {
   try {
@@ -26,10 +27,7 @@ export async function GET() {
     }
 
     // Create service client for admin operations
-    const serviceClient = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+    const serviceClient = supabase;
 
     // Fetch invitation requests with needy individual details
     const { data: requests, error } = await serviceClient
@@ -100,10 +98,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create service client for admin operations
-    const serviceClient = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+    const serviceClient = supabase;
 
     switch (action) {
       case 'approve':

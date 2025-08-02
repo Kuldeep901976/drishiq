@@ -129,7 +129,7 @@ async function findPotentialMatches(supporterId: string, supporterData: any) {
       await supabase
         .from('supporters')
         .update({ 
-          matched_with: matches.map(m => m.id),
+          matched_with: matches.map((m: any) => m.id),
           status: 'matched'
         })
         .eq('id', supporterId);
@@ -181,7 +181,7 @@ async function findAvailableSupporters(seekerId: string, seekerData: any) {
       await supabase
         .from('supporters')
         .update({ 
-          matched_with: matches.map(m => m.id),
+          matched_with: matches.map((m: any) => m.id),
           status: 'matched'
         })
         .eq('id', seekerId);

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface TranslatedCardProps {
   translationKey: string; // e.g., 'card.mentalClarity'
@@ -51,10 +52,11 @@ export function FeatureCard({
   return (
     <div className={`card ${className}`}>
       <div className="relative">
-        <img 
+        <Image 
           src={imageSrc} 
-          alt={/* {t(`${featureKey}.title`)} */}
-          Banner Title
+          alt="Banner Title"
+          width={400}
+          height={192}
           className="w-full h-48 object-cover rounded-t-lg"
         />
         {badgeText && (

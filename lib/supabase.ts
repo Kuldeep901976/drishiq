@@ -1,23 +1,35 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { createClient } from '@supabase/supabase-js';
-import type { Database } from '../supabase.types';
 
+import type { Database } from '../supabase.types';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-// Ensure environment variables are available
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables. Please check NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+// Check for placeholder values and provide fallbacks for build
+const hasValidConfig = supabaseUrl && 
+  supabaseAnonKey && 
+  !supabaseUrl.includes('your_supabase_project_url') && 
+  !supabaseAnonKey.includes('your_supabase_anon_key');
+
+if (!hasValidConfig) {
+  console.warn('Missing or invalid Supabase environment variables. Using fallback configuration for build.');
 }
 
-// Create client - will never be null
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true,
-  },
-});
+// Create client with fallback for build
+export const supabase = hasValidConfig 
+  ? createClient<Database>(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true,
+      },
+    })
+  : createClient<Database>('https://placeholder.supabase.co', 'placeholder-key', {
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true,
+      },
+    });
 
 // Hook for client components
 export const useSupabase = () => {

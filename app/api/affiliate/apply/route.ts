@@ -1,16 +1,10 @@
-import { createClient } from '@supabase/supabase-js';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { logger } from '../../../../lib/logger';
 import { ReferralService } from '../../../../lib/referral-service';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+import { supabase } from '../../../../lib/supabase';
 
 export async function POST(request: NextRequest) {
-  if (!supabaseUrl || !supabaseServiceKey) {
-    return NextResponse.json({ error: 'Supabase environment variables missing' }, { status: 500 });
-  }
-  const supabase = createClient(supabaseUrl, supabaseServiceKey);
   try {
     const { programId, paymentMethod, paymentDetails } = await request.json();
       
@@ -72,10 +66,6 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  if (!supabaseUrl || !supabaseServiceKey) {
-    return NextResponse.json({ error: 'Supabase environment variables missing' }, { status: 500 });
-  }
-  const supabase = createClient(supabaseUrl, supabaseServiceKey);
   try {
       // Get user from auth
       const authHeader = request.headers.get('authorization');

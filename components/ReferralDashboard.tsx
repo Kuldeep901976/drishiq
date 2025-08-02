@@ -1,13 +1,10 @@
 'use client';
 
-import { createClient } from '@supabase/supabase-js';
+
 import { useEffect, useState } from 'react';
 import { useAuth } from '../lib/auth-context';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from '@/lib/supabase';
 
 interface ReferralCode {
   id: string;
@@ -85,9 +82,9 @@ export default function ReferralDashboard() {
 
       // Calculate stats
       const totalReferrals = referrals?.length || 0;
-      const confirmedReferrals = referrals?.filter(r => r.status === 'confirmed').length || 0;
-      const pendingReferrals = referrals?.filter(r => r.status === 'pending').length || 0;
-      const totalRewards = referrals?.reduce((sum, r) => sum + (r.reward_amount || 0), 0) || 0;
+      const confirmedReferrals = referrals?.filter((r: any) => r.status === 'confirmed').length || 0;
+      const pendingReferrals = referrals?.filter((r: any) => r.status === 'pending').length || 0;
+      const totalRewards = referrals?.reduce((sum: any, r: any) => sum + (r.reward_amount || 0), 0) || 0;
 
       setStats({
         totalReferrals,

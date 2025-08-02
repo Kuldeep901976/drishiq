@@ -1,6 +1,7 @@
 'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function SupportSuccessPage() {
   const router = useRouter();
@@ -110,9 +111,11 @@ export default function SupportSuccessPage() {
 
           {/* Success Animation */}
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <img 
+            <Image 
               src={levelInfo.badge} 
               alt={levelInfo.title}
+              width={64}
+              height={64}
               className="w-16 h-16 object-contain"
             />
           </div>
@@ -177,9 +180,11 @@ export default function SupportSuccessPage() {
               Your Supporter Badge
             </h3>
             <div className="flex flex-col items-center space-y-4">
-              <img 
+              <Image 
                 src={levelInfo.badge} 
                 alt={`${levelInfo.title} Badge`}
+                width={128}
+                height={128}
                 className="w-32 h-32 object-contain border-4 border-yellow-200 rounded-lg"
               />
               <div className="space-y-3">

@@ -257,16 +257,20 @@
   "features": {
     "heading": "Features",
     "card1": {
-      "title": "1. Emotionally Intelligent, Judgment-Free Conversations",
-      "description": "Unlike typical solutions, DrishiQ engages in deep, thoughtful dialogue. It listens, reflects, and helps you organize your thoughts without rushing to fix or label — creating a safe space for inner clarity."
+      "title": "Clarity Talks",
+      "description": "• Insightful dialogue, right where you are\n• Safe space for mental clarity — not canned advice\n• Insightful chats that help you go inward"
     },
     "card2": {
-      "title": "2. Inclusive by Design — Paid, Sponsored, or Giving Back",
-      "description": "Clarity shouldn't be a privilege. Whether you're ready to purchase a session, need help but can't pay, or want to sponsor someone else's breakthrough, DrishiQ connects seekers and supporters in a shared circle of growth."
+      "title": "Global Native",
+      "description": "• Full multilingual support for real humans\n• Seamlessly adapts across languages and dialects\n• Cultural sensitivity in every conversation"
     },
     "card3": {
-      "title": "3. Built for Global Connection — Multilingual, Human-Centric",
-      "description": "DrishiQ speaks your language — literally. With multilingual support and cultural sensitivity, it ensures that anyone, anywhere, can explore their mind and challenges without barriers."
+      "title": "Voice-First Clarity",
+      "description": "• Speak naturally — Drishiq listens deeply\n• Transforms your confusion into a visual clarity map\n• Voice-driven insights for better understanding"
+    },
+    "card4": {
+      "title": "Inclusive Intent",
+      "description": "• Sponsor a session, request one, or pay it forward\n• A shared circle of seekers and supporters\n• Making clarity accessible to everyone"
     },
     "cta_description": "DrishiQ is here to help you pause, reflect, and move forward — no matter who you are or where you're from.",
     "try_now_cta": "See DrishiQ in action.",
@@ -331,7 +335,7 @@
     "they_might_be": "They might be a student questioning their future, a parent weighed down by silent pressure, or a worker quietly asking, 'What's next for me?'",
     "if_you_can_give": "If you can give, give someone that moment.",
     "a_quiet_shift": "A quiet shift in someone's life might begin with your support.",
-    "your_donation_helps_us": "Your donation helps us match real people with real needs — no noise, no waste. Just honest, thoughtful reflection for those who need it most.",
+    "your_donation_helps_us": "Your donation helps us match real people with real needs — no noise, no waste. Just honest, thoughtful reflection for those who need it.",
     "sponsor_session": "Sponsor a Session",
     "if_you_need_help": "If you need help, ask — without hesitation.",
     "cant_afford_session": "Can't afford a session? That doesn't make your challenge less important.",

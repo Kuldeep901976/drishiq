@@ -1,11 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
 import { Database } from '../supabase.types';
 import { logger } from './logger';
-
-const supabase = createClient<Database>(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { supabase } from './supabase';
 
 export interface SessionType {
   id: string;

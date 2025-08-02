@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drishiq Community Teaser</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    .astro-wrapper {
+      background: #0B4422;
+      color: white;
+      padding: 0.4rem 1rem 0.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .astro-ticker {
+      display: flex;
+      overflow: hidden;
+      font-size: 0.9rem;
+      justify-content: center;
+      position: relative;
+    }
+    .ticker-sun, .ticker-moon {
+      white-space: nowrap;
+      flex: 1;
+    }
+    .ticker-sun {
+      animation: scroll-left 30s linear infinite;
+    }
+    .ticker-moon {
+      animation: scroll-right 30s linear infinite;
+      text-align: left;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    header {
+      background-color: #0B4422;
+      color: white;
+      padding: 0.9rem 2rem 0.5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      background: #fff;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 4.6rem;
+      z-index: 1000;
+    }
+    nav a {
+      color: #0B4422;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: #f0f0f0;
+    }
+    nav a:hover {
+      background-color: #e0ffe0;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .main-left {
+      flex: 3;
+      padding: 2rem;
+    }
+    .main-right {
+      flex: 1;
+      padding: 2rem 1rem;
+      background: #fff;
+      border-left: 1px solid #ddd;
+      max-height: 100vh;
+      overflow-y: auto;
+      position: sticky;
+      top: 6rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .section h2 {
+      color: #0B4422;
+      margin-bottom: 1rem;
+    }
+    .categories-bar {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .category-tag {
+      padding: 0.5rem 1rem;
+      background: #e0ffe0;
+      border-radius: 20px;
+      color: #0B4422;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .category-tag:hover {
+      background: #d0ffd0;
+    }
+    .remove-category {
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #0B4422;
+    }
+    .cards {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+    .card {
+      flex: 0 0 auto;
+      width: 280px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 1rem;
+      transition: transform 0.3s ease;
+      scroll-snap-align: start;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      color: #0B4422;
+      font-size: 1.1rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+    .main-right h3 {
+      color: #0B4422;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-entry {
+      background: #e0ffe0;
+      border-radius: 8px;
+      padding: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .spacer {
+      height: 2000px;
+    }
+
+//Music
+    .music-scroll-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .music-row {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+    .music-row.reverse {
+      flex-direction: row-reverse;
+    }
+    .card {
+      flex: 0 0 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 1rem;
+      background: #fff;
+      position: relative;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin: 0.25rem 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .music-controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #0B4422;
+      color: white;
+      border-radius: 0 0 10px 10px;
+      font-size: 0.8rem;
+    }
+    .music-controls.wave {
+      background: #0B4422;
+      flex-direction: column;
+      height: 60px;
+      justify-content: center;
+    }
+    .music-controls.wave::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 20px;
+      background: repeating-linear-gradient(
+        to right,
+        white,
+        white 2px,
+        transparent 2px,
+        transparent 6px
+      );
+    }
+    .progress-bar {
+      height: 4px;
+      width: 60%;
+      background: #ccc;
+      position: relative;
+      margin-top: 2px;
+      border-radius: 2px;
+    }
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 30%;
+      background: #fff;
+      left: 0;
+      border-radius: 2px;
+    }
+    .music-controls span {
+      cursor: pointer;
+    }
+    .story-strip {
+      background-color: #0B4422;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 6px 6px 0 0;
+    }
+    .hero-bar {
+      background: #e0ffe0;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #0B4422;
+      border-radius: 0 0 6px 6px;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="astro-wrapper">
+  <div class="astro-ticker">
+    <div class="ticker-sun">☀️ Aries • Taurus • Gemini • Cancer • Leo • Virgo • Libra • Scorpio • Sagittarius • Capricorn • Aquarius • Pisces</div>
+    <div class="ticker-moon">🌙 Aries • Taurus • Gemini • Cancer • Leo • Virgo • Libra • Scorpio • Sagittarius • Capricorn • Aquarius • Pisces</div>
+  </div>
+</div>
+
+<header>
+  <h1>Welcome to Drishiq Community</h1>
+  <p>Your voice, your vibe, your impact.</p>
+</header>
+
+<nav>
+  <a href="#pulse">Social Pulse</a>
+  <a href="#music">Music</a>
+  <a href="#videos">Videos</a>
+  <a href="#stories">Stories</a>
+  <a href="#creations">Creations</a>
+  <a href="#heroes">Heroes</a>
+  <a href="#figures">Voices</a>
+</nav>
+
+<div class="main-content">
+  <div class="main-left">
+    <div class="section" id="pulse">
+      <h2>🌍 Social Pulse</h2>
+      <div class="categories-bar">
+        <span class="category-tag">All Categories <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Politics <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Finance <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Local <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Global <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Business <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Sports <button class="remove-category">🗙</button></span>
+        <span class="category-tag">Health <button class="remove-category">🗙</button></span>
+        <span class="category-tag other-tag">Other</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>What's Trending</h3>
+          <p>Creativity and Healing are rising fast. 400+ new stories this week. Join the pulse.</p>
+          <img src="https://media.giphy.com/media/KYElw07k3pTDi/giphy.gif" alt="Trending GIF" />
+        </div>
+        <div class="card">
+          <h3>Join the Conversation</h3>
+          <p>Upload or comment on what matters to you. Every action fuels the community.</p>
+          <img src="https://source.unsplash.com/400x250/?discussion,community" alt="Community" />
+        </div>
+        <div class="card">
+          <h3>Speak Your Mind</h3>
+          <p>Tap into politics, climate, and justice topics that matter to your world.</p>
+          <img src="https://source.unsplash.com/400x250/?microphone,speak" alt="Voice" />
+        </div>
+        <div class="card">
+          <h3>Contribute Deeply</h3>
+          <p>Explore causes you care about. Submit content to create ripples.</p>
+          <img src="https://source.unsplash.com/400x250/?collaboration,people" alt="Cause" />
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+  <aside class="main-right">
+    <h3>✨ Heroes of This Section</h3>
+    <div class="hero-entry">🎖️ Anjali from Mumbai - 102 Comments</div>
+    <div class="hero-entry">🎖️ Rohit from Lucknow - Top Contributor</div>
+    <div class="hero-entry">🎖️ Fatima from Chennai - Rising Star</div>
+    <div class="hero-entry">🎖️ Dev from Delhi - 5 Uplifts this week</div>
+  </aside>
+</div>
+
+
+/*Music/*
+
+<div class="section" id="music">
+  <h2>🎵 Music Highlights</h2>
+  <div class="music-scroll-container">
+    <div class="music-row">
+      <div class="card">
+        <h3>Healing Melodies</h3>
+        <p>Calm your mind with these serene soundscapes.</p>
+        <img src="https://source.unsplash.com/400x250/?calm,music" alt="Healing Music" />
+        <div class="music-controls wave">
+          <div class="progress-bar"></div>
+          <div>
+            <span>⏮</span><span>▶</span><span>⏸</span><span>⏭</span><span>⏹</span><span>🔇</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Top Beats of India</h3>
+        <p>Energetic tunes taking over playlists across the country.</p>
+        <img src="https://source.unsplash.com/400x250/?music,dj" alt="Top Music" />
+        <div class="music-controls">
+          <span>⏮</span><span>▶</span><span>⏸</span><span>⏭</span><span>⏹</span><span>🔇</span>
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="music-row reverse">
+      <div class="card">
+        <h3>Rising Artists</h3>
+        <p>Discover voices redefining music in your city and beyond.</p>
+        <img src="https://source.unsplash.com/400x250/?singer,artist" alt="Rising Stars" />
+        <div class="music-controls wave">
+          <div class="progress-bar"></div>
+          <div>
+            <span>⏮</span><span>▶</span><span>⏸</span><span>⏭</span><span>⏹</span><span>🔇</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Next Vibes</h3>
+        <p>Hot new picks from Drishiq’s up-and-coming playlists.</p>
+        <img src="https://source.unsplash.com/400x250/?headphones,music" alt="Next Music" />
+        <div class="music-controls">
+          <span>⏮</span><span>▶</span><span>⏸</span><span>⏭</span><span>⏹</span><span>🔇</span>
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<aside class="main-right">
+  <h3>🎖️ Music Heroes</h3>
+  <div class="hero-entry">🎤 Anjali from Mumbai - 102 Likes</div>
+  <div class="hero-entry">🎧 Rohit from Lucknow - Top Listener</div>
+  <div class="hero-entry">🎶 Fatima from Chennai - Rising Artist</div>
+  <div class="hero-entry">🎼 Dev from Delhi - Crowd Favorite</div>
+</aside>
+
+
+/*New Section/*
+
+<footer>
+  <p>&copy; 2025 Drishiq. Building clarity, voice, and community.</p>
+</footer>
+
+</body>
+</html>

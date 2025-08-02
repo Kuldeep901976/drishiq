@@ -163,8 +163,8 @@ export async function POST(request: NextRequest) {
       .from('needy_bulk_uploads')
       .update({
         processed_records: records.length,
-        successful_records,
-        failed_records,
+        successful_records: successfulRecords,
+        failed_records: failedRecords,
         status: 'completed',
         processing_completed_at: new Date().toISOString()
       })
@@ -174,8 +174,8 @@ export async function POST(request: NextRequest) {
       success: true,
       upload_id: uploadRecord.id,
       total_records: records.length,
-      successful_records,
-      failed_records,
+      successful_records: successfulRecords,
+      failed_records: failedRecords,
       errors: errors.slice(0, 10) // Return first 10 errors
     });
 

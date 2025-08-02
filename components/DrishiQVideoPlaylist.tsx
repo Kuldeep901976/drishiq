@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import YouTubeVideo from './YouTubeVideo';
 
 interface VideoItem {
@@ -189,9 +190,11 @@ export default function DrishiQVideoPlaylist({
                 }`}
               >
                 <div className="relative">
-                  <img
+                  <Image
                     src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
                     alt={video.title}
+                    width={320}
+                    height={128}
                     className="w-full h-32 object-cover"
                   />
                   {index === currentVideoIndex && (

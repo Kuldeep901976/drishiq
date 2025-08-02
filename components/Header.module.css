@@ -1,0 +1,496 @@
+/* Header Module CSS - Production Ready with Auto-Cache-Busting */
+
+/* Main Header Container */
+.drishiqHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  border-bottom: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  background-color: #F8F6F4;
+  height: 72px !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Header Left Section */
+.headerLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Header Logo */
+.headerLogo {
+  margin-bottom: 0px;
+  align-self: flex-start;
+  width: 200px;
+}
+
+/* Header Tagline */
+.headerTagline {
+  font-size: 15px;
+  color: #0B4422;
+  margin-top: -2px;
+  margin-left: 12px;
+}
+
+/* Header Center Section */
+.headerCenter {
+  flex: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 32px;
+}
+
+/* Navigation Menu */
+.navMenu {
+  display: flex;
+  gap: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0B4422;
+  align-items: flex-end;
+  margin-top: 32px;
+}
+
+/* Navigation Labels */
+.navLabel {
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+  color: #0B4422;
+}
+
+.navLabel:hover {
+  background-color: rgba(11, 68, 34, 0.1);
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Dropdown Trigger */
+.dropdownTrigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Dropdown Arrow */
+.dropdownArrow {
+  font-size: 10px;
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+  display: block;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  padding: 2px 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  width: max-content;
+  z-index: 10;
+}
+
+/* Dropdown Options Container */
+.dropdownOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+/* Dropdown Option Items */
+.dropdownOption {
+  text-align: left;
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
+  margin: 2px 6px;
+  box-shadow: 
+    2px 2px 4px #e0e0e0,
+    -2px -2px 4px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.05);
+  font-weight: 500;
+  color: #0B4422;
+  margin-bottom: 2px;
+}
+
+/* Dropdown Option Hover */
+.dropdownOption:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    4px 4px 8px #e0e0e0,
+    -4px -4px 8px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+/* Dropdown Option Icon */
+.dropdownOptionIcon {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+/* Header Right Section */
+.headerRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Language Selector */
+.languageSelector {
+  margin-bottom: 8px;
+  border-radius: 12px;
+  padding: 8px 16px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 
+    4px 4px 8px #d1d1d1,
+    -4px -4px 8px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.1);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #0B4422;
+}
+
+/* Language Script Display */
+.languageScript {
+  font-weight: 500;
+  color: #0B4422;
+}
+
+/* Language Dropdown Menu */
+.languageDropdownMenu {
+  max-height: 270px;
+  overflow-y: auto;
+  min-width: 160px;
+  max-width: 180px;
+}
+
+/* Language Dropdown Menu Options */
+.languageDropdownMenu .dropdownOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+}
+
+/* Language Dropdown Menu Option Script */
+.languageDropdownMenu .dropdownOption .languageScript {
+  font-weight: 500;
+  color: #0B4422;
+}
+
+/* Language Dropdown Menu Option Name */
+.languageDropdownMenu .dropdownOption .languageName {
+  color: #666;
+  font-size: 12px;
+}
+
+/* Language Dropdown Menu Selected Option */
+.languageDropdownMenu .dropdownOption.selected {
+  background-color: #f0f8f0;
+  border-left: 3px solid #0B4422;
+}
+
+/* Language Dropdown Menu Selected Option Script */
+.languageDropdownMenu .dropdownOption.selected .languageScript {
+  color: #0B4422;
+  font-weight: 600;
+}
+
+/* Language Selector Hover */
+.languageSelector:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    6px 6px 12px #d1d1d1,
+    -6px -6px 12px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.1);
+  color: #0B4422;
+  background: linear-gradient(145deg, #f0f8f0, #e6f0e6);
+}
+
+/* Language Selector Active */
+.languageSelector:active {
+  transform: translateY(0px);
+  box-shadow: 
+    2px 2px 4px #d1d1d1,
+    -2px -2px 4px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.1);
+}
+
+/* Language Selector Options */
+.languageSelector option {
+  background: white;
+  color: #0B4422;
+}
+
+/* Language Selector Option Hover */
+.languageSelector option:hover,
+.languageSelector option:focus,
+.languageSelector option:checked {
+  background: #0B4422;
+  color: white;
+}
+
+/* Profile Wrapper */
+.profileWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Profile Icon */
+.profileIcon {
+  margin-top: auto;
+  padding: 4px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+/* Profile Icon Hover */
+.profileIcon:hover {
+  transform: scale(1.05);
+}
+
+/* Profile Image */
+.profileImage {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+/* Profile Dropdown Container */
+.profileDropdown {
+  position: fixed;
+  top: 72px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 240px;
+  z-index: 999999;
+  display: none;
+  margin-top: 0px;
+  max-height: 376px;
+  overflow-y: auto;
+  border-top: none;
+}
+
+/* Profile Dropdown Show State */
+.profileDropdownShow {
+  display: block;
+}
+
+/* Profile Header */
+.profileHeader {
+  text-align: center;
+  padding: 8px 0.25rem 0.25rem 0.25rem;
+  margin-bottom: -4px;
+}
+
+/* Profile Header Image */
+.profileHeaderImage {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* QR Code Section */
+.qrCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  background: white;
+  margin: 6px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* QR Code Hover */
+.qrCode:hover {
+  background: #f0f0f0;
+}
+
+/* QR Code Image */
+.qrCodeImage {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+/* QR Code Image Hover */
+.qrCode:hover .qrCodeImage {
+  transform: scale(3);
+}
+
+/* Profile Items */
+.profileItem {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #0B4422;
+  border-bottom: 1px solid #f5f5f5;
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
+  margin: 2px 6px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    2px 2px 4px #e0e0e0,
+    -2px -2px 4px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+/* Profile Item Hover */
+.profileItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    4px 4px 8px #e0e0e0,
+    -4px -4px 8px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+/* Profile Item Active */
+.profileItem:active {
+  transform: translateY(0px);
+  box-shadow: 
+    1px 1px 2px #e0e0e0,
+    -1px -1px 2px #ffffff,
+    inset 1px 1px 2px rgba(255,255,255,0.7),
+    inset -1px -1px 2px rgba(0,0,0,0.05);
+}
+
+/* Profile Item Icon */
+.profileItemIcon {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Dropdown Trigger Container */
+.dropdownTriggerContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Dropdown Arrow Span */
+.dropdownArrowSpan {
+  font-size: 10px;
+}
+
+/* Dropdown Options Container */
+.dropdownOptionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+/* Button 3D Effect */
+.button3d {
+  transition: all 0.2s ease;
+}
+
+.button3d:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.button3d:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .drishiqHeader {
+    padding: 10px;
+  }
+  
+  .navMenu {
+    gap: 20px;
+    font-size: 12px;
+  }
+  
+  .headerLogo {
+    width: 150px;
+  }
+  
+  .headerTagline {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navMenu {
+    gap: 15px;
+    font-size: 11px;
+  }
+  
+  .headerLogo {
+    width: 120px;
+  }
+  
+  .languageSelector {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+} 

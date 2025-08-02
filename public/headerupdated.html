@@ -1,0 +1,104 @@
+<!-- File: DrishiqHeader.html -->
+<header class="drishiq-header" style="display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #ccc; font-family: 'Poppins', sans-serif; background-color: #F8F6F4;">
+  <!-- Left: Logo and Tagline -->
+  <div class="header-left" style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;">
+    <img src="/mnt/data/a58cc85a-fc08-45b5-afd5-9c135b7ff1c8.png" alt="Drishiq Logo" class="logo" style="height: 40px; margin-bottom: 0px; align-self: flex-start;" />
+    <div class="tagline" style="font-size: 12px; color: #0B4422; margin-top: 2px;">Intelligence of Perception</div>
+  </div>
+
+  <!-- Center: Navigation Only -->
+  <div class="header-center" style="flex: 3; display: flex; align-items: flex-end; justify-content: center; position: relative; padding-bottom: 0px;">
+    <nav class="nav-menu" style="display: flex; gap: 40px; font-size: 14px; font-weight: 500; color: #0B4422; align-items: flex-end; transform: translateY(36px);">
+
+      <!-- Dropdown: Meet Yourself -->
+      <div class="dropdown nav-label" onclick="toggleDropdown(this)" style="position: relative; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 4px; white-space: nowrap;">
+          <span title="Step into your current reality — whether you're building, seeking, rebooting, or just getting by. Your life mode matters here.">Meet Yourself</span>
+          <span style="font-size:10px;">▼</span>
+        </div>
+        <div class="dropdown-menu styled-dropdown" style="display: none; position: absolute; top: 120%; left: 0; background: #fff; padding: 4px 6px; border-radius: 10px; box-shadow: 0 6px 14px rgba(0,0,0,0.15); width: max-content; z-index: 10;">
+          <div style="display: flex; flex-direction: column; gap: 6px; text-align: left;">
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🧍‍♂️ Living Solo</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🙇‍♂️ Dependent</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🧑‍🤝‍🧑 Support Giver</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;"><img src="/mnt/data/e598a9a4-33c6-4080-914c-b20b8b7d21fe.png" alt="Problem Carrier" style="height: 16px; width: 16px; vertical-align: middle; margin-right: 6px;">Problem Carrier</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🕵️‍♂️ Seeker</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🏃‍♂️ Escaper</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🧑‍🤝‍🧑 Connector</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">👷 Builder</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🧘 Giver Beyond Self</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🙋‍♂️ Rebooter</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-label" title="Offer or receive session support — a community fund for clarity" style="cursor: pointer; text-align: center; white-space: nowrap;">Support</div>
+      <div class="nav-label" title="Life-defining reads, feature stories, insights into the inner world" style="cursor: pointer; text-align: center; white-space: nowrap;">Blog</div>
+      <div class="nav-label" title="Spoken and written reflections, voices from all walks" style="cursor: pointer; text-align: center; white-space: nowrap;">Voices</div>
+      <div class="nav-label" title="A connection hub — where people in need meet those who can offer support" style="cursor: pointer; text-align: center; white-space: nowrap;">Bridge</div>
+
+      <!-- Dropdown: Choose Your Path -->
+      <div class="dropdown nav-label" onclick="toggleDropdown(this)" style="position: relative; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 4px; white-space: nowrap;">
+          <span title="Explore session plans, gifting options, and how to support others">Choose Your Path</span>
+          <span style="font-size:10px;">▼</span>
+        </div>
+        <div class="dropdown-menu styled-dropdown" style="display: none; position: absolute; top: 120%; left: 0; background: #fff; padding: 4px 6px; border-radius: 10px; box-shadow: 0 6px 14px rgba(0,0,0,0.15); width: max-content; z-index: 10;">
+          <div style="display: flex; flex-direction: column; gap: 6px; text-align: left;">
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🚪 Access Clarity</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🎁 Gift Clarity</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🤝 Support Others</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dropdown: Unfiltered -->
+      <div class="dropdown nav-label" onclick="toggleDropdown(this)" style="position: relative; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 4px; white-space: nowrap;">
+          <span title="Explore music, writing, and stories shared from the heart">Unfiltered</span>
+          <span style="font-size:10px;">▼</span>
+        </div>
+        <div class="dropdown-menu styled-dropdown" style="display: none; position: absolute; top: 120%; left: 0; background: #fff; padding: 4px 6px; border-radius: 10px; box-shadow: 0 6px 14px rgba(0,0,0,0.15); width: max-content; z-index: 10;">
+          <div style="display: flex; flex-direction: column; gap: 6px; text-align: left;">
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🎶 Music</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">📖 Stories</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🎨 Creations</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🎥 Videos</button>
+            <button class="dropdown-option button-3d" style="text-align: left; padding: 4px 8px;">🆘 People Seeking Help</button>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  </div>
+
+  <!-- Right: Language Selector + Profile Icon -->
+  <div class="header-right" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <select class="language-selector button-3d" aria-label="Select language" style="margin-bottom: 8px; border-radius: 10px; padding: 4px 12px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+      <option value="en">🌐 EN</option>
+      <option value="hi">🇮🇳 HI</option>
+      <option value="es">🇪🇸 ES</option>
+    </select>
+    <div class="profile-icon button-3d" style="margin-top: auto; padding: 4px; border-radius: 50%; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+      <img src="/assets/profile.svg" alt="Profile" style="height: 32px; width: 32px; border-radius: 50%;" />
+    </div>
+  </div>
+</header>
+
+<script>
+  function toggleDropdown(el) {
+    const menu = el.querySelector('.dropdown-menu');
+    const isOpen = menu.style.display === 'block';
+
+    document.querySelectorAll('.dropdown-menu').forEach(drop => drop.style.display = 'none');
+    if (!isOpen) {
+      menu.style.display = 'block';
+    }
+  }
+  document.addEventListener('click', function (event) {
+    const isDropdown = event.target.closest('.dropdown');
+    if (!isDropdown) {
+      document.querySelectorAll('.dropdown-menu').forEach(drop => drop.style.display = 'none');
+    }
+  });
+</script>

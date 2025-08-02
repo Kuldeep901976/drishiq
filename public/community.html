@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drishiq Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#f8f9fa; color:#222; }
+    .ticker-left, .ticker-right { display:inline-block; white-space:nowrap; }
+    .ticker-left { padding-left:100%; animation:ticker-left 20s linear infinite; }
+    .ticker-right{ padding-right:100%; animation:ticker-right 20s linear infinite; }
+    .ticker-container { position:absolute; top:0; left:0; width:100%; overflow:hidden; height:30px; background:#063015; font-size:14px; }
+    @keyframes ticker-left{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+    @keyframes ticker-right{0%{transform:translateX(0);}100%{transform:translateX(100%);}}
+    header { position:relative; background:#0B4422; color:#fff; text-align:center; padding:20px; padding-top:110px; overflow:hidden; }
+    h1 { margin:0; margin-top:-50px; margin-bottom:4px; line-height:1.2; }
+    h1 + p { color:gold; margin-top:4px; font-weight:500; }
+    section { padding:30px 20px; border-bottom:1px solid #ddd; }
+    h2 { color:#0B4422; margin-bottom:10px; }
+    .motivation { background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); margin-bottom:30px; }
+    .cta { display:flex; gap:10px; margin-top:10px; }
+    .cta button { padding:10px 20px; border:none; border-radius:5px; cursor:pointer; background:#0B4422; color:#fff; }
+    .cta .post { background:gold; color:#0B4422; font-weight:600; }
+    .moon-divider { background:#e7eaf0; padding:10px; text-align:center; font-style:italic; font-size:14px; border-top:1px dashed #ccc; border-bottom:1px dashed #ccc; margin:0; }
+    .card-container { display:flex; overflow-x:auto; gap:20px; padding:10px 0; }
+    .card { flex:0 0 250px; background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); padding:15px; }
+    .card img, .card video { width:100%; border-radius:10px; }
+    .flex-row { display:flex; gap:20px; align-items:stretch; }
+    .flex-row .main { flex:2; }
+    .flex-row aside { flex:1; background:#fff7e6; padding:15px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow-y:auto; }
+    .flex-row aside h3 { margin-top:0; color:#0B4422; }
+    .flex-row aside ul { padding-left:20px; margin:10px 0 0 0; list-style:disc; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="ticker-container"><div class="ticker-left">☀️ Career: Opportunities opening up | ☀️ Love: Honest conversations spark magic | ☀️ Health: Time to detox | ☀️ Finance: A good day to reassess investments | ☀️ Life: Seek clarity, not control</div></div>
+    <div class="ticker-container" style="top:30px;background:#0a3a18;z-index:10;"><div class="ticker-right">🌙 Moon Sign Insight: Please share your date of birth, time, and location to receive daily personalized emotional guidance</div></div>
+    <h1>Welcome to Drishiq Community</h1>
+    <p>Your personal corner of inspiration, expression, and connection</p>
+  </header>
+
+  <section>
+    <h2>🔥 9:00 AM Motivation Time</h2>
+    <div class="motivation">
+      <h3 style="margin:6px 0 10px 0;color:#0B4422;">✨ Inner Clarity Awakens</h3>
+      <p>"The clarity you seek is already within you — it's just waiting for space to speak."</p>
+      <div class="cta">
+        <button>🎵 Listen to Music</button>
+        <button>📽️ Watch a Video</button>
+        <button>📖 Read a Story</button>
+        <button class="post">📝 Post Your Thought</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="moon-divider">Feeling inspired? Share your own beats, voice, or vibe — someone out there might need your rhythm today.</div>
+
+  <!-- Music with right sidebar -->
+  <div class="flex-row">
+    <div class="main">
+      <section>
+        <h2>🎵 Music Picks for You</h2>
+        <div class="card-container">
+          <div class="card"><img src="https://i.imgur.com/YB1zvTz.jpg" alt="Feel the Vibes"/><p>Feel the Vibes - Indie Flow</p></div>
+          <div class="card"><img src="https://i.imgur.com/2Yk5Fty.jpg" alt="Sunset Beats"/><p>Sunset Beats - Evening Jam</p></div>
+        </div>
+      </section>
+    </div>
+    <aside>
+      <h3>Top Music Contributors</h3>
+      <ul><li>Aarav Beats</li><li>Mira Tones</li><li>Jay Vibes</li></ul>
+    </aside>
+  </div>
+
+  <!-- Videos with left sidebar -->
+  <div class="flex-row">
+    <aside>
+      <h3>Top Video Creators</h3>
+      <ul><li>Rhea Visuals</li><li>Kabir Motion</li><li>Anya Films</li></ul>
+    </aside>
+    <div class="main">
+      <div class="moon-divider">🎥 Got a message to share or a moment worth capturing? Upload your video and become someone’s reason to smile.</div>
+      <section>
+        <h2>📽️ Videos You Might Enjoy</h2>
+        <div class="card-container">
+          <div class="card"><video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay muted loop></video><p>Morning Motivation</p></div>
+          <div class="card"><video src="https://media.w3.org/2010/05/sintel/trailer.mp4" autoplay muted loop></video><p>Be Your Own Hero</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Stories with right sidebar -->
+  <div class="flex-row">
+    <div class="main">
+      <div class="moon-divider">Got something on your mind? Share your creativity, story, or thought — your voice might spark someone else’s clarity.</div>
+      <section>
+        <h2>📚 Real Stories</h2>
+        <div class="card-container">
+          <div class="card"><img src="https://i.imgur.com/U5D5bJX.jpg" alt="Story"/><p>"How I rebuilt my confidence after burnout." – Aarav, 29</p></div>
+          <div class="card"><img src="https://i.imgur.com/4wrlCPb.jpg" alt="Story"/><p>"From lost to leader." – Mira, 24</p></div>
+        </div>
+      </section>
+    </div>
+    <aside>
+      <h3>Top Storytellers</h3>
+      <ul><li>Leela Chronicles</li><li>Raj DeepThoughts</li><li>Simran Voices</li></ul>
+    </aside>
+  </div>
+
+  <!-- Creative with left sidebar -->
+  <div class="flex-row">
+    <aside>
+      <h3>Top Creators</h3>
+      <ul><li>Meena Sketches</li><li>Zoya Crafts</li><li>Vik Artline</li></ul>
+    </aside>
+    <div class="main">
+      <div class="moon-divider">🎨 Unleash your creativity! Whether it’s a sketch, a dish, or a poetic thought — your expression can color someone’s world.</div>
+      <section>
+        <h2>🎨 Creative Space</h2>
+        <div class="card-container">
+          <div class="card"><img src="https://i.imgur.com/2KwL7W9.jpg" alt="Digital Art"/><p>Healing through Colors – Digital Art</p></div>
+          <div class="card"><img src="https://i.imgur.com/8CzjdM5.jpg" alt="Origami"/><p>Origami Moments – By Kaito</p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Help with right sidebar -->
+  <div class="flex-row">
+    <div class="main">
+      <div class="moon-divider">🤝 You’re not alone. Share your struggle or offer a kind word — your presence could be someone’s turning point.</div>
+      <section>
+        <h2>🆘 People Seeking Help</h2>
+        <div class="card-container">
+          <div class="card"><p><strong>Ritika (22):</strong> "I feel stuck in my career choices. Anyone else facing this?"</p></div>
+          <div class="card"><p><strong>Samir (31):</strong> "I can’t focus these days. Overwhelmed all the time."</p></div>
+        </div>
+      </section>
+    </div>
+    <aside>
+      <h3>Top Supporters</h3>
+      <ul><li>Alok (Empathy Champ)</li><li>Priya Cares</li><li>Deep Healing</li></ul>
+    </aside>
+  </div>
+
+  <!-- Events full width -->
+  <div class="moon-divider">📅 Got interests or passions? Explore events that match your vibe — and maybe find your next turning point.</div>
+  <section>
+    <h2>📅 Events You Might Like</h2>
+    <div class="card-container">
+      <div class="card"><img src="https://i.imgur.com/FU3Asx8.jpg" alt="Workshop"/><p>Clarity Workshop - Delhi, Aug 18</p></div>
+      <div class="card"><img src="https://i.imgur.com/MVfp9MK.jpg" alt="Mindfulness"/><p>Mindfulness Night - Online, Aug 25</p></div>
+    </div>
+  </section>
+</body>
+</html>

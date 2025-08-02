@@ -1,0 +1,98 @@
+<!-- Hero Section with Full Message Animation -->
+<section class="hero-section" style="background: #F8F6F4; padding: 80px 40px; text-align: center; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh;">
+  <div class="message-roller">
+    <div class="animated-message" style="display: block;">
+      <h1 style="font-size: 18px; font-weight: 700; color: #0B4422; margin-bottom: 16px; max-width: 720px;">
+        Something feels off — and you can't quite name it.
+      </h1>
+      <p style="font-size: 18px; color: #333; margin-bottom: 30px; max-width: 620px;">
+        Discover with Drishiq the spaces that remain unexplored.
+      </p>
+      <button class="button-3d" style="padding: 16px 32px; background: #0B4422; color: white; font-size: 18px; font-weight: 500; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        Look Deeper
+      </button>
+    </div>
+    <div class="animated-message" style="display: none;">
+      <h1 style="font-size: 18px; font-weight: 700; color: #0B4422; margin-bottom: 16px; max-width: 720px;">
+        The problem is clear, the path isn’t.
+      </h1>
+      <p style="font-size: 18px; color: #333; margin-bottom: 30px; max-width: 620px;">
+        Trace the blurry parts. Drishiq walks beside you through the unclear.
+      </p>
+      <button class="button-3d" style="padding: 16px 32px; background: #0B4422; color: white; font-size: 18px;font-weight: 500; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        Experience Edges
+      </button>
+    </div>
+    <div class="animated-message" style="display: none;">
+      <h1 style="font-size: 18px; font-weight: 700; color: #0B4422; margin-bottom: 16px; max-width: 720px;">
+        You’re tired of pretending it’s all okay.
+      </h1>
+      <p style="font-size: 18px; color: #333; margin-bottom: 30px; max-width: 620px;">
+        You don’t have to carry that alone. Let Drishiq be with you in what’s real.
+      </p>
+      <button class="button-3d" style="padding: 16px 32px; background: #0B4422; color: white; font-size: 18px; font-weight: 500; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        Meet Yourself
+      </button>
+    </div>
+    <div class="animated-message" style="display: none;">
+      <h1 style="font-size: 18px; font-weight: 700; color: #0B4422; margin-bottom: 16px; max-width: 720px;">
+        You don’t need a fix. You just need a moment that sees you.
+      </h1>
+      <p style="font-size: 18px; color: #333; margin-bottom: 30px; max-width: 620px;">
+        Work with Drishiq to let yourself be seen — not fixed, not judged.
+      </p>
+      <button class="button-3d" style="padding: 16px 32px; background: #0B4422; color: white; font-size: 18px;font-weight: 500; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        Stand Tall
+      </button>
+    </div>
+    <div class="animated-message" style="display: none;">
+      <h1 style="font-size: 18px; font-weight: 700; color: #0B4422; margin-bottom: 16px; max-width: 720px;">
+        Let’s begin — gently.
+      </h1>
+      <p style="font-size: 18px; color: #333; margin-bottom: 30px; max-width: 620px;">
+        This isn’t a leap. Just a quiet step — when you’re ready.
+      </p>
+      <button class="button-3d" style="padding: 16px 32px; background: #0B4422; color: white; font-size: 18px;font-weight: 500; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        Let’s Begin
+      </button>
+    </div>
+    <div class="animated-message" style="display: none;">
+      <h1 style="font-size: 18px; font-weight: 700; color: #0B4422; margin-bottom: 16px; max-width: 720px;">
+        You’re trying, but not convinced.
+      </h1>
+      <p style="font-size: 18px; color: #333; margin-bottom: 30px; max-width: 620px;">
+        Sometimes it’s a hitch. Sometimes it’s skill. Sometimes just support. Let’s see what it is in your case.
+      </p>
+      <button class="button-3d" style="padding: 12px 32px; background: #0B4422; color: white; font-size: 18px;font-weight: 500; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        Drishiq Can Help
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Animation Styles -->
+<style>
+  .animated-message {
+    animation: fadeOutIn 1s ease-in-out;
+  }
+
+  @keyframes fadeOutIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    50% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<!-- Animation Script -->
+<script>
+  const messages = document.querySelectorAll('.animated-message');
+  let current = 0;
+
+  function showNextMessage() {
+    messages[current].style.display = 'none';
+    current = (current + 1) % messages.length;
+    messages[current].style.display = 'block';
+  }
+
+  setInterval(showNextMessage, 5000); // 5 seconds
+</script>

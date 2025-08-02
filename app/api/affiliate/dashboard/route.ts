@@ -1,12 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 import { logger } from '../../../../lib/logger';
 import { ReferralService } from '../../../../lib/referral-service';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { supabase } from '../../../../lib/supabase';
 
 export async function GET(request: NextRequest) {
   try {
@@ -77,7 +72,7 @@ export async function GET(request: NextRequest) {
           referee:users!referee_id (email)
         )
       `)
-      .in('affiliate_id', (affiliates || []).map(a => a.id))
+      .in('affiliate_id', (affiliates || []).map((a: any) => a.id))
       .order('created_at', { ascending: false })
       .limit(10);
 
@@ -86,9 +81,9 @@ export async function GET(request: NextRequest) {
     }
 
     // Calculate total earnings across all affiliate accounts
-    const totalEarnings = affiliates?.reduce((sum, affiliate) => sum + affiliate.total_earnings, 0) || 0;
-    const totalPendingEarnings = affiliates?.reduce((sum, affiliate) => sum + affiliate.pending_earnings, 0) || 0;
-    const totalPaidEarnings = affiliates?.reduce((sum, affiliate) => sum + affiliate.paid_earnings, 0) || 0;
+    const totalEarnings = affiliates?.reduce((sum: any, affiliate: any) => sum + affiliate.total_earnings, 0) || 0;
+    const totalPendingEarnings = affiliates?.reduce((sum: any, affiliate: any) => sum + affiliate.pending_earnings, 0) || 0;
+    const totalPaidEarnings = affiliates?.reduce((sum: any, affiliate: any) => sum + affiliate.paid_earnings, 0) || 0;
 
     return NextResponse.json({
       success: true,
@@ -103,7 +98,7 @@ export async function GET(request: NextRequest) {
           totalPaidEarnings,
           totalReferrals: referralStats.totalReferrals,
           confirmedReferrals: referralStats.confirmedReferrals,
-          activeAffiliateAccounts: affiliates?.filter(a => a.status === 'approved').length || 0
+          activeAffiliateAccounts: affiliates?.filter((a: any) => a.status === 'approved').length || 0
         }
       }
     });

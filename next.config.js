@@ -40,10 +40,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     minimumCacheTTL: 60,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**.vercel-storage.com',
-      },
+
       {
         protocol: 'https',
         hostname: '**.supabase.co',
@@ -66,7 +63,10 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Security headers
+  // Disable caching in development
+  generateEtags: process.env.NODE_ENV === 'production',
+  
+  // Security headers with cache-busting in development
   async headers() {
     return [
       {
@@ -97,9 +97,9 @@ const nextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com *.googletagmanager.com",
-              "style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com",
-              "img-src 'self' data: blob: *.supabase.co *.vercel-storage.com images.unsplash.com",
-              "font-src 'self' *.gstatic.com",
+              "style-src 'self' 'unsafe-inline' *.googleapis.com *.gstatic.com *.cloudflare.com",
+              "img-src 'self' data: blob: *.supabase.co images.unsplash.com",
+              "font-src 'self' *.gstatic.com *.cloudflare.com",
               "connect-src 'self' *.supabase.co *.googleapis.com *.firebase.com *.firebaseio.com",
               "frame-src 'self' *.youtube.com *.youtube-nocookie.com",
               "media-src 'self' *.youtube.com *.youtube-nocookie.com",
@@ -108,7 +108,22 @@ const nextConfig = {
               "form-action 'self'",
               "frame-ancestors 'self'"
             ].join('; ')
-          }
+          },
+          // Cache-busting headers for development
+          ...(process.env.NODE_ENV === 'development' ? [
+            {
+              key: 'Cache-Control',
+              value: 'no-cache, no-store, must-revalidate'
+            },
+            {
+              key: 'Pragma',
+              value: 'no-cache'
+            },
+            {
+              key: 'Expires',
+              value: '0'
+            }
+          ] : [])
         ]
       },
       {

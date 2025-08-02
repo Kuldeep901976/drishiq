@@ -28,8 +28,8 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
-# Optional: Vercel Blob (for file uploads)
-BLOB_READ_WRITE_TOKEN=your_blob_token
+# Optional: File upload service (configure as needed)
+# BLOB_READ_WRITE_TOKEN=your_blob_token
 ```
 
 ### 🎨 **Content & Design**
@@ -91,7 +91,7 @@ BLOB_READ_WRITE_TOKEN=your_blob_token
    - Test responsiveness
 
 3. **Deploy Web App**
-   - Deploy to Vercel/Netlify
+   - Deploy to your preferred platform (Netlify, Railway, etc.)
    - Configure custom domain
    - Test production deployment
 

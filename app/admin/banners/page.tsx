@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 
 const initialBanners = [
   {
@@ -370,9 +371,11 @@ export default function BannerAdminPage() {
                         🗑️ Remove
                       </button>
                     </div>
-                    <img 
+                    <Image 
                       src={banner.image} 
                       alt={`Banner ${idx + 1}`}
+                      width={400}
+                      height={100}
                       style={{ 
                         maxWidth: '100%', 
                         maxHeight: '100px', 

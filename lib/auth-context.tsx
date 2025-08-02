@@ -1,12 +1,8 @@
 'use client';
 
-import { createClient, Session, User } from '@supabase/supabase-js';
+import { Session, User } from '@supabase/supabase-js';
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from './supabase';
 
 interface AuthContextType {
   user: User | null;
