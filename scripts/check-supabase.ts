@@ -1,14 +1,10 @@
 
 import type { Database } from '../supabase.types';
+import { supabase } from '../lib/supabase';
 
-import { supabase } from '..\lib/supabase';
+// Since environment variables are set in Render, we can keep these checks
 if (!process.env.NEXT_PUBLIC_SUPABASE_URL) throw new Error('Missing SUPABASE_URL');
 if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) throw new Error('Missing SUPABASE_ANON_KEY');
-
-const supabase = createClient<Database>(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
 
 async function checkSupabaseSetup() {
   console.log('🔍 Checking Supabase setup...\n');
