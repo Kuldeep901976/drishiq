@@ -19,9 +19,9 @@ const Header: React.FC = () => {
   const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   
-  // Simple fix - just use the hook directly
+  // Call useLanguage directly - no conditional logic
   const context = useLanguage();
-  const t = context?.t || ((key: string) => key);
+  const t = context.t;
   
   // Initialize selectedLanguage from context or localStorage
   const [selectedLanguage, setSelectedLanguage] = useState(() => {
