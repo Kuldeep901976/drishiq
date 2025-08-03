@@ -18,8 +18,24 @@ interface DropdownMenu {
 const Header: React.FC = () => {
   const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const context = useLanguage();
-  const t = context?.t || ((key: string) => key);
+  
+  // Add error boundary for useLanguage hook
+  let context;
+  try {
+    context = useLanguage();
+  } catch (error) {
+    // Fallback if LanguageProvider is not available
+    context = {
+      t: (key: string) => key,
+      locale: 'en',
+      setLocale: () => {},
+      speak: () => {},
+      isLoading: false,
+      exportMissingKeys: () => []
+    };
+  }
+  
+  const t = context.t;
   
   // Initialize selectedLanguage from context or localStorage
   const [selectedLanguage, setSelectedLanguage] = useState(() => {
@@ -687,7 +703,7 @@ const Header: React.FC = () => {
              <option value="bn">বাংলা</option>
              <option value="ta">தமிழ்</option>
              <option value="te">తెలుగు</option>
-             <option value="mr">मराठी</option>
+             <option value="mr">మराठी</option>
              <option value="es">Español</option>
              <option value="fr">Français</option>
              <option value="de">Deutsch</option>
