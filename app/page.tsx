@@ -78,15 +78,7 @@ function HomePageContent() {
             text-align: center;
           }
 
-          .motivational-container {
-            position: relative;
-            text-align: center;
-            max-height: 120px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-          }
-
-          .typewriter {
+           .typewriter {
             position: relative;
             font-size: 1.2rem;
             white-space: nowrap;
