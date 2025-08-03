@@ -146,23 +146,25 @@ const nextConfig = {
     ]
   },
   
-  // We handle i18n through middleware and components
-  // since Next.js i18n is not compatible with static export
-  
-  // Disable static generation for problematic pages
+  // Force dynamic rendering for problematic pages
   experimental: {
     // optimizeCss: true, // Disabled due to dependency issues
   },
   
-  // Add this to force dynamic rendering
-  trailingSlash: true,
+  // Add this to disable static generation
+  output: 'standalone',
   
-  // Disable static export for problematic routes
-  async rewrites() {
+  // Disable static generation for specific routes
+  async headers() {
     return [
       {
-        source: '/(chat|sessions|phone-capture|payment-confirmation|verify-phone|support-payment|support-success)',
-        destination: '/api/dynamic-render',
+        source: '/(chat|sessions|phone-capture|payment-confirmation|verify-phone|support-payment|support-success|create-password)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+        ],
       },
     ];
   },
