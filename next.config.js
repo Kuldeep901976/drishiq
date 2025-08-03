@@ -149,9 +149,22 @@ const nextConfig = {
   // We handle i18n through middleware and components
   // since Next.js i18n is not compatible with static export
   
-  // Ensure static files are served correctly
+  // Disable static generation for problematic pages
+  experimental: {
+    // optimizeCss: true, // Disabled due to dependency issues
+  },
+  
+  // Add this to force dynamic rendering
+  trailingSlash: true,
+  
+  // Disable static export for problematic routes
   async rewrites() {
-    return [];
+    return [
+      {
+        source: '/(chat|sessions|phone-capture|payment-confirmation|verify-phone|support-payment|support-success)',
+        destination: '/api/dynamic-render',
+      },
+    ];
   },
   
   // Add this to disable ESLint during build
