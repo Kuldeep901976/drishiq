@@ -19,23 +19,9 @@ const Header: React.FC = () => {
   const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   
-  // Add error boundary for useLanguage hook
-  let context;
-  try {
-    context = useLanguage();
-  } catch (error) {
-    // Fallback if LanguageProvider is not available
-    context = {
-      t: (key: string) => key,
-      locale: 'en',
-      setLocale: () => {},
-      speak: () => {},
-      isLoading: false,
-      exportMissingKeys: () => []
-    };
-  }
-  
-  const t = context.t;
+  // Simple fix - just use the hook directly
+  const context = useLanguage();
+  const t = context?.t || ((key: string) => key);
   
   // Initialize selectedLanguage from context or localStorage
   const [selectedLanguage, setSelectedLanguage] = useState(() => {
