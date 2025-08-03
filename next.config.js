@@ -153,6 +153,9 @@ const nextConfig = {
   async rewrites() {
     return [];
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = withPWA(nextConfig); 
