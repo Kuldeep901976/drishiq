@@ -153,6 +153,8 @@ const nextConfig = {
   async rewrites() {
     return [];
   },
+  
+  // Add this to disable ESLint during build
   eslint: {
     ignoreDuringBuilds: true,
   },
